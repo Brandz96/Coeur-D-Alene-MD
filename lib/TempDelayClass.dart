@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-class tempDelay{
-
+class tempDelay {
   final int mill;
 
   VoidCallback action;
@@ -10,11 +9,10 @@ class tempDelay{
 
   tempDelay({this.mill});
 
-  run(VoidCallback action){
-    if(null != _timer){
+  run(VoidCallback action) {
+    if (null != _timer) {
       _timer.cancel();
     }
     _timer = Timer(Duration(milliseconds: mill), action);
   }
-
 }
