@@ -12,40 +12,28 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
 
-
-
   @override
   Widget build(BuildContext context) {
-
     var routes = <String, WidgetBuilder>{
-
-
       RootDictionaryPage.routeName: (BuildContext context) =>
-      new RootDictionaryPage(title: 'RootDictionaryPage'),
-
-      AboutPage.routeName: (BuildContext context) =>
-      new AboutPage(title: 'AboutPage',),
-
-      StemPage.routeName: (BuildContext context) => new StemPage(title: 'StemPage',),
-
+          new RootDictionaryPage(title: 'RootDictionaryPage'),
+      AboutPage.routeName: (BuildContext context) => new AboutPage(
+            title: 'AboutPage',
+          ),
+      StemPage.routeName: (BuildContext context) => new StemPage(
+            title: 'StemPage',
+          ),
       AudioPage.routeName: (BuildContext context) =>
-      new AudioPage(title: 'Audio'),
-
+          new AudioPage(title: 'Audio'),
       AffixPage.routeName: (BuildContext context) =>
-      new AffixPage(title: 'Affix'),
-
+          new AffixPage(title: 'Affix'),
       FeedBackPage.routeName: (BuildContext context) =>
-      new FeedBackPage(title: 'FeedBack'),
+          new FeedBackPage(title: 'FeedBack'),
     };
-
 
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-          unselectedWidgetColor: Colors.white70
-
-
-      ),
+      theme: ThemeData(unselectedWidgetColor: Colors.white70),
       home: Home(),
       routes: routes,
     );
@@ -131,13 +119,3 @@ class MyApp extends StatelessWidget {
 //
 //
 //}
-
-
-
-
-
-
-
-
-
-

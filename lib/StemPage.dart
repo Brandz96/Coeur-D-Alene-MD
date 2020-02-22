@@ -7,7 +7,9 @@ import 'dart:async';
 import 'dart:convert';
 
 class StemPage extends StatefulWidget {
-  StemPage({Key key, this.title, this.backGroundColor, this.tileBackGroundColor}) : super(key: key);
+  StemPage(
+      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor})
+      : super(key: key);
 
   static const String routeName = "/StemPage";
 
@@ -16,11 +18,11 @@ class StemPage extends StatefulWidget {
   Color tileBackGroundColor;
 
   @override
-  _StemPageState createState() => new _StemPageState(backGroundColor, tileBackGroundColor);
+  _StemPageState createState() =>
+      new _StemPageState(backGroundColor, tileBackGroundColor);
 }
 
 class _StemPageState extends State<StemPage> {
-
   List<StemNote> _notes = List<StemNote>();
   List<StemNote> _fnotes = List<StemNote>();
   final _delay = tempDelay(mill: 200);
@@ -46,8 +48,7 @@ class _StemPageState extends State<StemPage> {
 //    return notes;
 //  }
 
-  Future <List<StemNote>> loadJSON() async {
-
+  Future<List<StemNote>> loadJSON() async {
     var notes2 = List<StemNote>();
     var link = 'assets/StemList.json';
 
@@ -55,12 +56,10 @@ class _StemPageState extends State<StemPage> {
 
     String jsonState = r;
 
-
     var jsonResponse = json.decode(jsonState);
 
     for (var n in jsonResponse) {
       notes2.add(StemNote.fromJson(n));
-
     }
     print(2);
     return notes2;
@@ -77,40 +76,51 @@ class _StemPageState extends State<StemPage> {
     super.initState();
   }
 
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: new Padding (child: new Text ('Coeur D\' Alene Mobile Dictionary', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 9,),),
-          padding: EdgeInsets.all(0),   ),
+        title: new Padding(
+          child: new Text(
+            'Coeur D\' Alene Mobile Dictionary',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 9,
+            ),
+          ),
+          padding: EdgeInsets.all(0),
+        ),
         backgroundColor: backGroundColor,
       ),
       body: Column(
         children: <Widget>[
-          TextField(style: TextStyle(color: tileBackGroundColor),
+          TextField(
+              style: TextStyle(color: tileBackGroundColor),
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.all(10.0),
                 hintText: 'Search Stem',
                 fillColor: Colors.white,
                 hintStyle: TextStyle(color: Colors.white, fontSize: 15),
                 enabledBorder: new UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),),
+                  borderSide: BorderSide(color: Colors.white),
+                ),
                 focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(color: tileBackGroundColor),
                 ),
               ),
               onChanged: (string) {
-                _delay.run((){
+                _delay.run(() {
                   setState(() {
-                    _fnotes = _notes.where((u) =>
-                    (u.stem.toLowerCase().contains(string.toLowerCase())))
+                    _fnotes = _notes
+                        .where((u) => (u.stem
+                            .toLowerCase()
+                            .contains(string.toLowerCase())))
                         .toList();
                   });
                   //
                 });
-              }
-          ),
+              }),
           Padding(
             padding: EdgeInsets.only(top: 10),
             child: Text(
@@ -120,47 +130,68 @@ class _StemPageState extends State<StemPage> {
               ),
             ),
           ),
-
-          Expanded(child:
-          ListView.builder(
-            itemBuilder: (context, index) {
-              return new GestureDetector(
-                onDoubleTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(
-                          builder: (context) => StemSecondScreen(stem: _fnotes[index].stem, backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor,)
-                      ));
-                },
-                child:new Container(
-                  height: 70,
-                  decoration: new BoxDecoration(
-                      color: (index %2 == 0) ? tileBackGroundColor : tileBackGroundColor,
-                      borderRadius: new BorderRadius.all(Radius.circular(20)),
-                      border: Border.all(
-                        width: 1.0,
-                        color:  Colors.white,
-                      )
+          Expanded(
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                return new GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => StemSecondScreen(
+                                  stem: _fnotes[index].stem,
+                                  backGroundColor: backGroundColor,
+                                  tileBackGroundColor: tileBackGroundColor,
+                                )));
+                  },
+                  child: new Container(
+                    height: 70,
+                    decoration: new BoxDecoration(
+                        color: (index % 2 == 0)
+                            ? tileBackGroundColor
+                            : tileBackGroundColor,
+                        borderRadius: new BorderRadius.all(Radius.circular(20)),
+                        border: Border.all(
+                          width: 1.0,
+                          color: Colors.white,
+                        )),
+                    margin: const EdgeInsets.only(
+                        top: 25.0, bottom: 25.0, left: 10.0, right: 10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Padding(
+                              child: Text(
+                                _fnotes[index].stem,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              padding: EdgeInsets.only(left: 10),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 10, top: 3),
+                              child: Icon(
+                                Icons.chevron_right,
+                                color: Colors.white,
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                      mainAxisAlignment: MainAxisAlignment.center,
+                    ),
                   ),
-
-                  margin: const EdgeInsets.only(
-                      top: 25.0, bottom: 25.0, left: 10.0, right: 10.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        child: Text(_fnotes[index].stem,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w600,),),
-                        padding: EdgeInsets.only(left: 10),),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.center,
-                  ),
-                ),
-              );
-            },
-            itemCount: _fnotes.length,
-            shrinkWrap: true,
-          ),
+                );
+              },
+              itemCount: _fnotes.length,
+              shrinkWrap: true,
+            ),
           ),
         ],
       ),

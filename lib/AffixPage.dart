@@ -6,12 +6,10 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'TilesNotes.dart';
 import 'TempDelayClass.dart';
 
-
-
-
-
 class AffixPage extends StatefulWidget {
-  AffixPage({Key key, this.title, this.backGroundColor, this.tileBackGroundColor}) : super(key: key);
+  AffixPage(
+      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor})
+      : super(key: key);
 
   static const String routeName = "/Affix";
   Color backGroundColor;
@@ -20,11 +18,11 @@ class AffixPage extends StatefulWidget {
   final String title;
 
   @override
-  _AffixPageState createState() => new _AffixPageState(backGroundColor, tileBackGroundColor);
+  _AffixPageState createState() =>
+      new _AffixPageState(backGroundColor, tileBackGroundColor);
 }
 
 class _AffixPageState extends State<AffixPage> {
-
   List<AffixNote> _notes = List<AffixNote>();
   List<AffixNote> _fnotes = List<AffixNote>();
   final _delay = tempDelay(mill: 200);
@@ -49,8 +47,7 @@ class _AffixPageState extends State<AffixPage> {
 //    }
 //    return notes;
 //  }
-  Future <List<AffixNote>> loadJSON() async {
-
+  Future<List<AffixNote>> loadJSON() async {
     var notes2 = List<AffixNote>();
     var link = 'assets/affix.json';
 
@@ -58,13 +55,10 @@ class _AffixPageState extends State<AffixPage> {
 
     String jsonState = r;
 
-
     var jsonResponse = json.decode(jsonState);
 
     for (var n in jsonResponse) {
-
       notes2.add(AffixNote.fromJson(n));
-
     }
     print(2);
     return notes2;
@@ -81,13 +75,21 @@ class _AffixPageState extends State<AffixPage> {
     super.initState();
   }
 
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: new Padding (child: new Text ('Coeur D\' Alene Mobile Dictionary',textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 9,),),
-          padding: EdgeInsets.all(0),),
+        title: new Padding(
+          child: new Text(
+            'Coeur D\' Alene Mobile Dictionary',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 9,
+            ),
+          ),
+          padding: EdgeInsets.all(0),
+        ),
         backgroundColor: backGroundColor,
       ),
       body: Column(
@@ -102,46 +104,67 @@ class _AffixPageState extends State<AffixPage> {
               ),
             ),
           ),
-
-          Expanded(child:
-          ListView.builder(
-            itemBuilder: (context, index) {
-              return new GestureDetector(
-                onDoubleTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(
-                          builder: (context) => AffixSecondScreen(affix: _fnotes[index].affix,  backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor,)
-                      ));
-                },
-                child:new Container(
-                  height: 90,
-                  decoration: new BoxDecoration(
-                      color: (index %2 == 0) ? tileBackGroundColor : tileBackGroundColor,
-                      borderRadius: new BorderRadius.all(Radius.circular(20)),
-                      border: Border.all(
+          Expanded(
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                return new GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AffixSecondScreen(
+                                  affix: _fnotes[index].affix,
+                                  backGroundColor: backGroundColor,
+                                  tileBackGroundColor: tileBackGroundColor,
+                                )));
+                  },
+                  child: new Container(
+                    height: 90,
+                    decoration: new BoxDecoration(
+                        color: (index % 2 == 0)
+                            ? tileBackGroundColor
+                            : tileBackGroundColor,
+                        borderRadius: new BorderRadius.all(Radius.circular(20)),
+                        border: Border.all(
                           width: 1.0,
                           color: Colors.white,
-                      )
+                        )),
+                    margin: const EdgeInsets.only(
+                        top: 25.0, bottom: 25.0, left: 10.0, right: 10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Padding(
+                              child: Text(
+                                _fnotes[index].affix,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              padding: EdgeInsets.only(left: 10),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 10, top: 3),
+                              child: Icon(
+                                Icons.chevron_right,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                      mainAxisAlignment: MainAxisAlignment.center,
+                    ),
                   ),
-
-                  margin: const EdgeInsets.only(
-                      top: 25.0, bottom: 25.0, left: 10.0, right: 10.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Padding(
-                        child: Text(_fnotes[index].affix,
-                          style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w600,),),
-                        padding: EdgeInsets.only(left:0),),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.center,
-                  ),
-                ),
-              );
-            },
-            itemCount: _fnotes.length,
-            shrinkWrap: true,
-          ),
+                );
+              },
+              itemCount: _fnotes.length,
+              shrinkWrap: true,
+            ),
           ),
         ],
       ),

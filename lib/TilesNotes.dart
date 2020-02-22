@@ -1,8 +1,7 @@
 import 'main.dart';
 import 'package:flutter/material.dart';
 
-class Note{
-
+class Note {
   String title;
   String text;
   String root;
@@ -11,34 +10,27 @@ class Note{
 
   Note(this.title, this.text, this.root, this.stem, this.affix);
 
-
-  Note.fromJson(Map<String, dynamic> json){
-
-
-
-
+  Note.fromJson(Map<String, dynamic> json) {
     title = json['nicodemus'];
     text = json['english'];
     root = json['root'];
     stem = json['stem'];
     affix = json['affix'];
   }
-
 }
 
-
-class StemNote{
+class StemNote {
   String stem;
-  StemNote.fromJson(Map<String, dynamic> json){
+
+  StemNote.fromJson(Map<String, dynamic> json) {
     stem = json['stem'];
   }
 }
-class AffixNote{
 
+class AffixNote {
   String affix;
-  AffixNote.fromJson(Map<String, dynamic> json){
+
+  AffixNote.fromJson(Map<String, dynamic> json) {
     affix = json['affix'];
   }
-
-
 }
