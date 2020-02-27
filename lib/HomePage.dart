@@ -16,14 +16,6 @@ class Home extends StatefulWidget {
 }
 
 class _Home extends State<Home> {
-  final List<String> _data = [
-    "Root Dictionary",
-    "Stem List",
-    "Affix List",
-    "Audio Files",
-    "About",
-    "Feedback",
-  ];
 
   int counter = 0;
 
@@ -35,7 +27,7 @@ class _Home extends State<Home> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           new Container(
-            height: 250,
+            height: 230,
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -74,8 +66,10 @@ class _Home extends State<Home> {
           ),
           new Center(
             child: new Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                new Padding(padding: EdgeInsets.only(top: 50)),
+
                 RaisedButton(
                     color: getColor(),
                     elevation: 10,
@@ -85,7 +79,7 @@ class _Home extends State<Home> {
                           MaterialPageRoute(
                               builder: (context) => RootDictionaryPage(
                                   backGroundColor:
-                                      rootDictionaryBackGroundColor,
+                                  rootDictionaryBackGroundColor,
                                   tileBackGroundColor: buttonColors)));
                     },
                     textColor: Colors.white,
@@ -100,7 +94,7 @@ class _Home extends State<Home> {
                           width: 350,
                           height: 20,
                           constraints:
-                              const BoxConstraints(minWidth: 40, minHeight: 40),
+                          const BoxConstraints(minWidth: 40, minHeight: 40),
                           alignment: Alignment.center,
                           child: const Text(
                             "Root Dictionary",
@@ -108,7 +102,7 @@ class _Home extends State<Home> {
                             style: TextStyle(fontFamily: 'Open Sans'),
                           ),
                         ))),
-                new Padding(padding: EdgeInsets.only(top: 20)),
+                new Padding(padding: EdgeInsets.only(top: 10)),
                 RaisedButton(
                     color: getColor(),
                     elevation: 10,
@@ -118,7 +112,7 @@ class _Home extends State<Home> {
                           MaterialPageRoute(
                               builder: (context) => StemPage(
                                   backGroundColor:
-                                      rootDictionaryBackGroundColor,
+                                  rootDictionaryBackGroundColor,
                                   tileBackGroundColor: buttonColors)));
                     },
                     textColor: Colors.white,
@@ -133,7 +127,7 @@ class _Home extends State<Home> {
                           width: 350,
                           height: 20,
                           constraints:
-                              const BoxConstraints(minWidth: 40, minHeight: 40),
+                          const BoxConstraints(minWidth: 40, minHeight: 40),
                           alignment: Alignment.center,
                           child: const Text(
                             "Stem List",
@@ -141,7 +135,7 @@ class _Home extends State<Home> {
                             style: TextStyle(fontFamily: 'Open Sans'),
                           ),
                         ))),
-                new Padding(padding: EdgeInsets.only(top: 20)),
+                new Padding(padding: EdgeInsets.only(top: 10)),
                 RaisedButton(
                     color: getColor(),
                     elevation: 10,
@@ -151,7 +145,7 @@ class _Home extends State<Home> {
                           MaterialPageRoute(
                               builder: (context) => AffixPage(
                                   backGroundColor:
-                                      rootDictionaryBackGroundColor,
+                                  rootDictionaryBackGroundColor,
                                   tileBackGroundColor: buttonColors)));
                     },
                     textColor: Colors.white,
@@ -166,14 +160,14 @@ class _Home extends State<Home> {
                           width: 350,
                           height: 20,
                           constraints:
-                              const BoxConstraints(minWidth: 40, minHeight: 40),
+                          const BoxConstraints(minWidth: 40, minHeight: 40),
                           alignment: Alignment.center,
                           child: const Text(
                             "Affix List",
                             textAlign: TextAlign.center,
                           ),
                         ))),
-                new Padding(padding: EdgeInsets.only(top: 20)),
+                new Padding(padding: EdgeInsets.only(top: 10)),
                 RaisedButton(
                     color: getColor(),
                     elevation: 10,
@@ -183,7 +177,7 @@ class _Home extends State<Home> {
                           MaterialPageRoute(
                               builder: (context) => AudioPage(
                                   backGroundColor:
-                                      rootDictionaryBackGroundColor,
+                                  rootDictionaryBackGroundColor,
                                   tileBackGroundColor: buttonColors)));
                     },
                     textColor: Colors.white,
@@ -198,14 +192,14 @@ class _Home extends State<Home> {
                           width: 350,
                           height: 20,
                           constraints:
-                              const BoxConstraints(minWidth: 40, minHeight: 40),
+                          const BoxConstraints(minWidth: 40, minHeight: 40),
                           alignment: Alignment.center,
                           child: const Text(
                             "Text and Audio Files",
                             textAlign: TextAlign.center,
                           ),
                         ))),
-                new Padding(padding: EdgeInsets.only(top: 20)),
+                new Padding(padding: EdgeInsets.only(top: 10)),
                 RaisedButton(
                     color: getColor(),
                     elevation: 10,
@@ -215,7 +209,7 @@ class _Home extends State<Home> {
                           MaterialPageRoute(
                               builder: (context) => AboutPage(
                                   backGroundColor:
-                                      rootDictionaryBackGroundColor,
+                                  rootDictionaryBackGroundColor,
                                   tileBackGroundColor: buttonColors)));
                     },
                     textColor: Colors.white,
@@ -230,14 +224,14 @@ class _Home extends State<Home> {
                           width: 350,
                           height: 20,
                           constraints:
-                              const BoxConstraints(minWidth: 40, minHeight: 40),
+                          const BoxConstraints(minWidth: 40, minHeight: 40),
                           alignment: Alignment.center,
                           child: const Text(
                             "About",
                             textAlign: TextAlign.center,
                           ),
                         ))),
-                new Padding(padding: EdgeInsets.only(top: 20)),
+                new Padding(padding: EdgeInsets.only(top: 10)),
                 RaisedButton(
                     color: getColor(),
                     elevation: 10,
@@ -249,7 +243,7 @@ class _Home extends State<Home> {
                           MaterialPageRoute(
                               builder: (context) => FeedBackPage(
                                   backGroundColor:
-                                      rootDictionaryBackGroundColor,
+                                  rootDictionaryBackGroundColor,
                                   tileBackGroundColor: buttonColors)));
                     },
                     textColor: Colors.white,
@@ -264,7 +258,7 @@ class _Home extends State<Home> {
                           width: 350,
                           height: 20,
                           constraints:
-                              const BoxConstraints(minWidth: 40, minHeight: 40),
+                          const BoxConstraints(minWidth: 40, minHeight: 40),
                           alignment: Alignment.center,
                           child: const Text(
                             "Provide Feedback",
@@ -272,7 +266,7 @@ class _Home extends State<Home> {
                           ),
                         ))),
                 Padding(
-                    padding: EdgeInsets.only(top: 60, right: 350),
+                    padding: EdgeInsets.only(top: 20),
                     child: IconButton(
                         icon: Icon(Icons.brightness_2),
                         color: iconColor,
