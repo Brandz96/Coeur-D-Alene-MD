@@ -6,8 +6,10 @@ import 'StemPage.dart';
 import 'AudioPage.dart';
 import 'AffixPage.dart';
 import 'HomePage.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'dart:async';
 
-void main() => runApp(MyApp());
+void main() async => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -34,11 +36,69 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(unselectedWidgetColor: Colors.white70),
-      home: Home(),
+      home: LoadingPage(),
       routes: routes,
     );
   }
 }
+
+
+class LoadingPage extends StatefulWidget {
+  @override
+  LoadingPageState createState()=> LoadingPageState();
+}
+
+
+class LoadingPageState extends State<LoadingPage> {
+
+  void navigationToNextPage() {
+    Navigator.of(context).pushReplacement(new PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => new Home(),
+        maintainState: true,
+        opaque: true,
+        transitionDuration: Duration(seconds: 1),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          var begin = Offset(0.0, 1.0);
+          var end = Offset.zero;
+          var curve = Curves.ease;
+          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+          );
+      }
+    ));
+  }
+
+  startLoadingScreenTimer() async {
+    var _duration = new Duration(seconds: 4);
+    return new Timer(_duration, navigationToNextPage);
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    startLoadingScreenTimer();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(29, 161, 242, 1),
+      body: Center(
+       child: SpinKitSquareCircle(
+          color: Colors.white,
+          size: 80,
+        )
+      ),
+    );
+  }
+}
+
+
+
 
 //class MyHomePage extends StatefulWidget {
 //  MyHomePage({Key key, this.title}) : super(key: key);

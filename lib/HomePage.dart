@@ -33,9 +33,10 @@ class _Home extends State<Home> {
       backgroundColor: homeBackGroundColor,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           new Container(
-            height: 250,
+            height: 220,
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -60,7 +61,7 @@ class _Home extends State<Home> {
                             fontFamily: "Open Sans"),
                       ),
                     ),
-                    SizedBox(height: 12.0),
+                    SizedBox(height: 8.0),
                     Text(
                       'Mobile Dictionary',
                       style: TextStyle(
@@ -68,14 +69,14 @@ class _Home extends State<Home> {
                         fontStyle: FontStyle.italic,
                       ),
                     ),
-                    SizedBox(height: 12.0),
+                    SizedBox(height: 8.0),
                   ],
                 )),
           ),
           new Center(
             child: new Column(
               children: <Widget>[
-                new Padding(padding: EdgeInsets.only(top: 50)),
+                new Padding(padding: EdgeInsets.only(top: 0)),
                 RaisedButton(
                     color: getColor(),
                     elevation: 10,
@@ -272,7 +273,7 @@ class _Home extends State<Home> {
                           ),
                         ))),
                 Padding(
-                    padding: EdgeInsets.only(top: 60, right: 350),
+                    padding: EdgeInsets.only(top: 25, right: 329),
                     child: IconButton(
                         icon: Icon(Icons.brightness_2),
                         color: iconColor,
