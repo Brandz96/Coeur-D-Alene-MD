@@ -5,6 +5,7 @@ import 'StemPage.dart';
 import 'AudioPage.dart';
 import 'AffixPage.dart';
 import 'FeedBackPage.dart';
+import 'main.dart';
 
 class Home extends StatefulWidget {
   Home({Key key, this.title}) : super(key: key);
@@ -27,7 +28,7 @@ class _Home extends State<Home> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           new Container(
-            height: 230,
+            height: 250,
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -266,7 +267,7 @@ class _Home extends State<Home> {
                           ),
                         ))),
                 Padding(
-                    padding: EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.only(top: 50),
                     child: IconButton(
                         icon: Icon(Icons.brightness_2),
                         color: iconColor,
@@ -291,7 +292,19 @@ class _Home extends State<Home> {
                           });
 
                           print(counter);
-                        })),
+                        }
+                    )
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Text(
+                    'Purdue Fort Wayne Capstone Project',
+                    style: TextStyle(
+                      fontSize: 9,
+                      color: Colors.white,
+                    ),
+                  ),
+                )
               ],
             ),
           ),
