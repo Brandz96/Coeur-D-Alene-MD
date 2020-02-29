@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
 import 'TilesNotes.dart';
 import 'TempDelayClass.dart';
+import 'HomePage.dart';
 
 class AffixPage extends StatefulWidget {
   AffixPage(
@@ -79,6 +80,34 @@ class _AffixPageState extends State<AffixPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        leading: GestureDetector(
+          // Navigator.push(context, MaterialPageRoute(builder: (context) => Home())),
+          onTap: () {
+            Navigator.of(context).pushReplacement(new PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) => new Home(),
+                maintainState: true,
+                opaque: true,
+                transitionDuration: Duration(milliseconds: 600),
+                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                  var begin = Offset(0.0, 1.0);
+                  var end = Offset.zero;
+                  var curve = Curves.ease;
+                  var tween = Tween(begin: begin, end: end).chain(
+                      CurveTween(curve: curve));
+
+                  return SlideTransition(
+                    position: animation.drive(tween),
+                    child: child,
+                  );
+                }
+            ));
+
+
+          },
+          child: Icon(
+            Icons.arrow_back,
+          ),
+        ),
         title: new Padding(
           child: new Text(
             'Coeur D\' Alene Mobile Dictionary',
@@ -109,14 +138,24 @@ class _AffixPageState extends State<AffixPage> {
               itemBuilder: (context, index) {
                 return new GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AffixSecondScreen(
-                                  affix: _fnotes[index].affix,
-                                  backGroundColor: backGroundColor,
-                                  tileBackGroundColor: tileBackGroundColor,
-                                )));
+                    Navigator.of(context).pushReplacement(new PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) => new AffixSecondScreen(affix: _fnotes[index].affix,backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor),
+                        maintainState: true,
+                        opaque: true,
+                        transitionDuration: Duration(milliseconds: 600),
+                        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                          var begin = Offset(0.0, 1.0);
+                          var end = Offset.zero;
+                          var curve = Curves.ease;
+                          var tween = Tween(begin: begin, end: end).chain(
+                              CurveTween(curve: curve));
+
+                          return SlideTransition(
+                            position: animation.drive(tween),
+                            child: child,
+                          );
+                        }
+                    ));
                   },
                   child: new Container(
                     height: 90,

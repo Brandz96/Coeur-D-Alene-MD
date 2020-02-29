@@ -8,7 +8,8 @@ import 'FeedBackPage.dart';
 import 'main.dart';
 
 class Home extends StatefulWidget {
-  Home({Key key, this.title}) : super(key: key);
+  Home({Key key, this.title,}) : super(key: key);
+
 
   final String title;
 
@@ -17,8 +18,9 @@ class Home extends StatefulWidget {
 }
 
 class _Home extends State<Home> {
-
   int counter = 0;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -70,18 +72,11 @@ class _Home extends State<Home> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-
                 RaisedButton(
                     color: getColor(),
                     elevation: 10,
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => RootDictionaryPage(
-                                  backGroundColor:
-                                  rootDictionaryBackGroundColor,
-                                  tileBackGroundColor: buttonColors)));
+                      HomePageToRootDictionaryPageTransition(context);
                     },
                     textColor: Colors.white,
                     shape: RoundedRectangleBorder(
@@ -108,13 +103,7 @@ class _Home extends State<Home> {
                     color: getColor(),
                     elevation: 10,
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => StemPage(
-                                  backGroundColor:
-                                  rootDictionaryBackGroundColor,
-                                  tileBackGroundColor: buttonColors)));
+                     HomePageToStemPageTransition(context);
                     },
                     textColor: Colors.white,
                     shape: RoundedRectangleBorder(
@@ -141,13 +130,7 @@ class _Home extends State<Home> {
                     color: getColor(),
                     elevation: 10,
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AffixPage(
-                                  backGroundColor:
-                                  rootDictionaryBackGroundColor,
-                                  tileBackGroundColor: buttonColors)));
+                      HomePageToAffixPage(context);
                     },
                     textColor: Colors.white,
                     shape: RoundedRectangleBorder(
@@ -173,13 +156,7 @@ class _Home extends State<Home> {
                     color: getColor(),
                     elevation: 10,
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AudioPage(
-                                  backGroundColor:
-                                  rootDictionaryBackGroundColor,
-                                  tileBackGroundColor: buttonColors)));
+                      HomePageToAudioPage(context);
                     },
                     textColor: Colors.white,
                     shape: RoundedRectangleBorder(
@@ -205,13 +182,7 @@ class _Home extends State<Home> {
                     color: getColor(),
                     elevation: 10,
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AboutPage(
-                                  backGroundColor:
-                                  rootDictionaryBackGroundColor,
-                                  tileBackGroundColor: buttonColors)));
+                      HomePageToAboutPage(context);
                     },
                     textColor: Colors.white,
                     shape: RoundedRectangleBorder(
@@ -239,13 +210,7 @@ class _Home extends State<Home> {
                     splashColor: Colors.grey,
                     animationDuration: Duration(seconds: 2),
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => FeedBackPage(
-                                  backGroundColor:
-                                  rootDictionaryBackGroundColor,
-                                  tileBackGroundColor: buttonColors)));
+                      HomePageToFeedBackPage(context);
                     },
                     textColor: Colors.white,
                     shape: RoundedRectangleBorder(
@@ -292,9 +257,7 @@ class _Home extends State<Home> {
                           });
 
                           print(counter);
-                        }
-                    )
-                ),
+                        })),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Text(
@@ -342,4 +305,158 @@ class _Home extends State<Home> {
   Color getColor() {
     return buttonColors;
   }
+
+
+  void HomePageToRootDictionaryPageTransition(context) {
+    Navigator.of(context).pushReplacement(new PageRouteBuilder(
+        pageBuilder: (context, animation,
+            secondaryAnimation) => new RootDictionaryPage(
+            backGroundColor: rootDictionaryBackGroundColor,
+            tileBackGroundColor: buttonColors),
+        maintainState: true,
+        opaque: true,
+        transitionDuration: Duration(milliseconds: 600),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          var begin = Offset(0.0, 1.0);
+          var end = Offset.zero;
+          var curve = Curves.ease;
+          var tween = Tween(begin: begin, end: end).chain(
+              CurveTween(curve: curve));
+
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+          );
+        }
+    ));
+  }
+
+  void HomePageToStemPageTransition(context){
+    Navigator.of(context).pushReplacement(new PageRouteBuilder(
+        pageBuilder: (context, animation,
+            secondaryAnimation) => new StemPage(
+            backGroundColor: rootDictionaryBackGroundColor,
+            tileBackGroundColor: buttonColors),
+        maintainState: true,
+        opaque: true,
+        transitionDuration: Duration(milliseconds: 600),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          var begin = Offset(0.0, 1.0);
+          var end = Offset.zero;
+          var curve = Curves.ease;
+          var tween = Tween(begin: begin, end: end).chain(
+              CurveTween(curve: curve));
+
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+          );
+        }
+    ));
+  }
+
+  void HomePageToAffixPage(context) {
+    Navigator.of(context).pushReplacement(new PageRouteBuilder(
+        pageBuilder: (context, animation,
+            secondaryAnimation) => new AffixPage(
+            backGroundColor: rootDictionaryBackGroundColor,
+            tileBackGroundColor: buttonColors),
+        maintainState: true,
+        opaque: true,
+        transitionDuration: Duration(milliseconds: 600),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          var begin = Offset(0.0, 1.0);
+          var end = Offset.zero;
+          var curve = Curves.ease;
+          var tween = Tween(begin: begin, end: end).chain(
+              CurveTween(curve: curve));
+
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+          );
+        }
+    ));
+  }
+
+  void HomePageToAudioPage(context){
+    Navigator.of(context).pushReplacement(new PageRouteBuilder(
+        pageBuilder: (context, animation,
+            secondaryAnimation) => new AudioPage(
+            backGroundColor: rootDictionaryBackGroundColor,
+            tileBackGroundColor: buttonColors),
+        maintainState: true,
+        opaque: true,
+        transitionDuration: Duration(milliseconds: 600),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          var begin = Offset(0.0, 1.0);
+          var end = Offset.zero;
+          var curve = Curves.ease;
+          var tween = Tween(begin: begin, end: end).chain(
+              CurveTween(curve: curve));
+
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+          );
+        }
+    ));
+  }
+
+  void HomePageToAboutPage(context){
+    Navigator.of(context).pushReplacement(new PageRouteBuilder(
+        pageBuilder: (context, animation,
+            secondaryAnimation) => new AboutPage(
+            backGroundColor: rootDictionaryBackGroundColor,
+            tileBackGroundColor: buttonColors),
+        maintainState: true,
+        opaque: true,
+        transitionDuration: Duration(milliseconds: 600),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          var begin = Offset(0.0, 1.0);
+          var end = Offset.zero;
+          var curve = Curves.ease;
+          var tween = Tween(begin: begin, end: end).chain(
+              CurveTween(curve: curve));
+
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+          );
+        }
+    ));
+  }
+
+  void HomePageToFeedBackPage(context){
+    Navigator.of(context).pushReplacement(new PageRouteBuilder(
+        pageBuilder: (context, animation,
+            secondaryAnimation) => new FeedBackPage(
+            backGroundColor: rootDictionaryBackGroundColor,
+            tileBackGroundColor: buttonColors),
+        maintainState: true,
+        opaque: true,
+        transitionDuration: Duration(milliseconds: 600),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          var begin = Offset(0.0, 1.0);
+          var end = Offset.zero;
+          var curve = Curves.ease;
+          var tween = Tween(begin: begin, end: end).chain(
+              CurveTween(curve: curve));
+
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+          );
+        }
+    ));
+  }
+
+
+  
+  
+  
+  
+  
+  
+  
 }

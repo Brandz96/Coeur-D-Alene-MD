@@ -89,7 +89,7 @@ class LoadingPageState extends State<LoadingPage> {
     return Scaffold(
       backgroundColor: Color.fromRGBO(29, 161, 242, 1),
       body: Center(
-          child: SpinKitSquareCircle(
+          child: SpinKitRipple(
             color: Colors.white,
             size: 80,
           )

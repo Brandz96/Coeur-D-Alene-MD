@@ -5,6 +5,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'TilesNotes.dart';
 import 'TempDelayClass.dart';
 import 'RootSecondScreen.dart';
+import 'HomePage.dart';
 
 class RootDictionaryPage extends StatefulWidget {
   static const String routeName = "/RootDictionaryPage";
@@ -112,6 +113,34 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+          leading: GestureDetector(
+           // Navigator.push(context, MaterialPageRoute(builder: (context) => Home())),
+            onTap: () {
+              Navigator.of(context).pushReplacement(new PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) => new Home(),
+                  maintainState: true,
+                  opaque: true,
+                  transitionDuration: Duration(milliseconds: 600),
+                  transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                    var begin = Offset(0.0, 1.0);
+                    var end = Offset.zero;
+                    var curve = Curves.ease;
+                    var tween = Tween(begin: begin, end: end).chain(
+                        CurveTween(curve: curve));
+
+                    return SlideTransition(
+                      position: animation.drive(tween),
+                      child: child,
+                    );
+                  }
+              ));
+
+
+    },
+            child: Icon(
+              Icons.arrow_back,
+            ),
+          ),
         title: new Padding(
           child: new Text(
             'Coeur D\' Alene Mobile Dictionary',
@@ -207,14 +236,24 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
               itemBuilder: (context, index) {
                 return new GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => RootSecondScreen(
-                                  root: _fnotes[index].root,
-                                  backGroundColor: backGroundColor,
-                                  tileBackGroundColor: tileBackGroundColor,
-                                )));
+                    Navigator.of(context).pushReplacement(new PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) => new RootSecondScreen(root: _fnotes[index].root,backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor),
+                        maintainState: true,
+                        opaque: true,
+                        transitionDuration: Duration(milliseconds: 600),
+                        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                          var begin = Offset(0.0, 1.0);
+                          var end = Offset.zero;
+                          var curve = Curves.ease;
+                          var tween = Tween(begin: begin, end: end).chain(
+                              CurveTween(curve: curve));
+
+                          return SlideTransition(
+                            position: animation.drive(tween),
+                            child: child,
+                          );
+                        }
+                    ));
                   },
                   child: new Container(
                     height: 90,
@@ -241,7 +280,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                               child: Text(
                                 _fnotes[index].title,
                                 style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 21,
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600,
                                     letterSpacing: 1),
