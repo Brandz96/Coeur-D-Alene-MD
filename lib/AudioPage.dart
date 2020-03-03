@@ -127,7 +127,7 @@ class _AudioPageState extends State<AudioPage> {
           Padding(
             padding: EdgeInsets.only(top: 20, bottom: 20),
             child: Text(
-              'Audio and Text Files',
+              'Text Files',
               style: TextStyle(color: Colors.white, fontSize: 26),
             ),
           ),
@@ -158,7 +158,7 @@ class _AudioPageState extends State<AudioPage> {
                               child: Text(
                                 _fnotes[index].title,
                                 style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 11,
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600),
                               ),

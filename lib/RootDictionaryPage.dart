@@ -1,3 +1,4 @@
+import 'package:demo_app/HomePageClone.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:async';
@@ -110,6 +111,10 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
   }
 
   Widget build(BuildContext context) {
+
+    print(backGroundColor.toString());
+    print(tileBackGroundColor.toString());
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -117,7 +122,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
            // Navigator.push(context, MaterialPageRoute(builder: (context) => Home())),
             onTap: () {
               Navigator.of(context).pushReplacement(new PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) => new Home(),
+                  pageBuilder: (context, animation, secondaryAnimation) => new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),

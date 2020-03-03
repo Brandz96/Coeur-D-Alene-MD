@@ -7,32 +7,32 @@ import 'AffixPage.dart';
 import 'FeedBackPage.dart';
 import 'main.dart';
 
-class Home extends StatefulWidget {
-  Home({Key key, this.title,}) : super(key: key);
+class HomePageClone extends StatefulWidget {
+  HomePageClone({Key key, this.title, this.backGroundColor, this.tileBackGroundColor}) : super(key: key);
+  Color backGroundColor;
+  Color tileBackGroundColor;
+
 
 
   final String title;
 
   @override
-  _Home createState() => _Home();
+  _HomePageClone createState() => _HomePageClone(backGroundColor, tileBackGroundColor);
 }
 
-class _Home extends State<Home> {
-  int counter = 0;
-  Color homeBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
-  Color buttonColors = Color.fromRGBO(170, 184, 194, 1);//grey
-  Color iconColor = Colors.black;
-  Color rootDictionaryBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
-  Color titleColor = Colors.white;
+class _HomePageClone extends State<HomePageClone> {
+  Color backGroundColor;
+  Color tileBackGroundColor;
 
+  _HomePageClone(this.backGroundColor, this.tileBackGroundColor);
 
 
   @override
   Widget build(BuildContext context) {
-    print(homeBackGroundColor.toString()); //ff1 = blue
-    print(buttonColors.toString()); //ffaa = grey
+
+
     return Scaffold(
-      backgroundColor: homeBackGroundColor,
+      backgroundColor: backGroundColor,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -43,7 +43,7 @@ class _Home extends State<Home> {
               borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(105),
                   bottomLeft: Radius.circular(105)),
-              color: homeBackGroundColor,
+              color: backGroundColor,
             ),
             child: Padding(
                 padding: const EdgeInsets.all(32.0),
@@ -58,7 +58,7 @@ class _Home extends State<Home> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 28.0,
-                            color: titleColor,
+                            color: tileBackGroundColor,
                             fontFamily: "Open Sans"),
                       ),
                     ),
@@ -66,7 +66,7 @@ class _Home extends State<Home> {
                     Text(
                       'Mobile Dictionary',
                       style: TextStyle(
-                        color: titleColor,
+                        color: tileBackGroundColor,
                         fontStyle: FontStyle.italic,
                       ),
                     ),
@@ -80,7 +80,7 @@ class _Home extends State<Home> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 RaisedButton(
-                    color: getColor(),
+                    color: tileBackGroundColor,
                     elevation: 10,
                     onPressed: () {
                       HomePageToRootDictionaryPageTransition(context);
@@ -107,10 +107,10 @@ class _Home extends State<Home> {
                         ))),
                 new Padding(padding: EdgeInsets.only(top: 10)),
                 RaisedButton(
-                    color: getColor(),
+                    color: tileBackGroundColor,
                     elevation: 10,
                     onPressed: () {
-                     HomePageToStemPageTransition(context);
+                      HomePageToStemPageTransition(context);
                     },
                     textColor: Colors.white,
                     shape: RoundedRectangleBorder(
@@ -134,7 +134,7 @@ class _Home extends State<Home> {
                         ))),
                 new Padding(padding: EdgeInsets.only(top: 10)),
                 RaisedButton(
-                    color: getColor(),
+                    color: tileBackGroundColor,
                     elevation: 10,
                     onPressed: () {
                       HomePageToAffixPage(context);
@@ -160,7 +160,7 @@ class _Home extends State<Home> {
                         ))),
                 new Padding(padding: EdgeInsets.only(top: 10)),
                 RaisedButton(
-                    color: getColor(),
+                    color: tileBackGroundColor,
                     elevation: 10,
                     onPressed: () {
                       HomePageToAudioPage(context);
@@ -186,7 +186,7 @@ class _Home extends State<Home> {
                         ))),
                 new Padding(padding: EdgeInsets.only(top: 10)),
                 RaisedButton(
-                    color: getColor(),
+                    color: tileBackGroundColor,
                     elevation: 10,
                     onPressed: () {
                       HomePageToAboutPage(context);
@@ -212,7 +212,7 @@ class _Home extends State<Home> {
                         ))),
                 new Padding(padding: EdgeInsets.only(top: 10)),
                 RaisedButton(
-                    color: getColor(),
+                    color: tileBackGroundColor,
                     elevation: 10,
                     splashColor: Colors.grey,
                     animationDuration: Duration(seconds: 2),
@@ -239,33 +239,6 @@ class _Home extends State<Home> {
                           ),
                         ))),
                 Padding(
-                    padding: EdgeInsets.only(top: 50),
-                    child: IconButton(
-                        icon: Icon(Icons.brightness_2),
-                        color: iconColor,
-                        onPressed: () {
-                          _incrementCounter();
-                          setState(() {
-                            if (counter % 2 == 0 || counter == 0) {
-                              homeBackGroundColor =
-                                  Color.fromRGBO(29, 161, 242, 1);
-
-                              setColor(counter);
-                              buttonColors = Color.fromRGBO(170, 184, 194, 1);
-                              titleColor = Colors.white;
-                            } else {
-                              homeBackGroundColor =
-                                  Color.fromRGBO(34, 28, 27, 1);
-
-                              setColor(counter);
-                              buttonColors = Color.fromRGBO(187, 134, 252, 1);
-                              titleColor = buttonColors;
-                            }
-                          });
-
-                          print(counter);
-                        })),
-                Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Text(
                     'Purdue Fort Wayne Capstone Project',
@@ -283,39 +256,13 @@ class _Home extends State<Home> {
     );
   }
 
-  void _incrementCounter() {
-    setState(() {
-      counter++;
-    });
-  }
-
-
-
-  void setColor(int n) {
-    if (n % 2 == 0) {
-      buttonColors = Color.fromRGBO(170, 184, 194, 1);//grey
-      iconColor = Colors.black;
-      rootDictionaryBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
-      titleColor = Colors.white;
-    } else {
-      buttonColors = Color.fromRGBO(3, 173, 197, 1);//purple
-      iconColor = Colors.white;
-      rootDictionaryBackGroundColor = Color.fromRGBO(34, 28, 27, 1);//black
-      titleColor = buttonColors;
-    }
-  }
-
-  Color getColor() {
-    return buttonColors;
-  }
-
 
   void HomePageToRootDictionaryPageTransition(context) {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new RootDictionaryPage(
-            backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors),
+            backGroundColor: backGroundColor,
+            tileBackGroundColor: tileBackGroundColor),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -338,8 +285,8 @@ class _Home extends State<Home> {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new StemPage(
-            backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors),
+            backGroundColor: backGroundColor,
+            tileBackGroundColor: tileBackGroundColor),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -362,8 +309,8 @@ class _Home extends State<Home> {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new AffixPage(
-            backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors),
+            backGroundColor: backGroundColor,
+            tileBackGroundColor: tileBackGroundColor),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -386,8 +333,8 @@ class _Home extends State<Home> {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new AudioPage(
-            backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors),
+            backGroundColor: backGroundColor,
+            tileBackGroundColor: tileBackGroundColor),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -410,8 +357,8 @@ class _Home extends State<Home> {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new AboutPage(
-            backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors),
+            backGroundColor: backGroundColor,
+            tileBackGroundColor: tileBackGroundColor),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -434,8 +381,8 @@ class _Home extends State<Home> {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new FeedBackPage(
-            backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors),
+            backGroundColor: backGroundColor,
+            tileBackGroundColor: tileBackGroundColor),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -455,11 +402,11 @@ class _Home extends State<Home> {
   }
 
 
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
 }
