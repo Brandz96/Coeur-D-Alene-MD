@@ -21,7 +21,7 @@ class _Home extends State<Home> {
   int counter = 0;
   Color homeBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
   Color buttonColors = Color.fromRGBO(170, 184, 194, 1);//grey
-  Color iconColor = Colors.black;
+  Color iconColor = Colors.white;
   Color rootDictionaryBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
   Color titleColor = Colors.white;
 
@@ -37,7 +37,7 @@ class _Home extends State<Home> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           new Container(
-            height: 250,
+            height: 230,
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -239,10 +239,11 @@ class _Home extends State<Home> {
                           ),
                         ))),
                 Padding(
-                    padding: EdgeInsets.only(top: 50),
+                    padding: EdgeInsets.only(top: 10),
                     child: IconButton(
                         icon: Icon(Icons.brightness_2),
                         color: iconColor,
+                        iconSize: 20,
                         onPressed: () {
                           _incrementCounter();
                           setState(() {
@@ -259,7 +260,7 @@ class _Home extends State<Home> {
 
                               setColor(counter);
                               buttonColors = Color.fromRGBO(187, 134, 252, 1);
-                              titleColor = buttonColors;
+                              titleColor = Colors.white;
                             }
                           });
 
@@ -294,14 +295,14 @@ class _Home extends State<Home> {
   void setColor(int n) {
     if (n % 2 == 0) {
       buttonColors = Color.fromRGBO(170, 184, 194, 1);//grey
-      iconColor = Colors.black;
+      iconColor = Colors.white;
       rootDictionaryBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
       titleColor = Colors.white;
     } else {
-      buttonColors = Color.fromRGBO(3, 173, 197, 1);//purple
+      buttonColors = Color.fromRGBO(187, 134, 252, 1);//purple
       iconColor = Colors.white;
       rootDictionaryBackGroundColor = Color.fromRGBO(34, 28, 27, 1);//black
-      titleColor = buttonColors;
+      titleColor = Colors.white;
     }
   }
 
@@ -315,7 +316,7 @@ class _Home extends State<Home> {
         pageBuilder: (context, animation,
             secondaryAnimation) => new RootDictionaryPage(
             backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors),
+            tileBackGroundColor: buttonColors, counterFromPreviousPage: counter),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),

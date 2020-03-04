@@ -12,16 +12,17 @@ class RootDictionaryPage extends StatefulWidget {
   static const String routeName = "/RootDictionaryPage";
   Color backGroundColor;
   Color tileBackGroundColor;
+  int counterFromPreviousPage;
 
   final String title;
 
   RootDictionaryPage(
-      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor})
+      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage})
       : super(key: key);
 
   @override
   _RootDictionaryPageState createState() =>
-      _RootDictionaryPageState(backGroundColor, tileBackGroundColor);
+      _RootDictionaryPageState(backGroundColor, tileBackGroundColor, counterFromPreviousPage);
 }
 
 class _RootDictionaryPageState extends State<RootDictionaryPage> {
@@ -34,8 +35,9 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
   final _delay = tempDelay(mill: 200);
   Color backGroundColor;
   Color tileBackGroundColor;
+  int counterFromPreviousPage;
 
-  _RootDictionaryPageState(this.backGroundColor, this.tileBackGroundColor);
+  _RootDictionaryPageState(this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
 
 //  Future<List<Note>> fetchNotes() async {
 //    var url = 'https://raw.githubusercontent.com/Brandz96/Capstone/master/Salish.json';
@@ -114,6 +116,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
 
     print(backGroundColor.toString());
     print(tileBackGroundColor.toString());
+    print(counterFromPreviousPage);
 
     return Scaffold(
       appBar: AppBar(
@@ -122,7 +125,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
            // Navigator.push(context, MaterialPageRoute(builder: (context) => Home())),
             onTap: () {
               Navigator.of(context).pushReplacement(new PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) => new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor),
+                  pageBuilder: (context, animation, secondaryAnimation) => new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),

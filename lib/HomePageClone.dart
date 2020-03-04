@@ -8,23 +8,31 @@ import 'FeedBackPage.dart';
 import 'main.dart';
 
 class HomePageClone extends StatefulWidget {
-  HomePageClone({Key key, this.title, this.backGroundColor, this.tileBackGroundColor}) : super(key: key);
+  HomePageClone({Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage}) : super(key: key);
   Color backGroundColor;
   Color tileBackGroundColor;
+  int counterFromPreviousPage;
 
 
 
   final String title;
 
   @override
-  _HomePageClone createState() => _HomePageClone(backGroundColor, tileBackGroundColor);
+  _HomePageClone createState() => _HomePageClone(backGroundColor, tileBackGroundColor, counterFromPreviousPage);
 }
 
 class _HomePageClone extends State<HomePageClone> {
   Color backGroundColor;
   Color tileBackGroundColor;
+  int counter = 0;
+  int counterFromPreviousPage;
+  Color homeBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
+  Color buttonColors = Color.fromRGBO(170, 184, 194, 1);//grey
+  Color iconColor = Colors.white;
+  Color rootDictionaryBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
+  Color titleColor = Colors.white;
 
-  _HomePageClone(this.backGroundColor, this.tileBackGroundColor);
+  _HomePageClone(this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
 
 
   @override
@@ -58,7 +66,7 @@ class _HomePageClone extends State<HomePageClone> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 28.0,
-                            color: tileBackGroundColor,
+                            color: titleColor,
                             fontFamily: "Open Sans"),
                       ),
                     ),
@@ -66,7 +74,7 @@ class _HomePageClone extends State<HomePageClone> {
                     Text(
                       'Mobile Dictionary',
                       style: TextStyle(
-                        color: tileBackGroundColor,
+                        color: titleColor,
                         fontStyle: FontStyle.italic,
                       ),
                     ),
@@ -239,6 +247,33 @@ class _HomePageClone extends State<HomePageClone> {
                           ),
                         ))),
                 Padding(
+                    padding: EdgeInsets.only(top: 50),
+                    child: IconButton(
+                        icon: Icon(Icons.brightness_2),
+                        color: iconColor,
+                        onPressed: () {
+                          _incrementCounter();
+                          setState(() {
+                            if (counterFromPreviousPage % 2 == 0 || counterFromPreviousPage == 0) {
+                              homeBackGroundColor =
+                                  Color.fromRGBO(29, 161, 242, 1);
+
+                              setColor(counterFromPreviousPage);
+                              buttonColors = Color.fromRGBO(170, 184, 194, 1);
+                              titleColor = Colors.white;
+                            } else {
+                              homeBackGroundColor =
+                                  Color.fromRGBO(34, 28, 27, 1);
+
+                              setColor(counterFromPreviousPage);
+                              buttonColors = Color.fromRGBO(187, 134, 252, 1);
+                              titleColor = Colors.white;
+                            }
+                          });
+
+                          print(counterFromPreviousPage);
+                        })),
+                Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Text(
                     'Purdue Fort Wayne Capstone Project',
@@ -256,13 +291,49 @@ class _HomePageClone extends State<HomePageClone> {
     );
   }
 
+  void _incrementCounter() {
+    setState(() {
+      counterFromPreviousPage++;
+    });
+  }
+
+
+
+  void setColor(int n) {
+    if (n % 2 == 0) {
+      buttonColors = Color.fromRGBO(170, 184, 194, 1);//grey
+      iconColor = Colors.white;
+      rootDictionaryBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
+      titleColor = Colors.white;
+      backGroundColor = homeBackGroundColor;
+      tileBackGroundColor = buttonColors;
+    } else {
+      buttonColors = Color.fromRGBO(187, 134, 252, 1);//purple
+      iconColor = Colors.white;
+      rootDictionaryBackGroundColor = Color.fromRGBO(34, 28, 27, 1);//black
+      titleColor = Colors.white;
+      backGroundColor = homeBackGroundColor;
+      tileBackGroundColor = buttonColors;
+    }
+  }
+
+  Color getColor() {
+    return buttonColors;
+  }
+
+
+
+
+
+
+
 
   void HomePageToRootDictionaryPageTransition(context) {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new RootDictionaryPage(
             backGroundColor: backGroundColor,
-            tileBackGroundColor: tileBackGroundColor),
+            tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
