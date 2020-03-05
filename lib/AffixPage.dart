@@ -168,7 +168,7 @@ class _AffixPageState extends State<AffixPage> {
                   return new GestureDetector(
                     onTap: () {
                       Navigator.of(context).pushReplacement(new PageRouteBuilder(
-                          pageBuilder: (context, animation, secondaryAnimation) => new AffixSecondScreen(affix: _fnotes[index].affix,backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor),
+                          pageBuilder: (context, animation, secondaryAnimation) => new AffixSecondScreen(affix: _fnotes[index].affix,backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
                           maintainState: true,
                           opaque: true,
                           transitionDuration: Duration(milliseconds: 600),

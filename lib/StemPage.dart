@@ -198,7 +198,7 @@ class _StemPageState extends State<StemPage> {
                   return new GestureDetector(
                     onTap: () {
                       Navigator.of(context).pushReplacement(new PageRouteBuilder(
-                          pageBuilder: (context, animation, secondaryAnimation) => new StemSecondScreen(stem: _fnotes[index].stem,backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor),
+                          pageBuilder: (context, animation, secondaryAnimation) => new StemSecondScreen(stem: _fnotes[index].stem,backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
                           maintainState: true,
                           opaque: true,
                           transitionDuration: Duration(milliseconds: 600),
