@@ -45,7 +45,7 @@ class _HomePageClone extends State<HomePageClone> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           new Container(
-            height: 250,
+            height: 230,
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -70,7 +70,7 @@ class _HomePageClone extends State<HomePageClone> {
                             fontFamily: "Open Sans"),
                       ),
                     ),
-                    SizedBox(height: 12.0),
+                    SizedBox(height: 2.0),
                     Text(
                       'Mobile Dictionary',
                       style: TextStyle(
@@ -188,7 +188,7 @@ class _HomePageClone extends State<HomePageClone> {
                           const BoxConstraints(minWidth: 40, minHeight: 40),
                           alignment: Alignment.center,
                           child: const Text(
-                            "Text and Audio Files",
+                            "Text Files",
                             textAlign: TextAlign.center,
                           ),
                         ))),
@@ -247,10 +247,11 @@ class _HomePageClone extends State<HomePageClone> {
                           ),
                         ))),
                 Padding(
-                    padding: EdgeInsets.only(top: 50),
+                    padding: EdgeInsets.only(top: 10),
                     child: IconButton(
                         icon: Icon(Icons.brightness_2),
                         color: iconColor,
+                        iconSize: 20,
                         onPressed: () {
                           _incrementCounter();
                           setState(() {
@@ -357,7 +358,7 @@ class _HomePageClone extends State<HomePageClone> {
         pageBuilder: (context, animation,
             secondaryAnimation) => new StemPage(
             backGroundColor: backGroundColor,
-            tileBackGroundColor: tileBackGroundColor),
+            tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -381,7 +382,7 @@ class _HomePageClone extends State<HomePageClone> {
         pageBuilder: (context, animation,
             secondaryAnimation) => new AffixPage(
             backGroundColor: backGroundColor,
-            tileBackGroundColor: tileBackGroundColor),
+            tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -405,7 +406,7 @@ class _HomePageClone extends State<HomePageClone> {
         pageBuilder: (context, animation,
             secondaryAnimation) => new AudioPage(
             backGroundColor: backGroundColor,
-            tileBackGroundColor: tileBackGroundColor),
+            tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -429,7 +430,7 @@ class _HomePageClone extends State<HomePageClone> {
         pageBuilder: (context, animation,
             secondaryAnimation) => new AboutPage(
             backGroundColor: backGroundColor,
-            tileBackGroundColor: tileBackGroundColor),
+            tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -453,7 +454,7 @@ class _HomePageClone extends State<HomePageClone> {
         pageBuilder: (context, animation,
             secondaryAnimation) => new FeedBackPage(
             backGroundColor: backGroundColor,
-            tileBackGroundColor: tileBackGroundColor),
+            tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),

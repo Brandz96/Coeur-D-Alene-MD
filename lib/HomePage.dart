@@ -62,7 +62,7 @@ class _Home extends State<Home> {
                             fontFamily: "Open Sans"),
                       ),
                     ),
-                    SizedBox(height: 12.0),
+                    SizedBox(height: 2.0),
                     Text(
                       'Mobile Dictionary',
                       style: TextStyle(
@@ -180,7 +180,7 @@ class _Home extends State<Home> {
                           const BoxConstraints(minWidth: 40, minHeight: 40),
                           alignment: Alignment.center,
                           child: const Text(
-                            "Text and Audio Files",
+                            "Text Files",
                             textAlign: TextAlign.center,
                           ),
                         ))),
@@ -340,7 +340,7 @@ class _Home extends State<Home> {
         pageBuilder: (context, animation,
             secondaryAnimation) => new StemPage(
             backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors),
+            tileBackGroundColor: buttonColors, counterFromPreviousPage: counter),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -364,7 +364,7 @@ class _Home extends State<Home> {
         pageBuilder: (context, animation,
             secondaryAnimation) => new AffixPage(
             backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors),
+            tileBackGroundColor: buttonColors, counterFromPreviousPage: counter),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -388,7 +388,7 @@ class _Home extends State<Home> {
         pageBuilder: (context, animation,
             secondaryAnimation) => new AudioPage(
             backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors),
+            tileBackGroundColor: buttonColors, counterFromPreviousPage: counter,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -412,7 +412,7 @@ class _Home extends State<Home> {
         pageBuilder: (context, animation,
             secondaryAnimation) => new AboutPage(
             backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors),
+            tileBackGroundColor: buttonColors, counterFromPreviousPage: counter,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -436,7 +436,7 @@ class _Home extends State<Home> {
         pageBuilder: (context, animation,
             secondaryAnimation) => new FeedBackPage(
             backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors),
+            tileBackGroundColor: buttonColors, counterFromPreviousPage: counter,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),

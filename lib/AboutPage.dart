@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'HomePage.dart';
+import 'package:demo_app/HomePageClone.dart';
 
 class AboutPage extends StatefulWidget {
 
   AboutPage(
-      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor})
+      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage})
       : super(key: key);
 
   static const String routeName = "/AboutPage";
@@ -13,10 +14,11 @@ class AboutPage extends StatefulWidget {
 
   Color backGroundColor;
   Color tileBackGroundColor;
+  int counterFromPreviousPage;
 
   @override
   _AboutPageState createState() =>
-      new _AboutPageState(backGroundColor, tileBackGroundColor);
+      new _AboutPageState(backGroundColor, tileBackGroundColor, counterFromPreviousPage);
 
 }
 
@@ -24,8 +26,9 @@ class _AboutPageState extends State<AboutPage>{
 
   Color backGroundColor;
   Color tileBackGroundColor;
+  int counterFromPreviousPage;
 
-  _AboutPageState(this.backGroundColor, this.tileBackGroundColor);
+  _AboutPageState(this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
 
   @override
   void initState(){
@@ -41,7 +44,7 @@ class _AboutPageState extends State<AboutPage>{
           onTap: () {
             Navigator.of(context).pushReplacement(new PageRouteBuilder(
                 pageBuilder: (context, animation, secondaryAnimation) =>
-                new Home(),
+                new HomePageClone(backGroundColor: backGroundColor,tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
                 maintainState: true,
                 opaque: true,
                 transitionDuration: Duration(milliseconds: 600),

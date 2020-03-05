@@ -92,7 +92,7 @@ class LoadingPageState extends State<LoadingPage> {
           child: SpinKitWave(
             color: Colors.white,
             size: 60,
-            duration: Duration(milliseconds: 500),
+            duration: Duration(milliseconds: 800),
           )
       ),
     );

@@ -1,14 +1,17 @@
+import 'package:demo_app/HomePageClone.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'HomePage.dart';
+import 'package:demo_app/HomePageClone.dart';
 
 class FeedBackPage extends StatefulWidget {
   FeedBackPage(
-      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor})
+      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage})
       : super(key: key);
 
   static const String routeName = "/FeedBack";
+  int counterFromPreviousPage;
 
   final String title;
   Color backGroundColor;
@@ -16,7 +19,7 @@ class FeedBackPage extends StatefulWidget {
 
   @override
   _FeedBackState createState() =>
-      _FeedBackState(backGroundColor, tileBackGroundColor);
+      _FeedBackState(backGroundColor, tileBackGroundColor, counterFromPreviousPage);
 }
 
 class _FeedBackState extends State<FeedBackPage> {
@@ -24,8 +27,9 @@ class _FeedBackState extends State<FeedBackPage> {
   TextEditingController _customController = new TextEditingController();
   Color backGroundColor;
   Color tileBackGroundColor;
+  int counterFromPreviousPage;
 
-  _FeedBackState(this.backGroundColor, this.tileBackGroundColor);
+  _FeedBackState(this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +42,7 @@ class _FeedBackState extends State<FeedBackPage> {
           onTap: () {
             Navigator.of(context).pushReplacement(new PageRouteBuilder(
                 pageBuilder: (context, animation, secondaryAnimation) =>
-                new Home(),
+                new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor,counterFromPreviousPage: counterFromPreviousPage,),
                 maintainState: true,
                 opaque: true,
                 transitionDuration: Duration(milliseconds: 600),

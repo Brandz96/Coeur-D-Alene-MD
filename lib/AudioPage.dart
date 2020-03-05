@@ -1,13 +1,15 @@
+import 'package:demo_app/HomePageClone.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:url_launcher/url_launcher.dart';
 import 'HomePage.dart';
+import 'package:demo_app/HomePageClone.dart';
 
 class AudioPage extends StatefulWidget {
   AudioPage(
-      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor})
+      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage})
       : super(key: key);
 
   static const String routeName = "/Audio";
@@ -15,10 +17,11 @@ class AudioPage extends StatefulWidget {
   final String title;
   Color backGroundColor;
   Color tileBackGroundColor;
+  int counterFromPreviousPage;
 
   @override
   _AudioPageState createState() =>
-      _AudioPageState(backGroundColor, tileBackGroundColor);
+      _AudioPageState(backGroundColor, tileBackGroundColor, counterFromPreviousPage);
 }
 
 class _AudioPageState extends State<AudioPage> {
@@ -26,6 +29,7 @@ class _AudioPageState extends State<AudioPage> {
   List<Link> _fnotes = List<Link>();
   Color backGroundColor;
   Color tileBackGroundColor;
+  int counterFromPreviousPage;
 
 //  Future<List<Link>> fetchNotes() async {
 //    var url = 'https://raw.githubusercontent.com/Brandz96/Capstone/master/Audio.json';
@@ -44,7 +48,7 @@ class _AudioPageState extends State<AudioPage> {
 //    return notes;
 //  }
 
-  _AudioPageState(this.backGroundColor, this.tileBackGroundColor);
+  _AudioPageState(this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
 
   Future<List<Link>> loadJSON() async {
     var notes2 = List<Link>();
@@ -84,7 +88,7 @@ class _AudioPageState extends State<AudioPage> {
           onTap: () {
             Navigator.of(context).pushReplacement(new PageRouteBuilder(
                 pageBuilder: (context, animation, secondaryAnimation) =>
-                new Home(),
+                new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
                 maintainState: true,
                 opaque: true,
                 transitionDuration: Duration(milliseconds: 600),

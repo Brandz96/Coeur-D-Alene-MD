@@ -1,15 +1,17 @@
 import 'package:demo_app/StemSecondScreen.dart';
 import 'package:flutter/material.dart';
+import 'HomePageClone.dart';
 import 'TilesNotes.dart';
 import 'TempDelayClass.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
 import 'dart:convert';
 import 'package:demo_app/HomePage.dart';
+import 'main.dart';
 
 class StemPage extends StatefulWidget {
   StemPage(
-      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor})
+      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage})
       : super(key: key);
 
   static const String routeName = "/StemPage";
@@ -17,10 +19,11 @@ class StemPage extends StatefulWidget {
   final String title;
   Color backGroundColor;
   Color tileBackGroundColor;
+  int counterFromPreviousPage;
 
   @override
   _StemPageState createState() =>
-      new _StemPageState(backGroundColor, tileBackGroundColor);
+      _StemPageState(backGroundColor, tileBackGroundColor, counterFromPreviousPage);
 }
 
 class _StemPageState extends State<StemPage> {
@@ -29,8 +32,9 @@ class _StemPageState extends State<StemPage> {
   final _delay = tempDelay(mill: 200);
   Color backGroundColor;
   Color tileBackGroundColor;
+  int counterFromPreviousPage;
 
-  _StemPageState(this.backGroundColor, this.tileBackGroundColor);
+  _StemPageState(this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
 
 //  Future<List<StemNote>> fetchNotes() async {
 //    var url = 'https://raw.githubusercontent.com/Brandz96/Capstone/master/StemList.json';
@@ -78,6 +82,9 @@ class _StemPageState extends State<StemPage> {
   }
 
   Widget build(BuildContext context) {
+
+    print(counterFromPreviousPage);
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -85,7 +92,7 @@ class _StemPageState extends State<StemPage> {
 // Navigator.push(context, MaterialPageRoute(builder: (context) => Home())),
           onTap: () {
             Navigator.of(context).pushReplacement(new PageRouteBuilder(
-                pageBuilder: (context, animation, secondaryAnimation) => new Home(),
+                pageBuilder: (context, animation, secondaryAnimation) => new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
                 maintainState: true,
                 opaque: true,
                 transitionDuration: Duration(milliseconds: 600),

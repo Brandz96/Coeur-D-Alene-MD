@@ -37,6 +37,8 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
   Color tileBackGroundColor;
   int counterFromPreviousPage;
 
+
+
   _RootDictionaryPageState(this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
 
 //  Future<List<Note>> fetchNotes() async {
@@ -142,7 +144,8 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                     );
                   }
               ));
-
+              final snackBar = SnackBar(content: Text("Tap"));
+              Scaffold.of(context).showSnackBar(snackBar);
 
     },
             child: Icon(
@@ -243,7 +246,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
             child: ListView.builder(
               itemBuilder: (context, index) {
                 return new GestureDetector(
-                  onTap: () {
+                  onDoubleTap: () {
                     Navigator.of(context).pushReplacement(new PageRouteBuilder(
                         pageBuilder: (context, animation, secondaryAnimation) => new RootSecondScreen(root: _fnotes[index].root,backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor),
                         maintainState: true,
@@ -263,59 +266,63 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                         }
                     ));
                   },
-                  child: new Container(
-                    height: 90,
-                    decoration: new BoxDecoration(
-                        color: (index % 2 == 0)
-                            ? tileBackGroundColor
-                            : tileBackGroundColor,
-                        borderRadius: new BorderRadius.all(Radius.circular(20)),
-                        border: Border.all(
-                          width: 1.0,
-                          color: Colors.white,
-                        )),
-                    margin: const EdgeInsets.only(
-                        top: 15.0, bottom: 25.0, left: 10.0, right: 10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.only(left: 10),
-                              child: Text(
-                                _fnotes[index].title,
-                                style: TextStyle(
-                                    fontSize: 21,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    letterSpacing: 1),
+                  child: Tooltip(
+                    message: 'Double tap for Root information!',
+                    margin: EdgeInsets.only(top: 20),
+                    child: new Container(
+                      height: 90,
+                      decoration: new BoxDecoration(
+                          color: (index % 2 == 0)
+                              ? tileBackGroundColor
+                              : tileBackGroundColor,
+                          borderRadius: new BorderRadius.all(Radius.circular(20)),
+                          border: Border.all(
+                            width: 1.0,
+                            color: Colors.white,
+                          )),
+                      margin: const EdgeInsets.only(
+                          top: 15.0, bottom: 25.0, left: 10.0, right: 10.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Padding(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Text(
+                                  _fnotes[index].title,
+                                  style: TextStyle(
+                                      fontSize: 21,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 1),
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 10, top: 3),
-                              child: Icon(
-                                Icons.chevron_right,
-                                color: Colors.white,
+                              Padding(
+                                padding: EdgeInsets.only(left: 10, top: 3),
+                                child: Icon(
+                                  Icons.chevron_right,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          child: Text(
-                            _fnotes[index].text,
-                            style: TextStyle(
-                                color: Color.fromRGBO(238, 239, 240, 1),
-                                fontStyle: FontStyle.italic,
-                                fontSize: 11),
+                            ],
                           ),
-                          padding: EdgeInsets.only(left: 10, bottom: 2),
-                        ),
-                      ],
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
+                          Padding(
+                            child: Text(
+                              _fnotes[index].text,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(238, 239, 240, 1),
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 11),
+                            ),
+                            padding: EdgeInsets.only(left: 10, bottom: 2),
+                          ),
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                      ),
                     ),
                   ),
                 );

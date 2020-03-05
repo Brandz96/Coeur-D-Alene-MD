@@ -1,4 +1,5 @@
 import 'package:demo_app/AffixSecondScreen.dart';
+import 'package:demo_app/HomePageClone.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:async';
@@ -6,21 +7,23 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'TilesNotes.dart';
 import 'TempDelayClass.dart';
 import 'HomePage.dart';
+import 'package:demo_app/HomePageClone.dart';
 
 class AffixPage extends StatefulWidget {
   AffixPage(
-      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor})
+      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage})
       : super(key: key);
 
   static const String routeName = "/Affix";
   Color backGroundColor;
   Color tileBackGroundColor;
+  int counterFromPreviousPage;
 
   final String title;
 
   @override
   _AffixPageState createState() =>
-      new _AffixPageState(backGroundColor, tileBackGroundColor);
+      new _AffixPageState(backGroundColor, tileBackGroundColor, counterFromPreviousPage);
 }
 
 class _AffixPageState extends State<AffixPage> {
@@ -29,8 +32,9 @@ class _AffixPageState extends State<AffixPage> {
   final _delay = tempDelay(mill: 200);
   Color backGroundColor;
   Color tileBackGroundColor;
+  int counterFromPreviousPage;
 
-  _AffixPageState(this.backGroundColor, this.tileBackGroundColor);
+  _AffixPageState(this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
 
 //  Future<List<AffixNote>> fetchNotes() async {
 //    var url = 'https://raw.githubusercontent.com/Brandz96/Capstone/master/affix.json';
@@ -84,7 +88,7 @@ class _AffixPageState extends State<AffixPage> {
           // Navigator.push(context, MaterialPageRoute(builder: (context) => Home())),
           onTap: () {
             Navigator.of(context).pushReplacement(new PageRouteBuilder(
-                pageBuilder: (context, animation, secondaryAnimation) => new Home(),
+                pageBuilder: (context, animation, secondaryAnimation) => new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
                 maintainState: true,
                 opaque: true,
                 transitionDuration: Duration(milliseconds: 600),
