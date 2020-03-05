@@ -78,118 +78,145 @@ class _AudioPageState extends State<AudioPage> {
     super.initState();
   }
 
+  Future<bool> _onBackPressed(){
+    Navigator.of(context).pushReplacement(new PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
+        maintainState: true,
+        opaque: true,
+        transitionDuration: Duration(milliseconds: 600),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          var begin = Offset(0.0, 1.0);
+          var end = Offset.zero;
+          var curve = Curves.ease;
+          var tween = Tween(begin: begin, end: end).chain(
+              CurveTween(curve: curve));
+
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+          );
+        }
+    ));
+  }
+
+
+
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        leading: GestureDetector(
-          // Navigator.push(context, MaterialPageRoute(builder: (context) => Home())),
-          onTap: () {
-            Navigator.of(context).pushReplacement(new PageRouteBuilder(
-                pageBuilder: (context, animation, secondaryAnimation) =>
-                new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
-                maintainState: true,
-                opaque: true,
-                transitionDuration: Duration(milliseconds: 600),
-                transitionsBuilder:
-                    (context, animation, secondaryAnimation, child) {
-                  var begin = Offset(0.0, 1.0);
-                  var end = Offset.zero;
-                  var curve = Curves.ease;
-                  var tween = Tween(begin: begin, end: end)
-                      .chain(CurveTween(curve: curve));
+    return WillPopScope(
+      onWillPop: _onBackPressed,
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          leading: GestureDetector(
+            // Navigator.push(context, MaterialPageRoute(builder: (context) => Home())),
+            onTap: () {
+              Navigator.of(context).pushReplacement(new PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                  new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
+                  maintainState: true,
+                  opaque: true,
+                  transitionDuration: Duration(milliseconds: 600),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    var begin = Offset(0.0, 1.0);
+                    var end = Offset.zero;
+                    var curve = Curves.ease;
+                    var tween = Tween(begin: begin, end: end)
+                        .chain(CurveTween(curve: curve));
 
-                  return SlideTransition(
-                    position: animation.drive(tween),
-                    child: child,
-                  );
-                }));
-          },
-          child: Icon(
-            Icons.arrow_back,
-          ),
-        ),
-
-
-
-        title: new Padding(
-          child: new Text(
-            'Coeur D\' Alene Mobile Dictionary',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 9,
+                    return SlideTransition(
+                      position: animation.drive(tween),
+                      child: child,
+                    );
+                  }));
+            },
+            child: Icon(
+              Icons.arrow_back,
             ),
           ),
-          padding: EdgeInsets.all(0),
+
+
+
+          title: new Padding(
+            child: new Text(
+              'Coeur D\' Alene Mobile Dictionary',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 9,
+              ),
+            ),
+            padding: EdgeInsets.all(0),
+          ),
+          backgroundColor: backGroundColor,
         ),
+        body: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(top: 20, bottom: 20),
+              child: Text(
+                'Text Files',
+                style: TextStyle(color: Colors.white, fontSize: 26),
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return new GestureDetector(
+                    onDoubleTap: () {
+                      launch(_fnotes[index].web);
+                    },
+                    child: Container(
+                      height: 90,
+                      decoration: new BoxDecoration(
+                          color: tileBackGroundColor,
+                          borderRadius: new BorderRadius.all(Radius.circular(20)),
+                          border: Border.all(
+                            width: 1.0,
+                            color: Colors.white,
+                          )),
+                      margin: const EdgeInsets.only(
+                          top: 15.0, bottom: 25.0, left: 10, right: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Padding(
+                                child: Text(
+                                  _fnotes[index].title,
+                                  style: TextStyle(
+                                      fontSize: 11,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                padding: EdgeInsets.only(left: 10),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 6, top: 1),
+                                child: Icon(
+                                  Icons.chevron_right,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.center,
+                      ),
+                    ),
+                  );
+                },
+                itemCount: _fnotes.length,
+                shrinkWrap: true,
+              ),
+            ),
+          ],
+        ), // This trailing comma makes auto-formatting nicer for build methods.
         backgroundColor: backGroundColor,
       ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(top: 20, bottom: 20),
-            child: Text(
-              'Text Files',
-              style: TextStyle(color: Colors.white, fontSize: 26),
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                return new GestureDetector(
-                  onDoubleTap: () {
-                    launch(_fnotes[index].web);
-                  },
-                  child: Container(
-                    height: 90,
-                    decoration: new BoxDecoration(
-                        color: tileBackGroundColor,
-                        borderRadius: new BorderRadius.all(Radius.circular(20)),
-                        border: Border.all(
-                          width: 1.0,
-                          color: Colors.white,
-                        )),
-                    margin: const EdgeInsets.only(
-                        top: 15.0, bottom: 25.0, left: 10, right: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Padding(
-                              child: Text(
-                                _fnotes[index].title,
-                                style: TextStyle(
-                                    fontSize: 11,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              padding: EdgeInsets.only(left: 10),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 6, top: 1),
-                              child: Icon(
-                                Icons.chevron_right,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                      mainAxisAlignment: MainAxisAlignment.center,
-                    ),
-                  ),
-                );
-              },
-              itemCount: _fnotes.length,
-              shrinkWrap: true,
-            ),
-          ),
-        ],
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-      backgroundColor: backGroundColor,
     );
   }
 }
