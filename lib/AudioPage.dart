@@ -152,68 +152,71 @@ class _AudioPageState extends State<AudioPage> {
           ),
           backgroundColor: backGroundColor,
         ),
-        body: Column(
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(top: 20, bottom: 20),
-              child: Text(
-                'Text Files',
-                style: TextStyle(color: Colors.white, fontSize: 26),
+        body: CustomPaint(
+          painter: BluePainter(backGroundColor, counterFromPreviousPage),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(top: 20, bottom: 20),
+                child: Text(
+                  'Text Files',
+                  style: TextStyle(color: Colors.white, fontSize: 26),
+                ),
               ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  return new GestureDetector(
-                    onDoubleTap: () {
-                      launch(_fnotes[index].web);
-                    },
-                    child: Container(
-                      height: 90,
-                      decoration: new BoxDecoration(
-                          color: tileBackGroundColor,
-                          borderRadius: new BorderRadius.all(Radius.circular(20)),
-                          border: Border.all(
-                            width: 1.0,
-                            color: Colors.white,
-                          )),
-                      margin: const EdgeInsets.only(
-                          top: 15.0, bottom: 25.0, left: 10, right: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Padding(
-                                child: Text(
-                                  _fnotes[index].title,
-                                  style: TextStyle(
-                                      fontSize: 11,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600),
+              Expanded(
+                child: ListView.builder(
+                  itemBuilder: (context, index) {
+                    return new GestureDetector(
+                      onDoubleTap: () {
+                        launch(_fnotes[index].web);
+                      },
+                      child: Container(
+                        height: 90,
+                        decoration: new BoxDecoration(
+                            color: tileBackGroundColor,
+                            borderRadius: new BorderRadius.all(Radius.circular(20)),
+                            border: Border.all(
+                              width: 1.0,
+                              color: Colors.white,
+                            )),
+                        margin: const EdgeInsets.only(
+                            top: 15.0, bottom: 25.0, left: 10, right: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Padding(
+                                  child: Text(
+                                    _fnotes[index].title,
+                                    style: TextStyle(
+                                        fontSize: 11,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  padding: EdgeInsets.only(left: 10),
                                 ),
-                                padding: EdgeInsets.only(left: 10),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 6, top: 1),
-                                child: Icon(
-                                  Icons.chevron_right,
-                                  color: Colors.white,
+                                Padding(
+                                  padding: EdgeInsets.only(left: 6, top: 1),
+                                  child: Icon(
+                                    Icons.chevron_right,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
-                        mainAxisAlignment: MainAxisAlignment.center,
+                              ],
+                            ),
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.center,
+                        ),
                       ),
-                    ),
-                  );
-                },
-                itemCount: _fnotes.length,
-                shrinkWrap: true,
+                    );
+                  },
+                  itemCount: _fnotes.length,
+                  shrinkWrap: true,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ), // This trailing comma makes auto-formatting nicer for build methods.
         backgroundColor: backGroundColor,
       ),

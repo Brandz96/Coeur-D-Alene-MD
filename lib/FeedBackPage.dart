@@ -100,47 +100,49 @@ class _FeedBackState extends State<FeedBackPage> {
           ),
           backgroundColor: backGroundColor,
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Text(
-                "Give Us Feedback!",
-                style: TextStyle(
-                  fontSize: 19,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 10, right: 8),
-                child: Text(
-                  'We would love to hear feedback from our users, we appreciate suggestions, corrections or any comments you have for us!',
+        body: CustomPaint(
+          painter: BluePainter(backGroundColor, counterFromPreviousPage),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Text(
+                  "Give Us Feedback!",
                   style: TextStyle(
+                    fontSize: 19,
                     color: Colors.white,
-                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-              TextField(
-                  keyboardType: TextInputType.multiline,
-                  maxLength: null,
-                  maxLines: null,
-                  controller: _customController,
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(10.0),
-                    hintText: 'Enter your Feedback Here',
-                    fillColor: Colors.grey,
-                    hintStyle: TextStyle(color: Colors.white, fontSize: 15),
-                    enabledBorder: new UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                Padding(
+                  padding: EdgeInsets.only(left: 10, right: 8),
+                  child: Text(
+                    'We would love to hear feedback from our users, we appreciate suggestions, corrections or any comments you have for us!',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
                     ),
                   ),
-                  onChanged: (String) {}),
+                ),
+                TextField(
+                    keyboardType: TextInputType.multiline,
+                    maxLength: null,
+                    maxLines: null,
+                    controller: _customController,
+                    style: TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      hintText: 'Enter your Feedback Here',
+                      fillColor: Colors.grey,
+                      hintStyle: TextStyle(color: Colors.white, fontSize: 15),
+                      enabledBorder: new UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                    ),
+                    onChanged: (String) {}),
 //            RaisedButton(
 ////              child: Text("Submit"),
 ////              onPressed: () async{
@@ -151,44 +153,45 @@ class _FeedBackState extends State<FeedBackPage> {
 ////            _customController.clear();
 ////              },
 ////            )
-              RaisedButton(
-                  color: tileBackGroundColor,
-                  elevation: 10,
-                  onPressed: () async {
-                    await db.collection("Feedback Storage").add({
-                      'User Input': _customController.text,
-                    });
-                    _customController.clear();
+                RaisedButton(
+                    color: tileBackGroundColor,
+                    elevation: 10,
+                    onPressed: () async {
+                      await db.collection("Feedback Storage").add({
+                        'User Input': _customController.text,
+                      });
+                      _customController.clear();
 
-                    Fluttertoast.showToast(
-                      msg: "Thank You!",
-                      toastLength: Toast.LENGTH_SHORT,
-                      gravity: ToastGravity.BOTTOM,
-                      timeInSecForIos: 1,
-                      textColor: Color.fromRGBO(219, 95, 95, 1),
-                      backgroundColor: tileBackGroundColor,
-                    );
-                  },
-                  textColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)),
-                  padding: const EdgeInsets.all(0),
-                  child: Ink(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(50)),
-                      ),
-                      child: Container(
-                        width: 350,
-                        height: 20,
-                        constraints:
-                            const BoxConstraints(minWidth: 40, minHeight: 40),
-                        alignment: Alignment.center,
-                        child: const Text(
-                          "Submit",
-                          textAlign: TextAlign.center,
+                      Fluttertoast.showToast(
+                        msg: "Thank You!",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIos: 1,
+                        textColor: Color.fromRGBO(219, 95, 95, 1),
+                        backgroundColor: tileBackGroundColor,
+                      );
+                    },
+                    textColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)),
+                    padding: const EdgeInsets.all(0),
+                    child: Ink(
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
                         ),
-                      ))),
-            ],
+                        child: Container(
+                          width: 350,
+                          height: 20,
+                          constraints:
+                              const BoxConstraints(minWidth: 40, minHeight: 40),
+                          alignment: Alignment.center,
+                          child: const Text(
+                            "Submit",
+                            textAlign: TextAlign.center,
+                          ),
+                        ))),
+              ],
+            ),
           ),
         ), // This trailing comma makes auto-formatting nicer for build methods.
       ),

@@ -1,3 +1,4 @@
+import 'package:demo_app/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:async';
@@ -148,71 +149,74 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
           ),
           backgroundColor: backGroundColor,
         ),
-        body: Column(
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(top: 10),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text(
-                affix,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 26,
+        body: CustomPaint(
+          painter: BluePainter(backGroundColor, counterFromPreviousPage),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Text(
+                  affix,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 26,
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  return new Container(
-                    height: 90,
-                    decoration: new BoxDecoration(
-                      color: (index % 2 == 0)
-                          ? tileBackGroundColor
-                          : tileBackGroundColor,
-                      borderRadius: new BorderRadius.all(Radius.circular(20)),
-                      border: Border.all(
-                        width: 1.0,
-                        color: Colors.white,
+              Expanded(
+                child: ListView.builder(
+                  itemBuilder: (context, index) {
+                    return new Container(
+                      height: 90,
+                      decoration: new BoxDecoration(
+                        color: (index % 2 == 0)
+                            ? tileBackGroundColor
+                            : tileBackGroundColor,
+                        borderRadius: new BorderRadius.all(Radius.circular(20)),
+                        border: Border.all(
+                          width: 1.0,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                    margin: const EdgeInsets.only(
-                        top: 15.0, bottom: 25.0, left: 10, right: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10),
-                          child: Text(
-                            _fnotes[index].title,
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600),
+                      margin: const EdgeInsets.only(
+                          top: 15.0, bottom: 25.0, left: 10, right: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Text(
+                              _fnotes[index].title,
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600),
+                            ),
                           ),
-                        ),
-                        Padding(
-                          child: Text(
-                            _fnotes[index].text,
-                            style: TextStyle(
-                                color: Color.fromRGBO(238, 239, 240, 1),
-                                fontStyle: FontStyle.italic,
-                                fontSize: 12),
+                          Padding(
+                            child: Text(
+                              _fnotes[index].text,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(238, 239, 240, 1),
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 12),
+                            ),
+                            padding: EdgeInsets.only(left: 10),
                           ),
-                          padding: EdgeInsets.only(left: 10),
-                        ),
-                      ],
-                      mainAxisAlignment: MainAxisAlignment.center,
-                    ),
-                  );
-                },
-                itemCount: _fnotes.length,
-                shrinkWrap: true,
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.center,
+                      ),
+                    );
+                  },
+                  itemCount: _fnotes.length,
+                  shrinkWrap: true,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         backgroundColor: backGroundColor,
       ),

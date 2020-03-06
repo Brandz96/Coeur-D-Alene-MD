@@ -150,91 +150,94 @@ class _AffixPageState extends State<AffixPage> {
           ),
           backgroundColor: backGroundColor,
         ),
-        body: Column(
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Text(
-                "Reichard's Affix List",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
+        body: CustomPaint(
+          painter: BluePainter(backGroundColor, counterFromPreviousPage),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: Text(
+                  "Reichard's Affix List",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  return new GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(new PageRouteBuilder(
-                          pageBuilder: (context, animation, secondaryAnimation) => new AffixSecondScreen(affix: _fnotes[index].affix,backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
-                          maintainState: true,
-                          opaque: true,
-                          transitionDuration: Duration(milliseconds: 600),
-                          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                            var begin = Offset(0.0, 1.0);
-                            var end = Offset.zero;
-                            var curve = Curves.ease;
-                            var tween = Tween(begin: begin, end: end).chain(
-                                CurveTween(curve: curve));
+              Expanded(
+                child: ListView.builder(
+                  itemBuilder: (context, index) {
+                    return new GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushReplacement(new PageRouteBuilder(
+                            pageBuilder: (context, animation, secondaryAnimation) => new AffixSecondScreen(affix: _fnotes[index].affix,backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
+                            maintainState: true,
+                            opaque: true,
+                            transitionDuration: Duration(milliseconds: 600),
+                            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                              var begin = Offset(0.0, 1.0);
+                              var end = Offset.zero;
+                              var curve = Curves.ease;
+                              var tween = Tween(begin: begin, end: end).chain(
+                                  CurveTween(curve: curve));
 
-                            return SlideTransition(
-                              position: animation.drive(tween),
-                              child: child,
-                            );
-                          }
-                      ));
-                    },
-                    child: new Container(
-                      height: 90,
-                      decoration: new BoxDecoration(
-                          color: (index % 2 == 0)
-                              ? tileBackGroundColor
-                              : tileBackGroundColor,
-                          borderRadius: new BorderRadius.all(Radius.circular(20)),
-                          border: Border.all(
-                            width: 1.0,
-                            color: Colors.white,
-                          )),
-                      margin: const EdgeInsets.only(
-                          top: 25.0, bottom: 25.0, left: 10.0, right: 10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Padding(
-                                child: Text(
-                                  _fnotes[index].affix,
-                                  style: TextStyle(
-                                    fontSize: 18,
+                              return SlideTransition(
+                                position: animation.drive(tween),
+                                child: child,
+                              );
+                            }
+                        ));
+                      },
+                      child: new Container(
+                        height: 90,
+                        decoration: new BoxDecoration(
+                            color: (index % 2 == 0)
+                                ? tileBackGroundColor
+                                : tileBackGroundColor,
+                            borderRadius: new BorderRadius.all(Radius.circular(20)),
+                            border: Border.all(
+                              width: 1.0,
+                              color: Colors.white,
+                            )),
+                        margin: const EdgeInsets.only(
+                            top: 25.0, bottom: 25.0, left: 10.0, right: 10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Padding(
+                                  child: Text(
+                                    _fnotes[index].affix,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  padding: EdgeInsets.only(left: 10),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 10, top: 3),
+                                  child: Icon(
+                                    Icons.chevron_right,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w600,
                                   ),
                                 ),
-                                padding: EdgeInsets.only(left: 10),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 10, top: 3),
-                                child: Icon(
-                                  Icons.chevron_right,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                        mainAxisAlignment: MainAxisAlignment.center,
+                              ],
+                            ),
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.center,
+                        ),
                       ),
-                    ),
-                  );
-                },
-                itemCount: _fnotes.length,
-                shrinkWrap: true,
+                    );
+                  },
+                  itemCount: _fnotes.length,
+                  shrinkWrap: true,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         backgroundColor: backGroundColor,
       ),
