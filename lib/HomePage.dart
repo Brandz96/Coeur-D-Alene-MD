@@ -21,7 +21,7 @@ class _Home extends State<Home> {
   int counter = 0;
   Color homeBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
   Color buttonColors = Color.fromRGBO(170, 184, 194, .9);//grey
-  Color iconColor = Colors.white;
+  Color iconColor = Colors.black;
   Color rootDictionaryBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
   Color titleColor = Colors.white;
 
