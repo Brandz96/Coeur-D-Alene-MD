@@ -272,7 +272,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                 child: ListView.builder(
                   itemBuilder: (context, index) {
                     return new GestureDetector(
-                      onDoubleTap: () {
+                      onTap: () {
                         Navigator.of(context).pushReplacement(new PageRouteBuilder(
                             pageBuilder: (context, animation, secondaryAnimation) => new RootSecondScreen(root: _fnotes[index].root,backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
                             maintainState: true,
