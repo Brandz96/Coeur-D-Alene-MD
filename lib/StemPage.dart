@@ -1,6 +1,8 @@
 import 'package:demo_app/StemSecondScreen.dart';
 import 'package:flutter/material.dart';
+import 'AffixPage.dart';
 import 'HomePageClone.dart';
+import 'RootDictionaryPage.dart';
 import 'TilesNotes.dart';
 import 'TempDelayClass.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -101,8 +103,124 @@ class _StemPageState extends State<StemPage> {
         }
     ));
   }
+  int _selectedIndex = 0;
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      print('Index' + _selectedIndex.toString());
 
+      if (_selectedIndex == 0) {
+        Navigator.of(context).pushReplacement(new PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+            new HomePageClone(
+                backGroundColor: backGroundColor,
+                tileBackGroundColor: tileBackGroundColor,
+                counterFromPreviousPage: counterFromPreviousPage),
+            maintainState: true,
+            opaque: true,
+            transitionDuration: Duration(milliseconds: 600),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              var begin = Offset(0.0, 1.0);
+              var end = Offset.zero;
+              var curve = Curves.ease;
+              var tween =
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+              return SlideTransition(
+                position: animation.drive(tween),
+                child: child,
+              );
+            }));
+      }
+
+      if (_selectedIndex == 1) {
+        Navigator.of(context).pushReplacement(new PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+            new RootDictionaryPage(
+                backGroundColor: backGroundColor,
+                tileBackGroundColor: tileBackGroundColor,
+                counterFromPreviousPage: counterFromPreviousPage),
+            maintainState: true,
+            opaque: true,
+            transitionDuration: Duration(milliseconds: 600),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              var begin = Offset(0.0, 1.0);
+              var end = Offset.zero;
+              var curve = Curves.ease;
+              var tween =
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+              return SlideTransition(
+                position: animation.drive(tween),
+                child: child,
+              );
+            }));
+      }
+      if (_selectedIndex == 2) {
+        Navigator.of(context).pushReplacement(new PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+            new StemPage(
+                backGroundColor: backGroundColor,
+                tileBackGroundColor: tileBackGroundColor,
+                counterFromPreviousPage: counterFromPreviousPage),
+            maintainState: true,
+            opaque: true,
+            transitionDuration: Duration(milliseconds: 600),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              var begin = Offset(0.0, 1.0);
+              var end = Offset.zero;
+              var curve = Curves.ease;
+              var tween =
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+              return SlideTransition(
+                position: animation.drive(tween),
+                child: child,
+              );
+            }));
+      }
+      if (_selectedIndex == 3) {
+        Navigator.of(context).pushReplacement(new PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+            new AffixPage(
+                backGroundColor: backGroundColor,
+                tileBackGroundColor: tileBackGroundColor,
+                counterFromPreviousPage: counterFromPreviousPage),
+            maintainState: true,
+            opaque: true,
+            transitionDuration: Duration(milliseconds: 600),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              var begin = Offset(0.0, 1.0);
+              var end = Offset.zero;
+              var curve = Curves.ease;
+              var tween =
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+              return SlideTransition(
+                position: animation.drive(tween),
+                child: child,
+              );
+            }));
+      }
+    });
+  }
+
+  Color iconColor;
+
+  Color setIconColor(int n){
+    if(n % 2 == 0 || n == 0){
+      iconColor = Colors.white;
+      return iconColor;
+    } else {
+      iconColor = tileBackGroundColor;
+      return iconColor;
+    }
+  }
 
 
 
@@ -154,6 +272,62 @@ class _StemPageState extends State<StemPage> {
             padding: EdgeInsets.all(0),
           ),
           backgroundColor: backGroundColor,
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: backGroundColor,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: new Icon(
+                  Icons.home,
+                  color: setIconColor(counterFromPreviousPage),
+                ),
+                title: Text(
+                  "Home",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                backgroundColor: backGroundColor),
+            BottomNavigationBarItem(
+              icon: new Icon(
+                Icons.translate,
+                color: setIconColor(counterFromPreviousPage),
+              ),
+              title: Text(
+                'Root',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.archive,
+
+                color: setIconColor(counterFromPreviousPage),),
+              title: Text(
+                'Stem',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: new Icon(
+                Icons.assignment,
+                color: setIconColor(counterFromPreviousPage),
+              ),
+              title: Text(
+                'Affix',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            )
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.white,
+          onTap: _onItemTapped,
         ),
         body: CustomPaint(
           painter: BluePainter(backGroundColor, counterFromPreviousPage),

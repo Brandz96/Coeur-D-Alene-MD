@@ -1,6 +1,9 @@
 import 'package:demo_app/HomePage.dart';
 import 'package:demo_app/RootDictionaryPage.dart';
 import 'package:flutter/material.dart';
+import 'AffixPage.dart';
+import 'HomePageClone.dart';
+import 'StemPage.dart';
 import 'TilesNotes.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
@@ -27,8 +30,8 @@ class RootSecondScreen extends StatefulWidget {
       : super(key: key);
 
   @override
-  _RootSecondScreenState createState() =>
-      _RootSecondScreenState(root, backGroundColor, tileBackGroundColor, counterFromPreviousPage);
+  _RootSecondScreenState createState() => _RootSecondScreenState(
+      root, backGroundColor, tileBackGroundColor, counterFromPreviousPage);
 }
 
 class _RootSecondScreenState extends State<RootSecondScreen> {
@@ -40,8 +43,8 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
 
   final String root;
 
-  _RootSecondScreenState(
-      this.root, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
+  _RootSecondScreenState(this.root, this.backGroundColor,
+      this.tileBackGroundColor, this.counterFromPreviousPage);
 
 //  Future<List<Note>> fetchNotes() async {
 ////    var url = 'https://raw.githubusercontent.com/Brandz96/Capstone/master/Salish.json';
@@ -90,9 +93,13 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
     super.initState();
   }
 
-  Future<bool> _onBackPressed(){
+  Future<bool> _onBackPressed() {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => new RootDictionaryPage(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            new RootDictionaryPage(
+                backGroundColor: backGroundColor,
+                tileBackGroundColor: tileBackGroundColor,
+                counterFromPreviousPage: counterFromPreviousPage),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -100,18 +107,136 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
           var begin = Offset(0.0, 1.0);
           var end = Offset.zero;
           var curve = Curves.ease;
-          var tween = Tween(begin: begin, end: end).chain(
-              CurveTween(curve: curve));
+          var tween =
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
           return SlideTransition(
             position: animation.drive(tween),
             child: child,
           );
-        }
-    ));
+        }));
+  }
+
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      print('Index' + _selectedIndex.toString());
+
+      if (_selectedIndex == 0) {
+        Navigator.of(context).pushReplacement(new PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                new HomePageClone(
+                    backGroundColor: backGroundColor,
+                    tileBackGroundColor: tileBackGroundColor,
+                    counterFromPreviousPage: counterFromPreviousPage),
+            maintainState: true,
+            opaque: true,
+            transitionDuration: Duration(milliseconds: 600),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              var begin = Offset(0.0, 1.0);
+              var end = Offset.zero;
+              var curve = Curves.ease;
+              var tween =
+                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+              return SlideTransition(
+                position: animation.drive(tween),
+                child: child,
+              );
+            }));
+      }
+
+      if (_selectedIndex == 1) {
+        Navigator.of(context).pushReplacement(new PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                new RootDictionaryPage(
+                    backGroundColor: backGroundColor,
+                    tileBackGroundColor: tileBackGroundColor,
+                    counterFromPreviousPage: counterFromPreviousPage),
+            maintainState: true,
+            opaque: true,
+            transitionDuration: Duration(milliseconds: 600),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              var begin = Offset(0.0, 1.0);
+              var end = Offset.zero;
+              var curve = Curves.ease;
+              var tween =
+                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+              return SlideTransition(
+                position: animation.drive(tween),
+                child: child,
+              );
+            }));
+      }
+      if (_selectedIndex == 2) {
+        Navigator.of(context).pushReplacement(new PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                new StemPage(
+                    backGroundColor: backGroundColor,
+                    tileBackGroundColor: tileBackGroundColor,
+                    counterFromPreviousPage: counterFromPreviousPage),
+            maintainState: true,
+            opaque: true,
+            transitionDuration: Duration(milliseconds: 600),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              var begin = Offset(0.0, 1.0);
+              var end = Offset.zero;
+              var curve = Curves.ease;
+              var tween =
+                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+              return SlideTransition(
+                position: animation.drive(tween),
+                child: child,
+              );
+            }));
+      }
+      if (_selectedIndex == 3) {
+        Navigator.of(context).pushReplacement(new PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                new AffixPage(
+                    backGroundColor: backGroundColor,
+                    tileBackGroundColor: tileBackGroundColor,
+                    counterFromPreviousPage: counterFromPreviousPage),
+            maintainState: true,
+            opaque: true,
+            transitionDuration: Duration(milliseconds: 600),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              var begin = Offset(0.0, 1.0);
+              var end = Offset.zero;
+              var curve = Curves.ease;
+              var tween =
+                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+              return SlideTransition(
+                position: animation.drive(tween),
+                child: child,
+              );
+            }));
+      }
+    });
   }
 
 
+
+  Color iconColor;
+
+  Color setIconColor(int n){
+    if(n % 2 == 0 || n == 0){
+      iconColor = Colors.white;
+      return iconColor;
+    } else {
+      iconColor = tileBackGroundColor;
+      return iconColor;
+    }
+  }
 
 
   @override
@@ -129,7 +254,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
                   pageBuilder: (context, animation, secondaryAnimation) =>
                       new RootDictionaryPage(
                           backGroundColor: backGroundColor,
-                          tileBackGroundColor: tileBackGroundColor),
+                          tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),
@@ -164,6 +289,61 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
           ),
           backgroundColor: backGroundColor,
         ),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: backGroundColor,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: new Icon(
+                  Icons.home,
+                  color: setIconColor(counterFromPreviousPage),
+                ),
+                title: Text(
+                  "Home",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                backgroundColor: backGroundColor),
+            BottomNavigationBarItem(
+              icon: new Icon(
+                Icons.translate,
+                color: setIconColor(counterFromPreviousPage),
+              ),
+              title: Text(
+                'Root',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.archive,
+                  color: setIconColor(counterFromPreviousPage),),
+              title: Text(
+                'Stem',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: new Icon(
+                Icons.assignment,
+                color: setIconColor(counterFromPreviousPage),
+              ),
+              title: Text(
+                'Affix',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            )
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.white,
+          onTap: _onItemTapped,
+        ),
         body: CustomPaint(
           painter: BluePainter(backGroundColor, counterFromPreviousPage),
           child: Column(
@@ -196,7 +376,8 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
                           color: (index % 2 == 0)
                               ? tileBackGroundColor
                               : tileBackGroundColor,
-                          borderRadius: new BorderRadius.all(Radius.circular(20)),
+                          borderRadius:
+                              new BorderRadius.all(Radius.circular(20)),
                           border: Border.all(
                             width: 1.0,
                             color: Colors.white,

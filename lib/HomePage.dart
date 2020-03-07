@@ -81,11 +81,12 @@ class _Home extends State<Home> {
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
+                          borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(color: Colors.white, width: 1.0)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
+                            borderRadius: BorderRadius.all(Radius.circular(50),),
                           ),
                           child: Container(
                             width: 350,
@@ -110,7 +111,7 @@ class _Home extends State<Home> {
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
+                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
@@ -137,7 +138,7 @@ class _Home extends State<Home> {
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
+                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
@@ -163,11 +164,11 @@ class _Home extends State<Home> {
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
+                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
+                            borderRadius: BorderRadius.all(Radius.circular(50),),
                           ),
                           child: Container(
                             width: 350,
@@ -189,7 +190,7 @@ class _Home extends State<Home> {
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
+                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
@@ -217,7 +218,7 @@ class _Home extends State<Home> {
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
+                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
@@ -236,32 +237,44 @@ class _Home extends State<Home> {
                           ))),
                   Padding(
                       padding: EdgeInsets.only(top: 10),
-                      child: IconButton(
-                          icon: Icon(Icons.brightness_2),
+//                      child: IconButton(
+//                          icon: Icon(Icons.brightness_2),
+//                          color: iconColor,
+//                          iconSize: 20,
+
+                    child: new RawMaterialButton(
+                      onPressed: () {
+                        _incrementCounter();
+                        setState(() {
+                          if (counter % 2 == 0 || counter == 0) {
+                            homeBackGroundColor =
+                                Color.fromRGBO(29, 161, 242, 1);
+
+                            setColor(counter);
+                            buttonColors = Color.fromRGBO(170, 184, 194, 1);
+                            titleColor = Colors.white;
+                          } else {
+                            homeBackGroundColor =
+                                Color.fromRGBO(34, 28, 27, 1);
+
+                            setColor(counter);
+                            buttonColors = Color.fromRGBO(187, 134, 252, 1);
+                            titleColor = Colors.white;
+                          }
+                        });
+
+                        print(counter);
+                      },
+                      child: new Icon(
+                          Icons.brightness_2,
                           color: iconColor,
-                          iconSize: 20,
-                          onPressed: () {
-                            _incrementCounter();
-                            setState(() {
-                              if (counter % 2 == 0 || counter == 0) {
-                                homeBackGroundColor =
-                                    Color.fromRGBO(29, 161, 242, 1);
-
-                                setColor(counter);
-                                buttonColors = Color.fromRGBO(170, 184, 194, .9);
-                                titleColor = Colors.white;
-                              } else {
-                                homeBackGroundColor =
-                                    Color.fromRGBO(34, 28, 27, 1);
-
-                                setColor(counter);
-                                buttonColors = Color.fromRGBO(187, 134, 252, .9);
-                                titleColor = Colors.white;
-                              }
-                            });
-
-                            print(counter);
-                          })),
+                          size: 20.0
+                      ),
+                      shape: new CircleBorder(),
+                      fillColor: homeBackGroundColor,
+                      padding: const EdgeInsets.all(15.0),
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Text(

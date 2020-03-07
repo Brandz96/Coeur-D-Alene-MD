@@ -29,11 +29,12 @@ class _HomePageClone extends State<HomePageClone> {
   int counterFromPreviousPage;
   Color homeBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
   Color buttonColors = Color.fromRGBO(170, 184, 194, 1);//grey
-  Color iconColor = Colors.white;
+  Color iconColor;
   Color rootDictionaryBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
   Color titleColor = Colors.white;
 
   _HomePageClone(this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
+
 
 
   @override
@@ -88,7 +89,7 @@ class _HomePageClone extends State<HomePageClone> {
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
+                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
@@ -115,7 +116,7 @@ class _HomePageClone extends State<HomePageClone> {
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
+                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
@@ -142,7 +143,7 @@ class _HomePageClone extends State<HomePageClone> {
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
+                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
@@ -168,7 +169,7 @@ class _HomePageClone extends State<HomePageClone> {
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
+                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
@@ -194,7 +195,7 @@ class _HomePageClone extends State<HomePageClone> {
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
+                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
@@ -222,7 +223,7 @@ class _HomePageClone extends State<HomePageClone> {
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
+                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
@@ -240,11 +241,12 @@ class _HomePageClone extends State<HomePageClone> {
                             ),
                           ))),
                   Padding(
-                      padding: EdgeInsets.only(top: 10),
-                      child: IconButton(
-                          icon: Icon(Icons.brightness_2),
-                          color: iconColor,
-                          iconSize: 20,
+                      padding: EdgeInsets.only(top: 15),
+//                      child: IconButton(
+//                          icon: Icon(Icons.brightness_2),
+//                          color: iconColor,
+//                          iconSize: 20,
+                      child: new RawMaterialButton(
                           onPressed: () {
                             _incrementCounter();
                             setState(() {
@@ -266,7 +268,17 @@ class _HomePageClone extends State<HomePageClone> {
                             });
 
                             print(counterFromPreviousPage);
-                          })),
+                          },
+                    child: new Icon(
+                    Icons.brightness_2,
+                    color: iconColor,
+                    size: 20.0
+                  ),
+              shape: new CircleBorder(),
+              fillColor: backGroundColor,
+              padding: const EdgeInsets.all(15.0),
+            ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Text(
