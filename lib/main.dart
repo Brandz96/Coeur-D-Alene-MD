@@ -73,7 +73,7 @@ class LoadingPageState extends State<LoadingPage> {
   }
 
   startLoadingScreenTimer() async {
-    var _duration = new Duration(seconds: 3);
+    var _duration = new Duration(seconds: 2);
     return new Timer(_duration, navigationToNextPage);
   }
 
