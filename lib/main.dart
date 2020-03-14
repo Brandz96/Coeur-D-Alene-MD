@@ -36,21 +36,89 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(unselectedWidgetColor: Colors.white70),
-      home: LoadingPage(),
+      home: WelcomePage(),
       routes: routes,
     );
   }
 }
 
+class WelcomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Color.fromRGBO(220, 236, 247, 1),
+        body: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                child: Image.asset(
+                  'assets/Dictionary.png',
+                  height: 250,
+                  width: 250,
+                ),
+              ),
+              RaisedButton(
+                  color: Colors.white,
+                  elevation: 3,
+                  onPressed: () async {
+                    Navigator.of(context).pushReplacement(new PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) =>
+                        new LoadingPage(),
+                        maintainState: true,
+                        opaque: true,
+                        transitionDuration: Duration(milliseconds: 600),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          var begin = Offset(0.0, 1.0);
+                          var end = Offset.zero;
+                          var curve = Curves.ease;
+                          var tween = Tween(begin: begin, end: end)
+                              .chain(CurveTween(curve: curve));
+
+                          return SlideTransition(
+                            position: animation.drive(tween),
+                            child: child,
+                          );
+                        }));
+                  },
+                  textColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  padding: const EdgeInsets.all(0),
+                  child: Ink(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: Container(
+                        width: 350,
+                        height: 20,
+                        constraints:
+                        const BoxConstraints(minWidth: 40, minHeight: 40),
+                        alignment: Alignment.center,
+                        child: const Text(
+                          "Enter",
+                          style: TextStyle(
+                            fontFamily: 'Open Sans',
+                            color: Colors.blueGrey,
+                            fontStyle: FontStyle.italic,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ))),
+            ],
+          ),
+        ));
+  }
+}
 
 class LoadingPage extends StatefulWidget {
   @override
   LoadingPageState createState() => LoadingPageState();
 }
 
-
 class LoadingPageState extends State<LoadingPage> {
-
   void navigationToNextPage() {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => new Home(),
@@ -61,15 +129,14 @@ class LoadingPageState extends State<LoadingPage> {
           var begin = Offset(0.0, 1.0);
           var end = Offset.zero;
           var curve = Curves.ease;
-          var tween = Tween(begin: begin, end: end).chain(
-              CurveTween(curve: curve));
+          var tween =
+          Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
           return SlideTransition(
             position: animation.drive(tween),
             child: child,
           );
-        }
-    ));
+        }));
   }
 
   startLoadingScreenTimer() async {
@@ -85,22 +152,18 @@ class LoadingPageState extends State<LoadingPage> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+
     return Scaffold(
-      backgroundColor: Color.fromRGBO(29, 161, 242, 1),
+      backgroundColor: Color.fromRGBO(220, 236, 247, 1),
       body: Center(
           child: SpinKitWave(
-            color: Colors.white,
-            size: 60,
+            color: Color.fromRGBO(79, 87, 95, 1),
+            size: 40,
             duration: Duration(milliseconds: 800),
-          )
-      ),
+          )),
     );
   }
 }
-
-
-
 
 //class MyHomePage extends StatefulWidget {
 //  MyHomePage({Key key, this.title}) : super(key: key);
@@ -168,7 +231,7 @@ class LoadingPageState extends State<LoadingPage> {
 //
 //  @override
 //  Widget build(BuildContext context) {
-//    // TODO: implement build
+//
 //    return new IntroSlider(slides:
 //    this.slides,
 //      onDonePress: this.onDonePress,

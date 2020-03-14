@@ -5,7 +5,7 @@ import 'StemPage.dart';
 import 'AudioPage.dart';
 import 'AffixPage.dart';
 import 'FeedBackPage.dart';
-import 'main.dart';
+
 
 class Home extends StatefulWidget {
   Home({Key key, this.title,}) : super(key: key);
@@ -19,11 +19,11 @@ class Home extends StatefulWidget {
 
 class _Home extends State<Home> {
   int counter = 0;
-  Color homeBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
-  Color buttonColors = Color.fromRGBO(170, 184, 194, .9);//grey
+  Color homeBackGroundColor = Color.fromRGBO(220, 236, 247, 1); //blue
+  Color buttonColors = Colors.white; //grey
   Color iconColor = Colors.black;
-  Color rootDictionaryBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
-  Color titleColor = Colors.white;
+  Color rootDictionaryBackGroundColor = Color.fromRGBO(220, 236, 247, 1); //blue
+  Color titleColor = Color.fromRGBO(79, 87, 95, 1);
 
 
 
@@ -46,10 +46,11 @@ class _Home extends State<Home> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
+
                         width: 300.0,
                         margin: EdgeInsets.only(top: 70),
                         child: Text(
-                          'Coeur D\' Alene',
+                          'Coeur D\'Alene',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 28.0,
@@ -57,7 +58,7 @@ class _Home extends State<Home> {
                               fontFamily: "Open Sans"),
                         ),
                       ),
-                      SizedBox(height: 2.0),
+                      //SizedBox(height: 2.0, ),
                       Text(
                         'Mobile Dictionary',
                         style: TextStyle(
@@ -75,142 +76,157 @@ class _Home extends State<Home> {
                 children: <Widget>[
                   RaisedButton(
                       color: getColor(),
-                      elevation: 10,
+                      elevation: 3,
                       onPressed: () {
                         HomePageToRootDictionaryPageTransition(context);
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
-                      side: BorderSide(color: Colors.white, width: 1.0)),
+                      ),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50),),
                           ),
                           child: Container(
-                            width: 350,
+                            width: 250,
                             height: 20,
                             constraints:
                             const BoxConstraints(minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
-                            child: const Text(
+                            child: Text(
                               "Root Dictionary",
                               textAlign: TextAlign.center,
                               style: TextStyle(fontFamily: 'Open Sans',
-                                color: Colors.white,
+                                color: titleColor,
                               ),
                             ),
                           ))),
                   new Padding(padding: EdgeInsets.only(top: 10)),
                   RaisedButton(
                       color: getColor(),
-                      elevation: 10,
+                      elevation: 3,
                       onPressed: () {
                        HomePageToStemPageTransition(context);
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
+                          borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50)),
                           ),
                           child: Container(
-                            width: 350,
+                            width: 250,
                             height: 20,
                             constraints:
                             const BoxConstraints(minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
-                            child: const Text(
+                            child: Text(
                               "Stem List",
+                              style: TextStyle(
+                                fontFamily: 'Open Sans',
+                                color: titleColor,
+                              ),
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontFamily: 'Open Sans'),
                             ),
                           ))),
                   new Padding(padding: EdgeInsets.only(top: 10)),
                   RaisedButton(
                       color: getColor(),
-                      elevation: 10,
+                      elevation: 3,
                       onPressed: () {
                         HomePageToAffixPage(context);
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
+                          borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50)),
                           ),
                           child: Container(
-                            width: 350,
+                            width: 250,
                             height: 20,
                             constraints:
                             const BoxConstraints(minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
-                            child: const Text(
+                            child: Text(
                               "Affix List",
+                              style: TextStyle(
+                                fontFamily: 'Open Sans',
+                                color: titleColor,
+                              ),
                               textAlign: TextAlign.center,
                             ),
                           ))),
                   new Padding(padding: EdgeInsets.only(top: 10)),
                   RaisedButton(
                       color: getColor(),
-                      elevation: 10,
+                      elevation: 3,
                       onPressed: () {
                         HomePageToAudioPage(context);
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
+                          borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50),),
                           ),
                           child: Container(
-                            width: 350,
+                            width: 250,
                             height: 20,
                             constraints:
                             const BoxConstraints(minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
-                            child: const Text(
+                            child: Text(
                               "Text Files",
+                              style: TextStyle(
+                                fontFamily: 'Open Sans',
+                                color: titleColor,
+                              ),
                               textAlign: TextAlign.center,
                             ),
                           ))),
                   new Padding(padding: EdgeInsets.only(top: 10)),
                   RaisedButton(
                       color: getColor(),
-                      elevation: 10,
+                      elevation: 3,
                       onPressed: () {
                         HomePageToAboutPage(context);
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
+                          borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50)),
                           ),
                           child: Container(
-                            width: 350,
+                            width: 250,
                             height: 20,
                             constraints:
                             const BoxConstraints(minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
-                            child: const Text(
+                            child: Text(
                               "About",
+                              style: TextStyle(
+                                fontFamily: 'Open Sans',
+                                color: titleColor,
+                              ),
                               textAlign: TextAlign.center,
                             ),
                           ))),
                   new Padding(padding: EdgeInsets.only(top: 10)),
                   RaisedButton(
                       color: getColor(),
-                      elevation: 10,
+                      elevation: 3,
                       splashColor: Colors.grey,
                       animationDuration: Duration(seconds: 2),
                       onPressed: () {
@@ -218,20 +234,24 @@ class _Home extends State<Home> {
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
+                          borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50)),
                           ),
                           child: Container(
-                            width: 350,
+                            width: 250,
                             height: 20,
                             constraints:
                             const BoxConstraints(minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
-                            child: const Text(
+                            child: Text(
                               "Provide Feedback",
+                              style: TextStyle(
+                                fontFamily: 'Open Sans',
+                                color: titleColor,
+                              ),
                               textAlign: TextAlign.center,
                             ),
                           ))),
@@ -248,18 +268,18 @@ class _Home extends State<Home> {
                         setState(() {
                           if (counter % 2 == 0 || counter == 0) {
                             homeBackGroundColor =
-                                Color.fromRGBO(29, 161, 242, 1);
+                                Color.fromRGBO(220, 236, 247, 1);
 
                             setColor(counter);
-                            buttonColors = Color.fromRGBO(170, 184, 194, 1);
-                            titleColor = Colors.white;
+                            buttonColors = Colors.white;
+                            titleColor = Color.fromRGBO(79, 87, 95, 1);
                           } else {
                             homeBackGroundColor =
                                 Color.fromRGBO(34, 28, 27, 1);
 
                             setColor(counter);
-                            buttonColors = Color.fromRGBO(187, 134, 252, 1);
-                            titleColor = Colors.white;
+                            buttonColors = Color.fromRGBO(50, 66, 127, 1);
+                            titleColor = Colors.white70;
                           }
                         });
 
@@ -267,7 +287,7 @@ class _Home extends State<Home> {
                       },
                       child: new Icon(
                           Icons.brightness_2,
-                          color: iconColor,
+                          color: titleColor,
                           size: 20.0
                       ),
                       shape: new CircleBorder(),
@@ -281,7 +301,7 @@ class _Home extends State<Home> {
                       'Purdue Fort Wayne Capstone Project',
                       style: TextStyle(
                         fontSize: 9,
-                        color: Colors.white,
+                        color: titleColor,
                       ),
                     ),
                   )
@@ -304,15 +324,15 @@ class _Home extends State<Home> {
 
   void setColor(int n) {
     if (n % 2 == 0) {
-      buttonColors = Color.fromRGBO(170, 184, 194, .9);//grey
+      buttonColors = Colors.white; //grey
       iconColor = Colors.black;
-      rootDictionaryBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
-      titleColor = Colors.white;
+      rootDictionaryBackGroundColor = Color.fromRGBO(220, 236, 247, 1); //blue
+      titleColor = Color.fromRGBO(79, 87, 95, 1);
     } else {
-      buttonColors = Color.fromRGBO(187, 134, 252, .9);//purple
+      buttonColors = Color.fromRGBO(50, 66, 127, 1);
       iconColor = Colors.white;
       rootDictionaryBackGroundColor = Color.fromRGBO(34, 28, 27, 1);//black
-      titleColor = Colors.white;
+      titleColor = Colors.white30;
     }
   }
 
@@ -321,12 +341,14 @@ class _Home extends State<Home> {
   }
 
 
+  // ignore: non_constant_identifier_names
   void HomePageToRootDictionaryPageTransition(context) {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new RootDictionaryPage(
             backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors, counterFromPreviousPage: counter),
+          tileBackGroundColor: buttonColors, counterFromPreviousPage: counter,
+          titleColor: titleColor,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -345,12 +367,14 @@ class _Home extends State<Home> {
     ));
   }
 
+  // ignore: non_constant_identifier_names
   void HomePageToStemPageTransition(context){
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new StemPage(
             backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors, counterFromPreviousPage: counter),
+          tileBackGroundColor: buttonColors, counterFromPreviousPage: counter,
+          titleColor: titleColor,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -369,12 +393,14 @@ class _Home extends State<Home> {
     ));
   }
 
+  // ignore: non_constant_identifier_names
   void HomePageToAffixPage(context) {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new AffixPage(
             backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors, counterFromPreviousPage: counter),
+          tileBackGroundColor: buttonColors, counterFromPreviousPage: counter,
+          titlecolor: titleColor,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -393,12 +419,14 @@ class _Home extends State<Home> {
     ));
   }
 
+  // ignore: non_constant_identifier_names
   void HomePageToAudioPage(context){
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new AudioPage(
             backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors, counterFromPreviousPage: counter,),
+            tileBackGroundColor: buttonColors, counterFromPreviousPage: counter,
+            titleColor: titleColor),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -417,12 +445,14 @@ class _Home extends State<Home> {
     ));
   }
 
+  // ignore: non_constant_identifier_names
   void HomePageToAboutPage(context){
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new AboutPage(
             backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors, counterFromPreviousPage: counter,),
+          tileBackGroundColor: buttonColors, counterFromPreviousPage: counter,
+          titlecolor: titleColor,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -441,12 +471,14 @@ class _Home extends State<Home> {
     ));
   }
 
+  // ignore: non_constant_identifier_names
   void HomePageToFeedBackPage(context){
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new FeedBackPage(
             backGroundColor: rootDictionaryBackGroundColor,
-            tileBackGroundColor: buttonColors, counterFromPreviousPage: counter,),
+          tileBackGroundColor: buttonColors, counterFromPreviousPage: counter,
+          titleColor: titleColor,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -482,7 +514,7 @@ class BluePainter extends CustomPainter {
 
   Color pickColor(int counter){
     if(counter % 2 == 0 || counter == 0){
-      return Colors.blue.shade600;
+      return Colors.white70;
           //rootDictionaryBackGroundColor = Color.fromRGBO(29, 161, 242, 1);
           //buttonColors = Color.fromRGBO(187, 134, 252, 1);
     } else {
@@ -492,8 +524,8 @@ class BluePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final height = size.height;
-    final width = size.width;
+    //final height = size.height;
+    //final width = size.width;
     Paint paint = Paint();
 
 //    Path mainBackground = Path();
@@ -502,12 +534,16 @@ class BluePainter extends CustomPainter {
 //    canvas.drawPath(mainBackground, paint);
 
     Path ovalPath = Path();
-    ovalPath.moveTo(0, height * 0.2);
-    ovalPath.quadraticBezierTo(width * 0.45, height * 0.25, width * 0.5, height * 0.5);
-    ovalPath.quadraticBezierTo(width * 0.58, height * 0.8, width * 0.1, height);
-    ovalPath.lineTo(0, height);
-
+    //ovalPath.moveTo(0, height * 0.2);
+    //ovalPath.quadraticBezierTo(width * 0.45, height * 0.25, width * 0.5, height * 0.5);
+    //ovalPath.quadraticBezierTo(width * 0.58, height * 0.8, width * 0.1, height);
+    //ovalPath.lineTo(0, height);
     paint.color = pickColor(counter);
+    //canvas.drawRect(new Rect.fromLTRB(300, 30, 450, 230), paint);
+
+
+
+
     canvas.drawPath(ovalPath, paint);
 
   }

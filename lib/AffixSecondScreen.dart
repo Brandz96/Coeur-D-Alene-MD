@@ -9,6 +9,7 @@ import 'StemPage.dart';
 import 'TilesNotes.dart';
 import 'AffixPage.dart';
 
+// ignore: must_be_immutable
 class AffixSecondScreen extends StatefulWidget {
   final String title;
   final String text;
@@ -17,6 +18,7 @@ class AffixSecondScreen extends StatefulWidget {
   Color backGroundColor;
   Color tileBackGroundColor;
   int counterFromPreviousPage;
+  Color titleColor;
 
   AffixSecondScreen(
       {Key key,
@@ -26,13 +28,15 @@ class AffixSecondScreen extends StatefulWidget {
       this.text,
       this.backGroundColor,
       this.tileBackGroundColor,
-      this.counterFromPreviousPage})
+        this.counterFromPreviousPage,
+        this.titleColor})
       : super(key: key);
 
   //_AffixSecondScreenState
   @override
   _AffixSecondScreenState createState() => _AffixSecondScreenState(
-      affix, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
+      affix, this.backGroundColor, this.tileBackGroundColor,
+      this.counterFromPreviousPage, this.titleColor);
 }
 
 class _AffixSecondScreenState extends State<AffixSecondScreen> {
@@ -40,12 +44,14 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
   List<Note> _fnotes = List<Note>();
   Color backGroundColor;
   Color tileBackGroundColor;
+  Color titleColor;
   int counterFromPreviousPage;
 
   final String affix;
 
-  _AffixSecondScreenState(
-      this.affix, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
+  _AffixSecondScreenState(this.affix, this.backGroundColor,
+      this.tileBackGroundColor, this.counterFromPreviousPage,
+      this.titleColor);
 
   Future<List<Note>> loadJSON() async {
     var notes2 = List<Note>();
@@ -77,9 +83,14 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
     super.initState();
   }
 
+  // ignore: missing_return
   Future<bool> _onBackPressed(){
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => new AffixPage(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
+        pageBuilder: (context, animation, secondaryAnimation) =>
+        new AffixPage(backGroundColor: backGroundColor,
+          tileBackGroundColor: tileBackGroundColor,
+          counterFromPreviousPage: counterFromPreviousPage,
+          titlecolor: titleColor,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -111,7 +122,8 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
             new HomePageClone(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -136,7 +148,8 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
             new RootDictionaryPage(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -160,7 +173,8 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
             new StemPage(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -184,7 +198,8 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
             new AffixPage(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titlecolor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -223,7 +238,9 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
                   pageBuilder: (context, animation, secondaryAnimation) =>
                       new AffixPage(
                           backGroundColor: backGroundColor,
-                          tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
+                        tileBackGroundColor: tileBackGroundColor,
+                        counterFromPreviousPage: counterFromPreviousPage,
+                        titlecolor: titleColor,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),
@@ -243,6 +260,7 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
             },
             child: Icon(
               Icons.arrow_back,
+              color: titleColor,
             ),
           ),
           title: new Padding(
@@ -250,8 +268,8 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
               'Coeur D\' Alene Mobile Dictionary',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 9,
+                color: titleColor,
+                fontSize: 10,
               ),
             ),
             padding: EdgeInsets.all(40),
@@ -270,7 +288,7 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
                 title: Text(
                   "Home",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: titleColor,
                   ),
                 ),
                 backgroundColor: backGroundColor),
@@ -282,7 +300,7 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
               title: Text(
                 'Root',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             ),
@@ -291,7 +309,7 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
               title: Text(
                 'Stem',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             ),
@@ -303,7 +321,7 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
               title: Text(
                 'Affix',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             )
@@ -356,7 +374,7 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
                               _fnotes[index].title,
                               style: TextStyle(
                                   fontSize: 18,
-                                  color: Colors.white,
+                                  color: titleColor,
                                   fontWeight: FontWeight.w600),
                             ),
                           ),
@@ -364,7 +382,7 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
                             child: Text(
                               _fnotes[index].text,
                               style: TextStyle(
-                                  color: Color.fromRGBO(238, 239, 240, 1),
+                                  color: titleColor,
                                   fontStyle: FontStyle.italic,
                                   fontSize: 12),
                             ),

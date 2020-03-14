@@ -9,11 +9,12 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
 import 'dart:convert';
 import 'package:demo_app/HomePage.dart';
-import 'main.dart';
 
+// ignore: must_be_immutable
 class StemPage extends StatefulWidget {
   StemPage(
-      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage})
+      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage,
+        this.titleColor})
       : super(key: key);
 
   static const String routeName = "/StemPage";
@@ -22,10 +23,13 @@ class StemPage extends StatefulWidget {
   Color backGroundColor;
   Color tileBackGroundColor;
   int counterFromPreviousPage;
+  Color titleColor;
 
   @override
   _StemPageState createState() =>
-      _StemPageState(backGroundColor, tileBackGroundColor, counterFromPreviousPage);
+      _StemPageState(
+          backGroundColor, tileBackGroundColor, counterFromPreviousPage,
+          titleColor);
 }
 
 class _StemPageState extends State<StemPage> {
@@ -35,8 +39,11 @@ class _StemPageState extends State<StemPage> {
   Color backGroundColor;
   Color tileBackGroundColor;
   int counterFromPreviousPage;
+  Color titleColor;
 
-  _StemPageState(this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
+  _StemPageState(this.backGroundColor, this.tileBackGroundColor,
+      this.counterFromPreviousPage,
+      this.titleColor);
 
 //  Future<List<StemNote>> fetchNotes() async {
 //    var url = 'https://raw.githubusercontent.com/Brandz96/Capstone/master/StemList.json';
@@ -83,9 +90,14 @@ class _StemPageState extends State<StemPage> {
     super.initState();
   }
 
+  // ignore: missing_return
   Future<bool> _onBackPressed(){
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
+        pageBuilder: (context, animation, secondaryAnimation) =>
+        new HomePageClone(backGroundColor: backGroundColor,
+          tileBackGroundColor: tileBackGroundColor,
+          counterFromPreviousPage: counterFromPreviousPage,
+          titleColor: titleColor,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -116,7 +128,8 @@ class _StemPageState extends State<StemPage> {
             new HomePageClone(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -141,7 +154,8 @@ class _StemPageState extends State<StemPage> {
             new RootDictionaryPage(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -165,7 +179,8 @@ class _StemPageState extends State<StemPage> {
             new StemPage(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -189,7 +204,8 @@ class _StemPageState extends State<StemPage> {
             new AffixPage(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titlecolor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -238,7 +254,11 @@ class _StemPageState extends State<StemPage> {
 // Navigator.push(context, MaterialPageRoute(builder: (context) => Home())),
             onTap: () {
               Navigator.of(context).pushReplacement(new PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) => new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                  new HomePageClone(backGroundColor: backGroundColor,
+                    tileBackGroundColor: tileBackGroundColor,
+                    counterFromPreviousPage: counterFromPreviousPage,
+                    titleColor: titleColor,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),
@@ -258,6 +278,7 @@ class _StemPageState extends State<StemPage> {
             },
             child: Icon(
               Icons.arrow_back,
+              color: titleColor,
             ),
           ),
           title: new Padding(
@@ -265,8 +286,8 @@ class _StemPageState extends State<StemPage> {
               'Coeur D\' Alene Mobile Dictionary',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 9,
+                color: titleColor,
+                fontSize: 10,
               ),
             ),
             padding: EdgeInsets.all(0),
@@ -285,7 +306,7 @@ class _StemPageState extends State<StemPage> {
                 title: Text(
                   "Home",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: titleColor,
                   ),
                 ),
                 backgroundColor: backGroundColor),
@@ -297,7 +318,7 @@ class _StemPageState extends State<StemPage> {
               title: Text(
                 'Root',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             ),
@@ -320,7 +341,7 @@ class _StemPageState extends State<StemPage> {
               title: Text(
                 'Affix',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             )
@@ -334,17 +355,17 @@ class _StemPageState extends State<StemPage> {
           child: Column(
             children: <Widget>[
               TextField(
-                  style: TextStyle(color: tileBackGroundColor),
+                  style: TextStyle(color: titleColor),
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.all(10.0),
                     hintText: 'Search Stem',
-                    fillColor: Colors.white,
-                    hintStyle: TextStyle(color: Colors.white, fontSize: 15),
+                    fillColor: titleColor,
+                    hintStyle: TextStyle(color: titleColor, fontSize: 15),
                     enabledBorder: new UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.white),
                     ),
                     focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: tileBackGroundColor),
+                      borderSide: BorderSide(color: titleColor),
                     ),
                   ),
                   onChanged: (string) {
@@ -364,7 +385,7 @@ class _StemPageState extends State<StemPage> {
                 child: Text(
                   "Reichard's Stem List",
                   style: TextStyle(
-                    color: Colors.white,
+                      color: titleColor
                   ),
                 ),
               ),
@@ -374,7 +395,13 @@ class _StemPageState extends State<StemPage> {
                     return new GestureDetector(
                       onTap: () {
                         Navigator.of(context).pushReplacement(new PageRouteBuilder(
-                            pageBuilder: (context, animation, secondaryAnimation) => new StemSecondScreen(stem: _fnotes[index].stem,backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
+                            pageBuilder: (context, animation,
+                                secondaryAnimation) =>
+                            new StemSecondScreen(stem: _fnotes[index].stem,
+                                backGroundColor: backGroundColor,
+                                tileBackGroundColor: tileBackGroundColor,
+                                counterFromPreviousPage: counterFromPreviousPage,
+                                titleColor: titleColor),
                             maintainState: true,
                             opaque: true,
                             transitionDuration: Duration(milliseconds: 600),
@@ -416,7 +443,7 @@ class _StemPageState extends State<StemPage> {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontSize: 18,
-                                      color: Colors.white,
+                                      color: titleColor,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -426,7 +453,7 @@ class _StemPageState extends State<StemPage> {
                                   padding: EdgeInsets.only(left: 10, top: 3),
                                   child: Icon(
                                     Icons.chevron_right,
-                                    color: Colors.white,
+                                    color: titleColor,
                                   ),
                                 )
                               ],

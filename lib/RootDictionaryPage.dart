@@ -10,11 +10,13 @@ import 'TempDelayClass.dart';
 import 'RootSecondScreen.dart';
 import 'HomePage.dart';
 
+// ignore: must_be_immutable
 class RootDictionaryPage extends StatefulWidget {
   static const String routeName = "/RootDictionaryPage";
   Color backGroundColor;
   Color tileBackGroundColor;
   int counterFromPreviousPage;
+  Color titleColor;
 
   final String title;
 
@@ -23,12 +25,14 @@ class RootDictionaryPage extends StatefulWidget {
       this.title,
       this.backGroundColor,
       this.tileBackGroundColor,
-      this.counterFromPreviousPage})
+        this.counterFromPreviousPage,
+        this.titleColor})
       : super(key: key);
 
   @override
   _RootDictionaryPageState createState() => _RootDictionaryPageState(
-      backGroundColor, tileBackGroundColor, counterFromPreviousPage);
+      backGroundColor, tileBackGroundColor, counterFromPreviousPage,
+      titleColor);
 }
 
 class _RootDictionaryPageState extends State<RootDictionaryPage> {
@@ -37,34 +41,16 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
 
   List<Note> _notes = List<Note>();
   List<Note> _fnotes = List<Note>();
-  List<Note> _local = List<Note>();
+
+  // List<Note> _local = List<Note>();
   final _delay = tempDelay(mill: 200);
   Color backGroundColor;
   Color tileBackGroundColor;
   int counterFromPreviousPage;
+  Color titleColor;
 
   _RootDictionaryPageState(this.backGroundColor, this.tileBackGroundColor,
-      this.counterFromPreviousPage);
-
-//  Future<List<Note>> fetchNotes() async {
-//    var url = 'https://raw.githubusercontent.com/Brandz96/Capstone/master/Salish.json';
-//    var response = await http.get(url);
-//
-//
-//    var notes = List<Note>();
-//
-//
-//
-//
-//
-//    if (response.statusCode == 200) {
-//      var notesJson = json.decode(response.body);
-//      for (var noteJson in notesJson) {
-//        notes.add(Note.fromJson(noteJson));
-//      }
-//    }
-//    return notes;
-//  }
+      this.counterFromPreviousPage, this.titleColor);
 
   Future<String> loadAssets() async {
     return await rootBundle.loadString(
@@ -119,13 +105,15 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
     });
   }
 
+  // ignore: missing_return
   Future<bool> _onBackPressed() {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) =>
             new HomePageClone(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -156,7 +144,8 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                 new HomePageClone(
                     backGroundColor: backGroundColor,
                     tileBackGroundColor: tileBackGroundColor,
-                    counterFromPreviousPage: counterFromPreviousPage),
+                  counterFromPreviousPage: counterFromPreviousPage,
+                  titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -181,7 +170,8 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                 new RootDictionaryPage(
                     backGroundColor: backGroundColor,
                     tileBackGroundColor: tileBackGroundColor,
-                    counterFromPreviousPage: counterFromPreviousPage),
+                  counterFromPreviousPage: counterFromPreviousPage,
+                  titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -205,7 +195,8 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                 new StemPage(
                     backGroundColor: backGroundColor,
                     tileBackGroundColor: tileBackGroundColor,
-                    counterFromPreviousPage: counterFromPreviousPage),
+                  counterFromPreviousPage: counterFromPreviousPage,
+                  titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -229,7 +220,8 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                 new AffixPage(
                     backGroundColor: backGroundColor,
                     tileBackGroundColor: tileBackGroundColor,
-                    counterFromPreviousPage: counterFromPreviousPage),
+                  counterFromPreviousPage: counterFromPreviousPage,
+                  titlecolor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -283,7 +275,8 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                       new HomePageClone(
                           backGroundColor: backGroundColor,
                           tileBackGroundColor: tileBackGroundColor,
-                          counterFromPreviousPage: counterFromPreviousPage),
+                        counterFromPreviousPage: counterFromPreviousPage,
+                        titleColor: titleColor,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),
@@ -303,6 +296,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
             },
             child: Icon(
               Icons.arrow_back,
+              color: titleColor,
             ),
           ),
           title: new Padding(
@@ -310,8 +304,8 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
               'Coeur D\' Alene Mobile Dictionary',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 9,
+                color: titleColor,
+                fontSize: 10,
               ),
             ),
             padding: EdgeInsets.all(0),
@@ -330,7 +324,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                 title: Text(
                   "Home",
                   style: TextStyle(
-                    color: Colors.white,
+                      color: titleColor
                   ),
                 ),
                 backgroundColor: backGroundColor),
@@ -342,7 +336,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
               title: Text(
                 'Root',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             ),
@@ -353,7 +347,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
               title: Text(
                 'Stem',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             ),
@@ -365,7 +359,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
               title: Text(
                 'Affix',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             )
@@ -383,8 +377,8 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.all(10.0),
                     hintText: 'Search Word',
-                    fillColor: Colors.white,
-                    hintStyle: TextStyle(color: Colors.white, fontSize: 15),
+                    fillColor: titleColor,
+                    hintStyle: TextStyle(color: titleColor, fontSize: 15),
                     enabledBorder: new UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.white),
                     ),
@@ -427,7 +421,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                   new Radio(
                     value: 1,
                     groupValue: rvalue1,
-                    activeColor: Colors.white,
+                    activeColor: titleColor,
                     onChanged: (val) {
                       rValue(val);
                     },
@@ -436,19 +430,19 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                     'Nicodemus',
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.white,
+                      color: titleColor,
                     ),
                   ),
                   new Radio(
                       value: 2,
                       groupValue: rvalue1,
-                      activeColor: Colors.white,
+                      activeColor: titleColor,
                       onChanged: (val) {
                         rValue(val);
                       }),
                   new Text(
                     'English',
-                    style: TextStyle(fontSize: 12, color: Colors.white),
+                    style: TextStyle(fontSize: 12, color: titleColor),
                   ),
                 ],
               ),
@@ -468,6 +462,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                                       tileBackGroundColor: tileBackGroundColor,
                                       counterFromPreviousPage:
                                           counterFromPreviousPage,
+                                      titleColor: titleColor,
                                     ),
                                 maintainState: true,
                                 opaque: true,
@@ -486,64 +481,60 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                                   );
                                 }));
                       },
-                      child: Tooltip(
-                        message: 'Double tap for Root information!',
-                        margin: EdgeInsets.only(top: 20),
-                        child: new Container(
-                          height: 90,
-                          decoration: new BoxDecoration(
-                              color: (index % 2 == 0)
-                                  ? tileBackGroundColor
-                                  : tileBackGroundColor,
-                              borderRadius:
-                                  new BorderRadius.all(Radius.circular(20)),
-                              border: Border.all(
-                                width: 1.0,
-                                color: Colors.white,
-                              )),
-                          margin: const EdgeInsets.only(
-                              top: 15.0, bottom: 25.0, left: 10.0, right: 10.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 10),
-                                    child: Text(
-                                      _fnotes[index].title,
-                                      style: TextStyle(
-                                          fontSize: 21,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w600,
-                                          letterSpacing: 1),
-                                    ),
+                      child: new Container(
+                        height: 130,
+                        decoration: new BoxDecoration(
+                            color: (index % 2 == 0)
+                                ? tileBackGroundColor
+                                : tileBackGroundColor,
+                            borderRadius:
+                            new BorderRadius.all(Radius.circular(20)),
+                            border: Border.all(
+                              width: 1.0,
+                              color: Colors.white,
+                            )),
+                        margin: const EdgeInsets.only(
+                            top: 15.0, bottom: 25.0, left: 10.0, right: 10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                Padding(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    _fnotes[index].title,
+                                    style: TextStyle(
+                                        fontSize: 21,
+                                        color: titleColor,
+                                        fontWeight: FontWeight.w600,
+                                        letterSpacing: 1),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 10, top: 3),
-                                    child: Icon(
-                                      Icons.chevron_right,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                child: Text(
-                                  _fnotes[index].text,
-                                  style: TextStyle(
-                                      color: Color.fromRGBO(238, 239, 240, 1),
-                                      fontStyle: FontStyle.italic,
-                                      fontSize: 11),
                                 ),
-                                padding: EdgeInsets.only(left: 10, bottom: 2),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 10, top: 3),
+                                  child: Icon(
+                                    Icons.chevron_right,
+                                    color: titleColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              child: Text(
+                                _fnotes[index].text,
+                                style: TextStyle(
+                                    color: titleColor,
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: 11),
                               ),
-                            ],
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                          ),
+                              padding: EdgeInsets.only(left: 10, bottom: 2),
+                            ),
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
                         ),
                       ),
                     );

@@ -9,6 +9,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 import 'dart:async';
 
+// ignore: must_be_immutable
 class RootSecondScreen extends StatefulWidget {
   final String title;
   final String text;
@@ -17,6 +18,7 @@ class RootSecondScreen extends StatefulWidget {
   Color backGroundColor;
   Color tileBackGroundColor;
   int counterFromPreviousPage;
+  Color titleColor;
 
   RootSecondScreen(
       {Key key,
@@ -26,12 +28,14 @@ class RootSecondScreen extends StatefulWidget {
       this.text,
       this.backGroundColor,
       this.tileBackGroundColor,
-      this.counterFromPreviousPage})
+        this.counterFromPreviousPage,
+        this.titleColor})
       : super(key: key);
 
   @override
   _RootSecondScreenState createState() => _RootSecondScreenState(
-      root, backGroundColor, tileBackGroundColor, counterFromPreviousPage);
+      root, backGroundColor, tileBackGroundColor, counterFromPreviousPage,
+      titleColor);
 }
 
 class _RootSecondScreenState extends State<RootSecondScreen> {
@@ -40,11 +44,13 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
   Color backGroundColor;
   Color tileBackGroundColor;
   int counterFromPreviousPage;
+  Color titleColor;
 
   final String root;
 
   _RootSecondScreenState(this.root, this.backGroundColor,
-      this.tileBackGroundColor, this.counterFromPreviousPage);
+      this.tileBackGroundColor, this.counterFromPreviousPage,
+      this.titleColor);
 
 //  Future<List<Note>> fetchNotes() async {
 ////    var url = 'https://raw.githubusercontent.com/Brandz96/Capstone/master/Salish.json';
@@ -93,13 +99,15 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
     super.initState();
   }
 
+  // ignore: missing_return
   Future<bool> _onBackPressed() {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) =>
             new RootDictionaryPage(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -130,7 +138,8 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
                 new HomePageClone(
                     backGroundColor: backGroundColor,
                     tileBackGroundColor: tileBackGroundColor,
-                    counterFromPreviousPage: counterFromPreviousPage),
+                  counterFromPreviousPage: counterFromPreviousPage,
+                  titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -155,7 +164,8 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
                 new RootDictionaryPage(
                     backGroundColor: backGroundColor,
                     tileBackGroundColor: tileBackGroundColor,
-                    counterFromPreviousPage: counterFromPreviousPage),
+                  counterFromPreviousPage: counterFromPreviousPage,
+                  titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -179,7 +189,8 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
                 new StemPage(
                     backGroundColor: backGroundColor,
                     tileBackGroundColor: tileBackGroundColor,
-                    counterFromPreviousPage: counterFromPreviousPage),
+                  counterFromPreviousPage: counterFromPreviousPage,
+                  titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -203,7 +214,8 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
                 new AffixPage(
                     backGroundColor: backGroundColor,
                     tileBackGroundColor: tileBackGroundColor,
-                    counterFromPreviousPage: counterFromPreviousPage),
+                  counterFromPreviousPage: counterFromPreviousPage,
+                  titlecolor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -254,7 +266,9 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
                   pageBuilder: (context, animation, secondaryAnimation) =>
                       new RootDictionaryPage(
                           backGroundColor: backGroundColor,
-                          tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
+                        tileBackGroundColor: tileBackGroundColor,
+                        counterFromPreviousPage: counterFromPreviousPage,
+                        titleColor: titleColor,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),
@@ -274,6 +288,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
             },
             child: Icon(
               Icons.arrow_back,
+              color: titleColor,
             ),
           ),
           title: new Padding(
@@ -281,8 +296,8 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
               'Coeur D\' Alene Mobile Dictionary',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 9,
+                color: titleColor,
+                fontSize: 10,
               ),
             ),
             padding: EdgeInsets.all(0),
@@ -301,7 +316,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
                 title: Text(
                   "Home",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: titleColor,
                   ),
                 ),
                 backgroundColor: backGroundColor),
@@ -313,7 +328,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
               title: Text(
                 'Root',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             ),
@@ -323,7 +338,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
               title: Text(
                 'Stem',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             ),
@@ -335,7 +350,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
               title: Text(
                 'Affix',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             )
@@ -353,7 +368,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
                 child: Text(
                   'Root: ',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: titleColor,
                   ),
                 ),
               ),
@@ -362,7 +377,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
                 child: Text(
                   root,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: titleColor,
                     fontSize: 35,
                   ),
                 ),
@@ -392,7 +407,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
                               _fnotes[index].title,
                               style: TextStyle(
                                   fontSize: 18,
-                                  color: Colors.white,
+                                  color: titleColor,
                                   fontWeight: FontWeight.w600),
                             ),
                             padding: EdgeInsets.only(left: 10),
@@ -401,7 +416,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
                             child: Text(
                               _fnotes[index].text,
                               style: TextStyle(
-                                  color: Color.fromRGBO(238, 239, 240, 1),
+                                  color: titleColor,
                                   fontStyle: FontStyle.italic,
                                   fontSize: 12),
                             ),

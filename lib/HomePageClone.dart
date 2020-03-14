@@ -6,20 +6,27 @@ import 'StemPage.dart';
 import 'AudioPage.dart';
 import 'AffixPage.dart';
 import 'FeedBackPage.dart';
-import 'main.dart';
 
+
+// ignore: must_be_immutable
 class HomePageClone extends StatefulWidget {
-  HomePageClone({Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage}) : super(key: key);
+  HomePageClone(
+      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage
+        , this.titleColor}) : super(key: key);
   Color backGroundColor;
   Color tileBackGroundColor;
   int counterFromPreviousPage;
+  Color titleColor;
 
 
 
   final String title;
 
   @override
-  _HomePageClone createState() => _HomePageClone(backGroundColor, tileBackGroundColor, counterFromPreviousPage);
+  _HomePageClone createState() =>
+      _HomePageClone(
+          backGroundColor, tileBackGroundColor, counterFromPreviousPage,
+          titleColor);
 }
 
 class _HomePageClone extends State<HomePageClone> {
@@ -27,13 +34,16 @@ class _HomePageClone extends State<HomePageClone> {
   Color tileBackGroundColor;
   int counter = 0;
   int counterFromPreviousPage;
-  Color homeBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
-  Color buttonColors = Color.fromRGBO(170, 184, 194, 1);//grey
+  Color homeBackGroundColor = Color.fromRGBO(220, 236, 247, 1); //blue
+  Color buttonColors = Colors.white; //grey
   Color iconColor;
   Color rootDictionaryBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
-  Color titleColor = Colors.white;
+  Color homeTitleColor = Colors.white30;
+  Color titleColor;
 
-  _HomePageClone(this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
+  _HomePageClone(this.backGroundColor, this.tileBackGroundColor,
+      this.counterFromPreviousPage,
+      this.titleColor);
 
 
 
@@ -83,139 +93,152 @@ class _HomePageClone extends State<HomePageClone> {
                 children: <Widget>[
                   RaisedButton(
                       color: tileBackGroundColor,
-                      elevation: 10,
+                      elevation: 3,
                       onPressed: () {
                         HomePageToRootDictionaryPageTransition(context);
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
+                          borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50)),
                           ),
                           child: Container(
-                            width: 350,
+                            width: 250,
                             height: 20,
                             constraints:
                             const BoxConstraints(minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
-                            child: const Text(
+                            child: Text(
                               "Root Dictionary",
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontFamily: 'Open Sans'),
+                              style: TextStyle(fontFamily: 'Open Sans',
+                                  color: titleColor),
                             ),
                           ))),
                   new Padding(padding: EdgeInsets.only(top: 10)),
                   RaisedButton(
                       color: tileBackGroundColor,
-                      elevation: 10,
+                      elevation: 3,
                       onPressed: () {
                         HomePageToStemPageTransition(context);
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
+                          borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50)),
                           ),
                           child: Container(
-                            width: 350,
+                            width: 250,
                             height: 20,
                             constraints:
                             const BoxConstraints(minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
-                            child: const Text(
+                            child: Text(
                               "Stem List",
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontFamily: 'Open Sans'),
+                              style: TextStyle(fontFamily: 'Open Sans',
+                                  color: titleColor),
                             ),
                           ))),
                   new Padding(padding: EdgeInsets.only(top: 10)),
                   RaisedButton(
                       color: tileBackGroundColor,
-                      elevation: 10,
+                      elevation: 3,
                       onPressed: () {
                         HomePageToAffixPage(context);
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
+                          borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50)),
                           ),
                           child: Container(
-                            width: 350,
+                            width: 250,
                             height: 20,
                             constraints:
                             const BoxConstraints(minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
-                            child: const Text(
+                            child: Text(
                               "Affix List",
+                              style: TextStyle(
+                                fontFamily: 'Open Sans',
+                                color: titleColor,
+                              ),
                               textAlign: TextAlign.center,
                             ),
                           ))),
                   new Padding(padding: EdgeInsets.only(top: 10)),
                   RaisedButton(
                       color: tileBackGroundColor,
-                      elevation: 10,
+                      elevation: 3,
                       onPressed: () {
                         HomePageToAudioPage(context);
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
+                          borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50)),
                           ),
                           child: Container(
-                            width: 350,
+                            width: 250,
                             height: 20,
                             constraints:
                             const BoxConstraints(minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
-                            child: const Text(
-                              "Text Files",
+                            child: Text(
+                              "Text Files", style: TextStyle(
+                              fontFamily: 'Open Sans',
+                              color: titleColor,
+                            ),
                               textAlign: TextAlign.center,
                             ),
                           ))),
                   new Padding(padding: EdgeInsets.only(top: 10)),
                   RaisedButton(
                       color: tileBackGroundColor,
-                      elevation: 10,
+                      elevation: 3,
                       onPressed: () {
                         HomePageToAboutPage(context);
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
+                          borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50)),
                           ),
                           child: Container(
-                            width: 350,
+                            width: 250,
                             height: 20,
                             constraints:
                             const BoxConstraints(minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
-                            child: const Text(
+                            child: Text(
                               "About",
+                              style: TextStyle(
+                                fontFamily: 'Open Sans',
+                                color: titleColor,
+                              ),
                               textAlign: TextAlign.center,
                             ),
                           ))),
                   new Padding(padding: EdgeInsets.only(top: 10)),
                   RaisedButton(
                       color: tileBackGroundColor,
-                      elevation: 10,
+                      elevation: 3,
                       splashColor: Colors.grey,
                       animationDuration: Duration(seconds: 2),
                       onPressed: () {
@@ -223,20 +246,24 @@ class _HomePageClone extends State<HomePageClone> {
                       },
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),side: BorderSide(color: Colors.white, width: 1.0)),
+                          borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(0),
                       child: Ink(
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50)),
                           ),
                           child: Container(
-                            width: 350,
+                            width: 250,
                             height: 20,
                             constraints:
                             const BoxConstraints(minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
-                            child: const Text(
+                            child: Text(
                               "Provide Feedback",
+                              style: TextStyle(
+                                fontFamily: 'Open Sans',
+                                color: titleColor,
+                              ),
                               textAlign: TextAlign.center,
                             ),
                           ))),
@@ -252,18 +279,18 @@ class _HomePageClone extends State<HomePageClone> {
                             setState(() {
                               if (counterFromPreviousPage % 2 == 0 || counterFromPreviousPage == 0) {
                                 homeBackGroundColor =
-                                    Color.fromRGBO(29, 161, 242, 1);
+                                    Color.fromRGBO(220, 236, 247, 1);
 
                                 setColor(counterFromPreviousPage);
-                                buttonColors = Color.fromRGBO(170, 184, 194, 1);
-                                titleColor = Colors.white;
+                                buttonColors = Colors.white;
+                                homeTitleColor = Color.fromRGBO(79, 87, 95, 1);
                               } else {
                                 homeBackGroundColor =
                                     Color.fromRGBO(34, 28, 27, 1);
 
                                 setColor(counterFromPreviousPage);
-                                buttonColors = Color.fromRGBO(187, 134, 252, 1);
-                                titleColor = Colors.white;
+                                buttonColors = Color.fromRGBO(50, 66, 127, 1);
+                                homeTitleColor = Colors.white70;
                               }
                             });
 
@@ -271,7 +298,7 @@ class _HomePageClone extends State<HomePageClone> {
                           },
                     child: new Icon(
                     Icons.brightness_2,
-                    color: iconColor,
+                        color: titleColor,
                     size: 20.0
                   ),
               shape: new CircleBorder(),
@@ -285,7 +312,7 @@ class _HomePageClone extends State<HomePageClone> {
                       'Purdue Fort Wayne Capstone Project',
                       style: TextStyle(
                         fontSize: 9,
-                        color: Colors.white,
+                        color: titleColor,
                       ),
                     ),
                   )
@@ -308,19 +335,21 @@ class _HomePageClone extends State<HomePageClone> {
 
   void setColor(int n) {
     if (n % 2 == 0) {
-      buttonColors = Color.fromRGBO(170, 184, 194, 1);//grey
+      buttonColors = Colors.white; //grey
       iconColor = Colors.black;
-      rootDictionaryBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
-      titleColor = Colors.white;
+      rootDictionaryBackGroundColor = Color.fromRGBO(220, 236, 247, 1); //blue
+      homeTitleColor = Color.fromRGBO(79, 87, 95, 1);
       backGroundColor = homeBackGroundColor;
       tileBackGroundColor = buttonColors;
+      titleColor = homeTitleColor;
     } else {
-      buttonColors = Color.fromRGBO(187, 134, 252, 1);//purple
+      buttonColors = Color.fromRGBO(50, 66, 127, 1); //purple
       iconColor = Colors.white;
       rootDictionaryBackGroundColor = Color.fromRGBO(34, 28, 27, 1);//black
-      titleColor = Colors.white;
+      homeTitleColor = Colors.white70;
       backGroundColor = homeBackGroundColor;
       tileBackGroundColor = buttonColors;
+      titleColor = homeTitleColor;
     }
   }
 
@@ -329,18 +358,15 @@ class _HomePageClone extends State<HomePageClone> {
   }
 
 
-
-
-
-
-
-
+  // ignore: non_constant_identifier_names
   void HomePageToRootDictionaryPageTransition(context) {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new RootDictionaryPage(
             backGroundColor: backGroundColor,
-            tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
+          tileBackGroundColor: tileBackGroundColor,
+          counterFromPreviousPage: counterFromPreviousPage,
+          titleColor: titleColor,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -359,12 +385,15 @@ class _HomePageClone extends State<HomePageClone> {
     ));
   }
 
+  // ignore: non_constant_identifier_names
   void HomePageToStemPageTransition(context){
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new StemPage(
             backGroundColor: backGroundColor,
-            tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
+            tileBackGroundColor: tileBackGroundColor,
+            counterFromPreviousPage: counterFromPreviousPage,
+            titleColor: titleColor),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -383,12 +412,15 @@ class _HomePageClone extends State<HomePageClone> {
     ));
   }
 
+  // ignore: non_constant_identifier_names
   void HomePageToAffixPage(context) {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new AffixPage(
             backGroundColor: backGroundColor,
-            tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
+            tileBackGroundColor: tileBackGroundColor,
+            counterFromPreviousPage: counterFromPreviousPage,
+            titlecolor: titleColor),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -407,12 +439,15 @@ class _HomePageClone extends State<HomePageClone> {
     ));
   }
 
+  // ignore: non_constant_identifier_names
   void HomePageToAudioPage(context){
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new AudioPage(
             backGroundColor: backGroundColor,
-            tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
+            tileBackGroundColor: tileBackGroundColor,
+            counterFromPreviousPage: counterFromPreviousPage,
+            titleColor: titleColor),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -431,12 +466,15 @@ class _HomePageClone extends State<HomePageClone> {
     ));
   }
 
+  // ignore: non_constant_identifier_names
   void HomePageToAboutPage(context){
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new AboutPage(
             backGroundColor: backGroundColor,
-            tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
+          tileBackGroundColor: tileBackGroundColor,
+          counterFromPreviousPage: counterFromPreviousPage,
+          titlecolor: titleColor,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -455,12 +493,15 @@ class _HomePageClone extends State<HomePageClone> {
     ));
   }
 
+  // ignore: non_constant_identifier_names
   void HomePageToFeedBackPage(context){
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation,
             secondaryAnimation) => new FeedBackPage(
             backGroundColor: backGroundColor,
-            tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
+            tileBackGroundColor: tileBackGroundColor,
+            counterFromPreviousPage: counterFromPreviousPage,
+            titleColor: titleColor),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),

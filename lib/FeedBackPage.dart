@@ -4,14 +4,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'AffixPage.dart';
 import 'HomePage.dart';
-import 'package:demo_app/HomePageClone.dart';
+
 
 import 'RootDictionaryPage.dart';
 import 'StemPage.dart';
 
+// ignore: must_be_immutable
 class FeedBackPage extends StatefulWidget {
   FeedBackPage(
-      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage})
+      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage,
+        this.titleColor})
       : super(key: key);
 
   static const String routeName = "/FeedBack";
@@ -19,11 +21,14 @@ class FeedBackPage extends StatefulWidget {
 
   final String title;
   Color backGroundColor;
+  Color titleColor;
   Color tileBackGroundColor;
 
   @override
   _FeedBackState createState() =>
-      _FeedBackState(backGroundColor, tileBackGroundColor, counterFromPreviousPage);
+      _FeedBackState(
+          backGroundColor, tileBackGroundColor, counterFromPreviousPage,
+          this.titleColor);
 }
 
 class _FeedBackState extends State<FeedBackPage> {
@@ -32,12 +37,20 @@ class _FeedBackState extends State<FeedBackPage> {
   Color backGroundColor;
   Color tileBackGroundColor;
   int counterFromPreviousPage;
+  Color titleColor;
 
-  _FeedBackState(this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
+  _FeedBackState(this.backGroundColor, this.tileBackGroundColor,
+      this.counterFromPreviousPage,
+      this.titleColor);
 
+  // ignore: missing_return
   Future<bool> _onBackPressed(){
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
+        pageBuilder: (context, animation, secondaryAnimation) =>
+        new HomePageClone(backGroundColor: backGroundColor,
+          tileBackGroundColor: tileBackGroundColor,
+          counterFromPreviousPage: counterFromPreviousPage,
+          titleColor: titleColor,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -83,7 +96,8 @@ class _FeedBackState extends State<FeedBackPage> {
             new HomePageClone(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -108,7 +122,8 @@ class _FeedBackState extends State<FeedBackPage> {
             new RootDictionaryPage(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -132,7 +147,8 @@ class _FeedBackState extends State<FeedBackPage> {
             new StemPage(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -156,7 +172,8 @@ class _FeedBackState extends State<FeedBackPage> {
             new AffixPage(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titlecolor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -190,7 +207,10 @@ class _FeedBackState extends State<FeedBackPage> {
             onTap: () {
               Navigator.of(context).pushReplacement(new PageRouteBuilder(
                   pageBuilder: (context, animation, secondaryAnimation) =>
-                  new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor,counterFromPreviousPage: counterFromPreviousPage,),
+                  new HomePageClone(backGroundColor: backGroundColor,
+                    tileBackGroundColor: tileBackGroundColor,
+                    counterFromPreviousPage: counterFromPreviousPage,
+                    titleColor: titleColor,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),
@@ -210,6 +230,7 @@ class _FeedBackState extends State<FeedBackPage> {
             },
             child: Icon(
               Icons.arrow_back,
+              color: titleColor,
             ),
           ),
           title: new Padding(
@@ -217,7 +238,7 @@ class _FeedBackState extends State<FeedBackPage> {
               'Coeur D\' Alene Mobile Dictionary',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.white,
+                color: titleColor,
                 fontSize: 9,
               ),
             ),
@@ -237,7 +258,7 @@ class _FeedBackState extends State<FeedBackPage> {
                 title: Text(
                   "Home",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: titleColor,
                   ),
                 ),
                 backgroundColor: backGroundColor),
@@ -249,7 +270,7 @@ class _FeedBackState extends State<FeedBackPage> {
               title: Text(
                 'Root',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             ),
@@ -258,7 +279,7 @@ class _FeedBackState extends State<FeedBackPage> {
               title: Text(
                 'Stem',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             ),
@@ -270,7 +291,7 @@ class _FeedBackState extends State<FeedBackPage> {
               title: Text(
                 'Affix',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             )
@@ -290,7 +311,7 @@ class _FeedBackState extends State<FeedBackPage> {
                   "Give Us Feedback!",
                   style: TextStyle(
                     fontSize: 19,
-                    color: Colors.white,
+                    color: titleColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -299,7 +320,7 @@ class _FeedBackState extends State<FeedBackPage> {
                   child: Text(
                     'We would love to hear feedback from our users, we appreciate suggestions, corrections or any comments you have for us!',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: titleColor,
                       fontSize: 14,
                     ),
                   ),
@@ -313,15 +334,16 @@ class _FeedBackState extends State<FeedBackPage> {
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.all(10.0),
                       hintText: 'Enter your Feedback Here',
-                      fillColor: Colors.grey,
-                      hintStyle: TextStyle(color: Colors.white, fontSize: 15),
+                      fillColor: titleColor,
+                      hintStyle: TextStyle(color: titleColor, fontSize: 15),
                       enabledBorder: new UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
+                        borderSide: BorderSide(color: titleColor),
                       ),
                       focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
+                        borderSide: BorderSide(color: titleColor),
                       ),
                     ),
+                    // ignore: non_constant_identifier_names
                     onChanged: (String) {}),
 //            RaisedButton(
 ////              child: Text("Submit"),
@@ -365,9 +387,12 @@ class _FeedBackState extends State<FeedBackPage> {
                           constraints:
                               const BoxConstraints(minWidth: 40, minHeight: 40),
                           alignment: Alignment.center,
-                          child: const Text(
+                          child: Text(
                             "Submit",
                             textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: titleColor,
+                            ),
                           ),
                         ))),
               ],

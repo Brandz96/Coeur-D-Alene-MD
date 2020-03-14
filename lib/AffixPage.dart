@@ -7,36 +7,43 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'RootDictionaryPage.dart';
 import 'StemPage.dart';
 import 'TilesNotes.dart';
-import 'TempDelayClass.dart';
 import 'HomePage.dart';
-import 'package:demo_app/HomePageClone.dart';
 
+
+// ignore: must_be_immutable
 class AffixPage extends StatefulWidget {
   AffixPage(
-      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage})
+      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage,
+        this.titlecolor})
       : super(key: key);
 
   static const String routeName = "/Affix";
   Color backGroundColor;
   Color tileBackGroundColor;
   int counterFromPreviousPage;
+  Color titlecolor;
 
   final String title;
 
   @override
   _AffixPageState createState() =>
-      new _AffixPageState(backGroundColor, tileBackGroundColor, counterFromPreviousPage);
+      new _AffixPageState(
+          backGroundColor, tileBackGroundColor, counterFromPreviousPage,
+          titlecolor);
 }
 
 class _AffixPageState extends State<AffixPage> {
   List<AffixNote> _notes = List<AffixNote>();
   List<AffixNote> _fnotes = List<AffixNote>();
-  final _delay = tempDelay(mill: 200);
+
+  //final _delay = tempDelay(mill: 200);
   Color backGroundColor;
   Color tileBackGroundColor;
   int counterFromPreviousPage;
+  Color titlecolor;
 
-  _AffixPageState(this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
+  _AffixPageState(this.backGroundColor, this.tileBackGroundColor,
+      this.counterFromPreviousPage, this.titlecolor);
 
 //  Future<List<AffixNote>> fetchNotes() async {
 //    var url = 'https://raw.githubusercontent.com/Brandz96/Capstone/master/affix.json';
@@ -82,9 +89,14 @@ class _AffixPageState extends State<AffixPage> {
     super.initState();
   }
 
+  // ignore: missing_return
   Future<bool> _onBackPressed(){
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
+        pageBuilder: (context, animation, secondaryAnimation) =>
+        new HomePageClone(backGroundColor: backGroundColor,
+          tileBackGroundColor: tileBackGroundColor,
+          counterFromPreviousPage: counterFromPreviousPage,
+          titleColor: titlecolor,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -116,7 +128,8 @@ class _AffixPageState extends State<AffixPage> {
             new HomePageClone(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titlecolor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -141,7 +154,8 @@ class _AffixPageState extends State<AffixPage> {
             new RootDictionaryPage(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titlecolor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -165,7 +179,8 @@ class _AffixPageState extends State<AffixPage> {
             new StemPage(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titlecolor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -189,7 +204,8 @@ class _AffixPageState extends State<AffixPage> {
             new AffixPage(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+                counterFromPreviousPage: counterFromPreviousPage,
+                titlecolor: titlecolor),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -234,7 +250,11 @@ class _AffixPageState extends State<AffixPage> {
             // Navigator.push(context, MaterialPageRoute(builder: (context) => Home())),
             onTap: () {
               Navigator.of(context).pushReplacement(new PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) => new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                  new HomePageClone(backGroundColor: backGroundColor,
+                    tileBackGroundColor: tileBackGroundColor,
+                    counterFromPreviousPage: counterFromPreviousPage,
+                    titleColor: titlecolor,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),
@@ -256,6 +276,7 @@ class _AffixPageState extends State<AffixPage> {
             },
             child: Icon(
               Icons.arrow_back,
+              color: titlecolor,
             ),
           ),
           title: new Padding(
@@ -263,8 +284,8 @@ class _AffixPageState extends State<AffixPage> {
               'Coeur D\' Alene Mobile Dictionary',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 9,
+                color: titlecolor,
+                fontSize: 10,
               ),
             ),
             padding: EdgeInsets.all(0),
@@ -283,7 +304,7 @@ class _AffixPageState extends State<AffixPage> {
                 title: Text(
                   "Home",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: titlecolor,
                   ),
                 ),
                 backgroundColor: backGroundColor),
@@ -295,7 +316,7 @@ class _AffixPageState extends State<AffixPage> {
               title: Text(
                 'Root',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titlecolor,
                 ),
               ),
             ),
@@ -306,7 +327,7 @@ class _AffixPageState extends State<AffixPage> {
               title: Text(
                 'Stem',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titlecolor,
                 ),
               ),
             ),
@@ -318,7 +339,7 @@ class _AffixPageState extends State<AffixPage> {
               title: Text(
                 'Affix',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titlecolor,
                 ),
               ),
             )
@@ -337,7 +358,7 @@ class _AffixPageState extends State<AffixPage> {
                 child: Text(
                   "Reichard's Affix List",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: titlecolor,
                     fontSize: 22,
                   ),
                 ),
@@ -348,7 +369,14 @@ class _AffixPageState extends State<AffixPage> {
                     return new GestureDetector(
                       onTap: () {
                         Navigator.of(context).pushReplacement(new PageRouteBuilder(
-                            pageBuilder: (context, animation, secondaryAnimation) => new AffixSecondScreen(affix: _fnotes[index].affix,backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
+                            pageBuilder: (context, animation,
+                                secondaryAnimation) =>
+                            new AffixSecondScreen(
+                              affix: _fnotes[index].affix,
+                              backGroundColor: backGroundColor,
+                              tileBackGroundColor: tileBackGroundColor,
+                              counterFromPreviousPage: counterFromPreviousPage,
+                              titleColor: titlecolor,),
                             maintainState: true,
                             opaque: true,
                             transitionDuration: Duration(milliseconds: 600),
@@ -389,7 +417,7 @@ class _AffixPageState extends State<AffixPage> {
                                     _fnotes[index].affix,
                                     style: TextStyle(
                                       fontSize: 18,
-                                      color: Colors.white,
+                                      color: titlecolor,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -399,7 +427,7 @@ class _AffixPageState extends State<AffixPage> {
                                   padding: EdgeInsets.only(left: 10, top: 3),
                                   child: Icon(
                                     Icons.chevron_right,
-                                    color: Colors.white,
+                                    color: titlecolor,
                                   ),
                                 ),
                               ],

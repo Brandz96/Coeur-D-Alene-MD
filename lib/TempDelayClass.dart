@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
+// ignore: camel_case_types
 class tempDelay {
   final int mill;
 

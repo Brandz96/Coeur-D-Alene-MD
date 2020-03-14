@@ -6,14 +6,14 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:url_launcher/url_launcher.dart';
 import 'AffixPage.dart';
 import 'HomePage.dart';
-import 'package:demo_app/HomePageClone.dart';
-
 import 'RootDictionaryPage.dart';
 import 'StemPage.dart';
 
+// ignore: must_be_immutable
 class AudioPage extends StatefulWidget {
   AudioPage(
-      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage})
+      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage,
+        this.titleColor})
       : super(key: key);
 
   static const String routeName = "/Audio";
@@ -21,11 +21,14 @@ class AudioPage extends StatefulWidget {
   final String title;
   Color backGroundColor;
   Color tileBackGroundColor;
+  Color titleColor;
   int counterFromPreviousPage;
 
   @override
   _AudioPageState createState() =>
-      _AudioPageState(backGroundColor, tileBackGroundColor, counterFromPreviousPage);
+      _AudioPageState(
+          backGroundColor, tileBackGroundColor, counterFromPreviousPage,
+          titleColor);
 }
 
 class _AudioPageState extends State<AudioPage> {
@@ -34,7 +37,7 @@ class _AudioPageState extends State<AudioPage> {
   Color backGroundColor;
   Color tileBackGroundColor;
   int counterFromPreviousPage;
-
+  Color titleColor;
 //  Future<List<Link>> fetchNotes() async {
 //    var url = 'https://raw.githubusercontent.com/Brandz96/Capstone/master/Audio.json';
 //    var response = await http.get(url);
@@ -52,7 +55,9 @@ class _AudioPageState extends State<AudioPage> {
 //    return notes;
 //  }
 
-  _AudioPageState(this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage);
+  _AudioPageState(this.backGroundColor, this.tileBackGroundColor,
+      this.counterFromPreviousPage,
+      this.titleColor);
 
   Future<List<Link>> loadJSON() async {
     var notes2 = List<Link>();
@@ -82,9 +87,14 @@ class _AudioPageState extends State<AudioPage> {
     super.initState();
   }
 
+  // ignore: missing_return
   Future<bool> _onBackPressed(){
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage),
+        pageBuilder: (context, animation, secondaryAnimation) =>
+        new HomePageClone(backGroundColor: backGroundColor,
+          tileBackGroundColor: tileBackGroundColor,
+          counterFromPreviousPage: counterFromPreviousPage,
+          titleColor: titleColor,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -115,7 +125,8 @@ class _AudioPageState extends State<AudioPage> {
             new HomePageClone(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -140,7 +151,8 @@ class _AudioPageState extends State<AudioPage> {
             new RootDictionaryPage(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -164,7 +176,8 @@ class _AudioPageState extends State<AudioPage> {
             new StemPage(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -188,7 +201,8 @@ class _AudioPageState extends State<AudioPage> {
             new AffixPage(
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
-                counterFromPreviousPage: counterFromPreviousPage),
+              counterFromPreviousPage: counterFromPreviousPage,
+              titlecolor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -236,7 +250,10 @@ class _AudioPageState extends State<AudioPage> {
             onTap: () {
               Navigator.of(context).pushReplacement(new PageRouteBuilder(
                   pageBuilder: (context, animation, secondaryAnimation) =>
-                  new HomePageClone(backGroundColor: backGroundColor, tileBackGroundColor: tileBackGroundColor, counterFromPreviousPage: counterFromPreviousPage,),
+                  new HomePageClone(backGroundColor: backGroundColor,
+                    tileBackGroundColor: tileBackGroundColor,
+                    counterFromPreviousPage: counterFromPreviousPage,
+                    titleColor: titleColor,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),
@@ -266,8 +283,8 @@ class _AudioPageState extends State<AudioPage> {
               'Coeur D\' Alene Mobile Dictionary',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 9,
+                color: titleColor,
+                fontSize: 10,
               ),
             ),
             padding: EdgeInsets.all(0),
@@ -286,7 +303,7 @@ class _AudioPageState extends State<AudioPage> {
                 title: Text(
                   "Home",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: titleColor,
                   ),
                 ),
                 backgroundColor: backGroundColor),
@@ -298,7 +315,7 @@ class _AudioPageState extends State<AudioPage> {
               title: Text(
                 'Root',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             ),
@@ -310,7 +327,7 @@ class _AudioPageState extends State<AudioPage> {
               title: Text(
                 'Stem',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             ),
@@ -322,7 +339,7 @@ class _AudioPageState extends State<AudioPage> {
               title: Text(
                 'Affix',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             )
@@ -340,7 +357,7 @@ class _AudioPageState extends State<AudioPage> {
                 padding: EdgeInsets.only(top: 20, bottom: 20),
                 child: Text(
                   'Text Files',
-                  style: TextStyle(color: Colors.white, fontSize: 26),
+                  style: TextStyle(color: titleColor, fontSize: 26),
                 ),
               ),
               Expanded(
@@ -371,7 +388,7 @@ class _AudioPageState extends State<AudioPage> {
                                     _fnotes[index].title,
                                     style: TextStyle(
                                         fontSize: 11,
-                                        color: Colors.white,
+                                        color: titleColor,
                                         fontWeight: FontWeight.w600),
                                   ),
                                   padding: EdgeInsets.only(left: 10),
@@ -380,7 +397,7 @@ class _AudioPageState extends State<AudioPage> {
                                   padding: EdgeInsets.only(left: 6, top: 1),
                                   child: Icon(
                                     Icons.chevron_right,
-                                    color: Colors.white,
+                                    color: titleColor,
                                   ),
                                 ),
                               ],
