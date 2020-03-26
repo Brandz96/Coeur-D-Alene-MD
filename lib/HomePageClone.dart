@@ -1,32 +1,33 @@
 import 'package:demo_app/HomePage.dart';
 import 'package:flutter/material.dart';
-import 'RootDictionaryPage.dart';
-import 'AboutPage.dart';
-import 'StemPage.dart';
-import 'AudioPage.dart';
-import 'AffixPage.dart';
-import 'FeedBackPage.dart';
 
+import 'AboutPage.dart';
+import 'AffixPage.dart';
+import 'AudioPage.dart';
+import 'FeedBackPage.dart';
+import 'RootDictionaryPage.dart';
+import 'StemPage.dart';
 
 // ignore: must_be_immutable
 class HomePageClone extends StatefulWidget {
-  HomePageClone(
-      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage
-        , this.titleColor}) : super(key: key);
+  HomePageClone({Key key,
+    this.title,
+    this.backGroundColor,
+    this.tileBackGroundColor,
+    this.counterFromPreviousPage,
+    this.titleColor})
+      : super(key: key);
   Color backGroundColor;
   Color tileBackGroundColor;
   int counterFromPreviousPage;
   Color titleColor;
 
-
-
   final String title;
 
   @override
   _HomePageClone createState() =>
-      _HomePageClone(
-          backGroundColor, tileBackGroundColor, counterFromPreviousPage,
-          titleColor);
+      _HomePageClone(backGroundColor,
+          tileBackGroundColor, counterFromPreviousPage, titleColor);
 }
 
 class _HomePageClone extends State<HomePageClone> {
@@ -34,23 +35,18 @@ class _HomePageClone extends State<HomePageClone> {
   Color tileBackGroundColor;
   int counter = 0;
   int counterFromPreviousPage;
-  Color homeBackGroundColor = Color.fromRGBO(220, 236, 247, 1); //blue
+  Color homeBackGroundColor = Color.fromRGBO(192, 192, 192, 1); //blue
   Color buttonColors = Colors.white; //grey
   Color iconColor;
-  Color rootDictionaryBackGroundColor = Color.fromRGBO(29, 161, 242, 1);//blue
+  Color rootDictionaryBackGroundColor = Color.fromRGBO(29, 161, 242, 1); //blue
   Color homeTitleColor = Colors.white30;
   Color titleColor;
 
   _HomePageClone(this.backGroundColor, this.tileBackGroundColor,
-      this.counterFromPreviousPage,
-      this.titleColor);
-
-
+      this.counterFromPreviousPage, this.titleColor);
 
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       backgroundColor: backGroundColor,
       body: CustomPaint(
@@ -59,33 +55,33 @@ class _HomePageClone extends State<HomePageClone> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-                  padding: const EdgeInsets.all(32.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        width: 300.0,
-                        margin: EdgeInsets.only(top: 70),
-                        child: Text(
-                          'Coeur D\' Alene',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 28.0,
-                              color: titleColor,
-                              fontFamily: "Open Sans"),
-                        ),
-                      ),
-                      SizedBox(height: 2.0),
-                      Text(
-                        'Mobile Dictionary',
+                padding: const EdgeInsets.all(32.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      width: 300.0,
+                      margin: EdgeInsets.only(top: 50),
+                      child: Text(
+                        'Coeur D\' Alene',
                         style: TextStyle(
-                          color: titleColor,
-                          fontStyle: FontStyle.italic,
-                        ),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 28.0,
+                            color: titleColor,
+                            fontFamily: "Open Sans"),
                       ),
-                      SizedBox(height: 12.0),
-                    ],
-                  )),
+                    ),
+                    SizedBox(height: 2.0),
+                    Text(
+                      'Mobile Dictionary',
+                      style: TextStyle(
+                        color: titleColor,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    SizedBox(height: 12.0),
+                  ],
+                )),
             new Center(
               child: new Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -108,14 +104,14 @@ class _HomePageClone extends State<HomePageClone> {
                           child: Container(
                             width: 250,
                             height: 20,
-                            constraints:
-                            const BoxConstraints(minWidth: 40, minHeight: 40),
+                            constraints: const BoxConstraints(
+                                minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
                             child: Text(
                               "Root Dictionary",
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontFamily: 'Open Sans',
-                                  color: titleColor),
+                              style: TextStyle(
+                                  fontFamily: 'Open Sans', color: titleColor),
                             ),
                           ))),
                   new Padding(padding: EdgeInsets.only(top: 10)),
@@ -136,14 +132,14 @@ class _HomePageClone extends State<HomePageClone> {
                           child: Container(
                             width: 250,
                             height: 20,
-                            constraints:
-                            const BoxConstraints(minWidth: 40, minHeight: 40),
+                            constraints: const BoxConstraints(
+                                minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
                             child: Text(
                               "Stem List",
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontFamily: 'Open Sans',
-                                  color: titleColor),
+                              style: TextStyle(
+                                  fontFamily: 'Open Sans', color: titleColor),
                             ),
                           ))),
                   new Padding(padding: EdgeInsets.only(top: 10)),
@@ -164,8 +160,8 @@ class _HomePageClone extends State<HomePageClone> {
                           child: Container(
                             width: 250,
                             height: 20,
-                            constraints:
-                            const BoxConstraints(minWidth: 40, minHeight: 40),
+                            constraints: const BoxConstraints(
+                                minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
                             child: Text(
                               "Affix List",
@@ -194,14 +190,15 @@ class _HomePageClone extends State<HomePageClone> {
                           child: Container(
                             width: 250,
                             height: 20,
-                            constraints:
-                            const BoxConstraints(minWidth: 40, minHeight: 40),
+                            constraints: const BoxConstraints(
+                                minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
                             child: Text(
-                              "Text Files", style: TextStyle(
-                              fontFamily: 'Open Sans',
-                              color: titleColor,
-                            ),
+                              "Text Files",
+                              style: TextStyle(
+                                fontFamily: 'Open Sans',
+                                color: titleColor,
+                              ),
                               textAlign: TextAlign.center,
                             ),
                           ))),
@@ -223,8 +220,8 @@ class _HomePageClone extends State<HomePageClone> {
                           child: Container(
                             width: 250,
                             height: 20,
-                            constraints:
-                            const BoxConstraints(minWidth: 40, minHeight: 40),
+                            constraints: const BoxConstraints(
+                                minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
                             child: Text(
                               "About",
@@ -255,8 +252,8 @@ class _HomePageClone extends State<HomePageClone> {
                           child: Container(
                             width: 250,
                             height: 20,
-                            constraints:
-                            const BoxConstraints(minWidth: 40, minHeight: 40),
+                            constraints: const BoxConstraints(
+                                minWidth: 40, minHeight: 40),
                             alignment: Alignment.center,
                             child: Text(
                               "Provide Feedback",
@@ -268,54 +265,41 @@ class _HomePageClone extends State<HomePageClone> {
                             ),
                           ))),
                   Padding(
-                      padding: EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 15),
 //                      child: IconButton(
 //                          icon: Icon(Icons.brightness_2),
 //                          color: iconColor,
 //                          iconSize: 20,
-                      child: new RawMaterialButton(
-                          onPressed: () {
-                            _incrementCounter();
-                            setState(() {
-                              if (counterFromPreviousPage % 2 == 0 || counterFromPreviousPage == 0) {
-                                homeBackGroundColor =
-                                    Color.fromRGBO(220, 236, 247, 1);
+                    child: new RawMaterialButton(
+                      onPressed: () {
+                        _incrementCounter();
+                        setState(() {
+                          if (counterFromPreviousPage % 2 == 0 ||
+                              counterFromPreviousPage == 0) {
+                            homeBackGroundColor =
+                                Color.fromRGBO(192, 192, 192, 1);
 
-                                setColor(counterFromPreviousPage);
-                                buttonColors = Colors.white;
-                                homeTitleColor = Color.fromRGBO(79, 87, 95, 1);
-                              } else {
-                                homeBackGroundColor =
-                                    Color.fromRGBO(34, 28, 27, 1);
+                            setColor(counterFromPreviousPage);
+                            buttonColors = Colors.white;
+                            homeTitleColor = Color.fromRGBO(79, 87, 95, 1);
+                          } else {
+                            homeBackGroundColor = Color.fromRGBO(34, 28, 27, 1);
 
-                                setColor(counterFromPreviousPage);
-                                buttonColors = Color.fromRGBO(50, 66, 127, 1);
-                                homeTitleColor = Colors.white70;
-                              }
-                            });
+                            setColor(counterFromPreviousPage);
+                            buttonColors = Color.fromRGBO(50, 66, 127, 1);
+                            homeTitleColor = Colors.white70;
+                          }
+                        });
 
-                            print(counterFromPreviousPage);
-                          },
-                    child: new Icon(
-                    Icons.brightness_2,
-                        color: titleColor,
-                    size: 20.0
-                  ),
-              shape: new CircleBorder(),
-              fillColor: backGroundColor,
-              padding: const EdgeInsets.all(15.0),
-            ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Text(
-                      'Purdue Fort Wayne Capstone Project',
-                      style: TextStyle(
-                        fontSize: 9,
-                        color: titleColor,
-                      ),
+                        print(counterFromPreviousPage);
+                      },
+                      child: new Icon(Icons.brightness_2,
+                          color: titleColor, size: 20.0),
+                      shape: new CircleBorder(),
+                      fillColor: backGroundColor,
+                      padding: const EdgeInsets.all(15.0),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -331,13 +315,11 @@ class _HomePageClone extends State<HomePageClone> {
     });
   }
 
-
-
   void setColor(int n) {
     if (n % 2 == 0) {
       buttonColors = Colors.white; //grey
       iconColor = Colors.black;
-      rootDictionaryBackGroundColor = Color.fromRGBO(220, 236, 247, 1); //blue
+      rootDictionaryBackGroundColor = Color.fromRGBO(192, 192, 192, 1); //blue
       homeTitleColor = Color.fromRGBO(79, 87, 95, 1);
       backGroundColor = homeBackGroundColor;
       tileBackGroundColor = buttonColors;
@@ -345,7 +327,7 @@ class _HomePageClone extends State<HomePageClone> {
     } else {
       buttonColors = Color.fromRGBO(50, 66, 127, 1); //purple
       iconColor = Colors.white;
-      rootDictionaryBackGroundColor = Color.fromRGBO(34, 28, 27, 1);//black
+      rootDictionaryBackGroundColor = Color.fromRGBO(34, 28, 27, 1); //black
       homeTitleColor = Colors.white70;
       backGroundColor = homeBackGroundColor;
       tileBackGroundColor = buttonColors;
@@ -357,16 +339,16 @@ class _HomePageClone extends State<HomePageClone> {
     return buttonColors;
   }
 
-
   // ignore: non_constant_identifier_names
   void HomePageToRootDictionaryPageTransition(context) {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
-        pageBuilder: (context, animation,
-            secondaryAnimation) => new RootDictionaryPage(
-            backGroundColor: backGroundColor,
+        pageBuilder: (context, animation, secondaryAnimation) =>
+        new RootDictionaryPage(
+          backGroundColor: backGroundColor,
           tileBackGroundColor: tileBackGroundColor,
           counterFromPreviousPage: counterFromPreviousPage,
-          titleColor: titleColor,),
+          titleColor: titleColor,
+        ),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -374,22 +356,21 @@ class _HomePageClone extends State<HomePageClone> {
           var begin = Offset(0.0, 1.0);
           var end = Offset.zero;
           var curve = Curves.ease;
-          var tween = Tween(begin: begin, end: end).chain(
-              CurveTween(curve: curve));
+          var tween =
+          Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
           return SlideTransition(
             position: animation.drive(tween),
             child: child,
           );
-        }
-    ));
+        }));
   }
 
   // ignore: non_constant_identifier_names
-  void HomePageToStemPageTransition(context){
+  void HomePageToStemPageTransition(context) {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
-        pageBuilder: (context, animation,
-            secondaryAnimation) => new StemPage(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+        new StemPage(
             backGroundColor: backGroundColor,
             tileBackGroundColor: tileBackGroundColor,
             counterFromPreviousPage: counterFromPreviousPage,
@@ -401,22 +382,21 @@ class _HomePageClone extends State<HomePageClone> {
           var begin = Offset(0.0, 1.0);
           var end = Offset.zero;
           var curve = Curves.ease;
-          var tween = Tween(begin: begin, end: end).chain(
-              CurveTween(curve: curve));
+          var tween =
+          Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
           return SlideTransition(
             position: animation.drive(tween),
             child: child,
           );
-        }
-    ));
+        }));
   }
 
   // ignore: non_constant_identifier_names
   void HomePageToAffixPage(context) {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
-        pageBuilder: (context, animation,
-            secondaryAnimation) => new AffixPage(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+        new AffixPage(
             backGroundColor: backGroundColor,
             tileBackGroundColor: tileBackGroundColor,
             counterFromPreviousPage: counterFromPreviousPage,
@@ -428,22 +408,21 @@ class _HomePageClone extends State<HomePageClone> {
           var begin = Offset(0.0, 1.0);
           var end = Offset.zero;
           var curve = Curves.ease;
-          var tween = Tween(begin: begin, end: end).chain(
-              CurveTween(curve: curve));
+          var tween =
+          Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
           return SlideTransition(
             position: animation.drive(tween),
             child: child,
           );
-        }
-    ));
+        }));
   }
 
   // ignore: non_constant_identifier_names
-  void HomePageToAudioPage(context){
+  void HomePageToAudioPage(context) {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
-        pageBuilder: (context, animation,
-            secondaryAnimation) => new AudioPage(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+        new AudioPage(
             backGroundColor: backGroundColor,
             tileBackGroundColor: tileBackGroundColor,
             counterFromPreviousPage: counterFromPreviousPage,
@@ -455,26 +434,26 @@ class _HomePageClone extends State<HomePageClone> {
           var begin = Offset(0.0, 1.0);
           var end = Offset.zero;
           var curve = Curves.ease;
-          var tween = Tween(begin: begin, end: end).chain(
-              CurveTween(curve: curve));
+          var tween =
+          Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
           return SlideTransition(
             position: animation.drive(tween),
             child: child,
           );
-        }
-    ));
+        }));
   }
 
   // ignore: non_constant_identifier_names
-  void HomePageToAboutPage(context){
+  void HomePageToAboutPage(context) {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
-        pageBuilder: (context, animation,
-            secondaryAnimation) => new AboutPage(
-            backGroundColor: backGroundColor,
+        pageBuilder: (context, animation, secondaryAnimation) =>
+        new AboutPage(
+          backGroundColor: backGroundColor,
           tileBackGroundColor: tileBackGroundColor,
           counterFromPreviousPage: counterFromPreviousPage,
-          titlecolor: titleColor,),
+          titlecolor: titleColor,
+        ),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -482,22 +461,21 @@ class _HomePageClone extends State<HomePageClone> {
           var begin = Offset(0.0, 1.0);
           var end = Offset.zero;
           var curve = Curves.ease;
-          var tween = Tween(begin: begin, end: end).chain(
-              CurveTween(curve: curve));
+          var tween =
+          Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
           return SlideTransition(
             position: animation.drive(tween),
             child: child,
           );
-        }
-    ));
+        }));
   }
 
   // ignore: non_constant_identifier_names
-  void HomePageToFeedBackPage(context){
+  void HomePageToFeedBackPage(context) {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
-        pageBuilder: (context, animation,
-            secondaryAnimation) => new FeedBackPage(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+        new FeedBackPage(
             backGroundColor: backGroundColor,
             tileBackGroundColor: tileBackGroundColor,
             counterFromPreviousPage: counterFromPreviousPage,
@@ -509,23 +487,13 @@ class _HomePageClone extends State<HomePageClone> {
           var begin = Offset(0.0, 1.0);
           var end = Offset.zero;
           var curve = Curves.ease;
-          var tween = Tween(begin: begin, end: end).chain(
-              CurveTween(curve: curve));
+          var tween =
+          Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
           return SlideTransition(
             position: animation.drive(tween),
             child: child,
           );
-        }
-    ));
+        }));
   }
-
-
-
-
-
-
-
-
-
 }

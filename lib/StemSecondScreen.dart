@@ -1,13 +1,16 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:demo_app/HomePage.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:share/share.dart';
+
 import 'AffixPage.dart';
 import 'HomePageClone.dart';
 import 'RootDictionaryPage.dart';
-import 'TilesNotes.dart';
 import 'StemPage.dart';
+import 'TilesNotes.dart';
 
 // ignore: must_be_immutable
 class StemSecondScreen extends StatefulWidget {
@@ -20,16 +23,15 @@ class StemSecondScreen extends StatefulWidget {
   Color titleColor;
   int counterFromPreviousPage;
 
-  StemSecondScreen(
-      {Key key,
-      this.title,
-      this.stem,
-      this.fnotes,
-      this.text,
-      this.backGroundColor,
-      this.tileBackGroundColor,
-        this.counterFromPreviousPage,
-        this.titleColor})
+  StemSecondScreen({Key key,
+    this.title,
+    this.stem,
+    this.fnotes,
+    this.text,
+    this.backGroundColor,
+    this.tileBackGroundColor,
+    this.counterFromPreviousPage,
+    this.titleColor})
       : super(key: key);
 
   @override
@@ -124,7 +126,9 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
         }
     ));
   }
+
   int _selectedIndex = 0;
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -134,8 +138,8 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new HomePageClone(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titleColor: titleColor,),
             maintainState: true,
@@ -160,8 +164,8 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new RootDictionaryPage(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titleColor: titleColor,),
             maintainState: true,
@@ -185,8 +189,8 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new StemPage(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titleColor: titleColor,),
             maintainState: true,
@@ -210,8 +214,8 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new AffixPage(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titlecolor: titleColor,),
             maintainState: true,
@@ -248,7 +252,6 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
   }
 
 
-
   @override
   Widget build(BuildContext context) {
     print(stem);
@@ -258,31 +261,31 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
         appBar: AppBar(
           centerTitle: true,
           leading: GestureDetector(
-          // Navigator.push(context, MaterialPageRoute(builder: (context) => Home())),
-          onTap: () {
-        Navigator.of(context).pushReplacement(new PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) =>
-            new StemPage(backGroundColor: backGroundColor,
-              tileBackGroundColor: tileBackGroundColor,
-              counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
-            maintainState: true,
-            opaque: true,
-            transitionDuration: Duration(milliseconds: 600),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              var begin = Offset(0.0, 1.0);
-              var end = Offset.zero;
-              var curve = Curves.ease;
-              var tween = Tween(begin: begin, end: end).chain(
-                  CurveTween(curve: curve));
+            // Navigator.push(context, MaterialPageRoute(builder: (context) => Home())),
+            onTap: () {
+              Navigator.of(context).pushReplacement(new PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                  new StemPage(backGroundColor: backGroundColor,
+                    tileBackGroundColor: tileBackGroundColor,
+                    counterFromPreviousPage: counterFromPreviousPage,
+                    titleColor: titleColor,),
+                  maintainState: true,
+                  opaque: true,
+                  transitionDuration: Duration(milliseconds: 600),
+                  transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                    var begin = Offset(0.0, 1.0);
+                    var end = Offset.zero;
+                    var curve = Curves.ease;
+                    var tween = Tween(begin: begin, end: end).chain(
+                        CurveTween(curve: curve));
 
-              return SlideTransition(
-                position: animation.drive(tween),
-                child: child,
-              );
-            }
-        ));
-          },
+                    return SlideTransition(
+                      position: animation.drive(tween),
+                      child: child,
+                    );
+                  }
+              ));
+            },
             child: Icon(
               Icons.arrow_back,
               color: titleColor,
@@ -331,7 +334,7 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
             ),
             BottomNavigationBarItem(
               icon: new Icon(Icons.archive,
-               color:  setIconColor(counterFromPreviousPage),
+                color:  setIconColor(counterFromPreviousPage),
               ),
               title: Text(
                 'Stem',
@@ -384,44 +387,52 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
               Expanded(
                 child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return new Container(
-                      height: 70,
-                      decoration: new BoxDecoration(
-                          color: (index % 2 == 0)
-                              ? tileBackGroundColor
-                              : tileBackGroundColor,
-                          borderRadius: new BorderRadius.all(Radius.circular(20)),
-                          border: Border.all(
-                            width: 1.0,
-                            color: Colors.white,
-                          )),
-                      margin: const EdgeInsets.only(
-                          top: 15.0, bottom: 25.0, left: 10, right: 10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Padding(
-                            child: Text(
-                              _fnotes[index].title,
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: titleColor,
-                                  fontWeight: FontWeight.w600),
+                    return GestureDetector(
+                      onDoubleTap: () {
+                        Share.share('Reichard Stem:' + _fnotes[index].stem +
+                            '\nNicodemus:' + _fnotes[index].title +
+                            '\nEnglish:' + _fnotes[index].text);
+                      },
+                      child: new Container(
+                        height: 70,
+                        decoration: new BoxDecoration(
+                            color: (index % 2 == 0)
+                                ? tileBackGroundColor
+                                : tileBackGroundColor,
+                            borderRadius: new BorderRadius.all(
+                                Radius.circular(20)),
+                            border: Border.all(
+                              width: 1.0,
+                              color: Colors.white,
+                            )),
+                        margin: const EdgeInsets.only(
+                            top: 15.0, bottom: 25.0, left: 10, right: 10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Padding(
+                              child: Text(
+                                _fnotes[index].title,
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: titleColor,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              padding: EdgeInsets.only(left: 10),
                             ),
-                            padding: EdgeInsets.only(left: 10),
-                          ),
-                          Padding(
-                            child: Text(
-                              _fnotes[index].text,
-                              style: TextStyle(
-                                  color: titleColor,
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: 12),
+                            Padding(
+                              child: Text(
+                                _fnotes[index].text,
+                                style: TextStyle(
+                                    color: titleColor,
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: 12),
+                              ),
+                              padding: EdgeInsets.only(left: 10),
                             ),
-                            padding: EdgeInsets.only(left: 10),
-                          ),
-                        ],
-                        mainAxisAlignment: MainAxisAlignment.center,
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.center,
+                        ),
                       ),
                     );
                   },

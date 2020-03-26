@@ -1,19 +1,17 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_app/HomePageClone.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
 import 'AffixPage.dart';
 import 'HomePage.dart';
-
-
 import 'RootDictionaryPage.dart';
 import 'StemPage.dart';
 
 // ignore: must_be_immutable
 class FeedBackPage extends StatefulWidget {
-  FeedBackPage(
-      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage,
-        this.titleColor})
+  FeedBackPage({Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage,
+    this.titleColor})
       : super(key: key);
 
   static const String routeName = "/FeedBack";
@@ -67,8 +65,8 @@ class _FeedBackState extends State<FeedBackPage> {
           );
         }
     ));
-
   }
+
   int _selectedIndex = 0;
 
   Color iconColor;
@@ -84,7 +82,6 @@ class _FeedBackState extends State<FeedBackPage> {
   }
 
 
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -94,8 +91,8 @@ class _FeedBackState extends State<FeedBackPage> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new HomePageClone(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titleColor: titleColor,),
             maintainState: true,
@@ -120,8 +117,8 @@ class _FeedBackState extends State<FeedBackPage> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new RootDictionaryPage(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titleColor: titleColor,),
             maintainState: true,
@@ -145,8 +142,8 @@ class _FeedBackState extends State<FeedBackPage> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new StemPage(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titleColor: titleColor,),
             maintainState: true,
@@ -170,8 +167,8 @@ class _FeedBackState extends State<FeedBackPage> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new AffixPage(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titlecolor: titleColor,),
             maintainState: true,
@@ -357,7 +354,7 @@ class _FeedBackState extends State<FeedBackPage> {
 ////            )
                 RaisedButton(
                     color: tileBackGroundColor,
-                    elevation: 10,
+                    elevation: 3,
                     onPressed: () async {
                       await db.collection("Feedback Storage").add({
                         'User Input': _customController.text,
@@ -375,7 +372,7 @@ class _FeedBackState extends State<FeedBackPage> {
                     },
                     textColor: Colors.white,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)),
+                        borderRadius: BorderRadius.circular(10)),
                     padding: const EdgeInsets.all(0),
                     child: Ink(
                         decoration: const BoxDecoration(
@@ -385,7 +382,7 @@ class _FeedBackState extends State<FeedBackPage> {
                           width: 350,
                           height: 20,
                           constraints:
-                              const BoxConstraints(minWidth: 40, minHeight: 40),
+                          const BoxConstraints(minWidth: 40, minHeight: 40),
                           alignment: Alignment.center,
                           child: Text(
                             "Submit",

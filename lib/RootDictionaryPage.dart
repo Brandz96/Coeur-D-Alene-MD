@@ -1,14 +1,17 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:demo_app/AffixPage.dart';
 import 'package:demo_app/HomePageClone.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
-import 'StemPage.dart';
-import 'TilesNotes.dart';
-import 'TempDelayClass.dart';
-import 'RootSecondScreen.dart';
+import 'package:share/share.dart';
+
 import 'HomePage.dart';
+import 'RootSecondScreen.dart';
+import 'StemPage.dart';
+import 'TempDelayClass.dart';
+import 'TilesNotes.dart';
 
 // ignore: must_be_immutable
 class RootDictionaryPage extends StatefulWidget {
@@ -20,13 +23,12 @@ class RootDictionaryPage extends StatefulWidget {
 
   final String title;
 
-  RootDictionaryPage(
-      {Key key,
-      this.title,
-      this.backGroundColor,
-      this.tileBackGroundColor,
-        this.counterFromPreviousPage,
-        this.titleColor})
+  RootDictionaryPage({Key key,
+    this.title,
+    this.backGroundColor,
+    this.tileBackGroundColor,
+    this.counterFromPreviousPage,
+    this.titleColor})
       : super(key: key);
 
   @override
@@ -109,11 +111,11 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
   Future<bool> _onBackPressed() {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) =>
-            new HomePageClone(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
-              counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+        new HomePageClone(
+          backGroundColor: backGroundColor,
+          tileBackGroundColor: tileBackGroundColor,
+          counterFromPreviousPage: counterFromPreviousPage,
+          titleColor: titleColor,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -122,7 +124,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
           var end = Offset.zero;
           var curve = Curves.ease;
           var tween =
-              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
           return SlideTransition(
             position: animation.drive(tween),
@@ -141,11 +143,11 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
       if (_selectedIndex == 0) {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                new HomePageClone(
-                    backGroundColor: backGroundColor,
-                    tileBackGroundColor: tileBackGroundColor,
-                  counterFromPreviousPage: counterFromPreviousPage,
-                  titleColor: titleColor,),
+            new HomePageClone(
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -155,7 +157,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
               var end = Offset.zero;
               var curve = Curves.ease;
               var tween =
-                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
               return SlideTransition(
                 position: animation.drive(tween),
@@ -167,11 +169,11 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
       if (_selectedIndex == 1) {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                new RootDictionaryPage(
-                    backGroundColor: backGroundColor,
-                    tileBackGroundColor: tileBackGroundColor,
-                  counterFromPreviousPage: counterFromPreviousPage,
-                  titleColor: titleColor,),
+            new RootDictionaryPage(
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -181,7 +183,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
               var end = Offset.zero;
               var curve = Curves.ease;
               var tween =
-                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
               return SlideTransition(
                 position: animation.drive(tween),
@@ -192,11 +194,11 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
       if (_selectedIndex == 2) {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                new StemPage(
-                    backGroundColor: backGroundColor,
-                    tileBackGroundColor: tileBackGroundColor,
-                  counterFromPreviousPage: counterFromPreviousPage,
-                  titleColor: titleColor,),
+            new StemPage(
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -206,7 +208,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
               var end = Offset.zero;
               var curve = Curves.ease;
               var tween =
-                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
               return SlideTransition(
                 position: animation.drive(tween),
@@ -217,11 +219,11 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
       if (_selectedIndex == 3) {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                new AffixPage(
-                    backGroundColor: backGroundColor,
-                    tileBackGroundColor: tileBackGroundColor,
-                  counterFromPreviousPage: counterFromPreviousPage,
-                  titlecolor: titleColor,),
+            new AffixPage(
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
+              counterFromPreviousPage: counterFromPreviousPage,
+              titlecolor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -231,7 +233,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
               var end = Offset.zero;
               var curve = Curves.ease;
               var tween =
-                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
               return SlideTransition(
                 position: animation.drive(tween),
@@ -255,7 +257,6 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
   }
 
 
-
   @override
   Widget build(BuildContext context) {
     print(backGroundColor.toString());
@@ -272,11 +273,11 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
             onTap: () {
               Navigator.of(context).pushReplacement(new PageRouteBuilder(
                   pageBuilder: (context, animation, secondaryAnimation) =>
-                      new HomePageClone(
-                          backGroundColor: backGroundColor,
-                          tileBackGroundColor: tileBackGroundColor,
-                        counterFromPreviousPage: counterFromPreviousPage,
-                        titleColor: titleColor,),
+                  new HomePageClone(
+                    backGroundColor: backGroundColor,
+                    tileBackGroundColor: tileBackGroundColor,
+                    counterFromPreviousPage: counterFromPreviousPage,
+                    titleColor: titleColor,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),
@@ -342,7 +343,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
             ),
             BottomNavigationBarItem(
               icon: new Icon(Icons.archive,
-                  color: setIconColor(counterFromPreviousPage),
+                color: setIconColor(counterFromPreviousPage),
               ),
               title: Text(
                 'Stem',
@@ -373,7 +374,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
           child: Column(
             children: <Widget>[
               TextField(
-                  style: TextStyle(color: tileBackGroundColor),
+                  style: TextStyle(color: titleColor),
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.all(10.0),
                     hintText: 'Search Word',
@@ -392,23 +393,23 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                         if (flag1 == 1) {
                           _fnotes = _notes
                               .where((u) => (u.title
-                                  .toLowerCase()
-                                  .contains(string.toLowerCase())))
+                              .toLowerCase()
+                              .contains(string.toLowerCase())))
                               .toList();
                         } else if (flag1 == 2) {
                           _fnotes = _notes
                               .where((u) => (u.text
-                                  .toLowerCase()
-                                  .contains(string.toLowerCase())))
+                              .toLowerCase()
+                              .contains(string.toLowerCase())))
                               .toList();
                         } else {
                           _fnotes = _notes
                               .where((u) => (u.title
-                                      .toLowerCase()
-                                      .contains(string.toLowerCase()) ||
-                                  u.text
-                                      .toLowerCase()
-                                      .contains(string.toLowerCase())))
+                              .toLowerCase()
+                              .contains(string.toLowerCase()) ||
+                              u.text
+                                  .toLowerCase()
+                                  .contains(string.toLowerCase())))
                               .toList();
                         }
                       });
@@ -451,19 +452,23 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                 child: ListView.builder(
                   itemBuilder: (context, index) {
                     return new GestureDetector(
+                      onDoubleTap: () {
+                        Share.share('Nicodemus: ' + _fnotes[index].title +
+                            '\nEnglish: ' + _fnotes[index].text);
+                      },
                       onTap: () {
                         Navigator.of(context).pushReplacement(
                             new PageRouteBuilder(
                                 pageBuilder: (context, animation,
-                                        secondaryAnimation) =>
-                                    new RootSecondScreen(
-                                      root: _fnotes[index].root,
-                                      backGroundColor: backGroundColor,
-                                      tileBackGroundColor: tileBackGroundColor,
-                                      counterFromPreviousPage:
-                                          counterFromPreviousPage,
-                                      titleColor: titleColor,
-                                    ),
+                                    secondaryAnimation) =>
+                                new RootSecondScreen(
+                                  root: _fnotes[index].root,
+                                  backGroundColor: backGroundColor,
+                                  tileBackGroundColor: tileBackGroundColor,
+                                  counterFromPreviousPage:
+                                  counterFromPreviousPage,
+                                  titleColor: titleColor,
+                                ),
                                 maintainState: true,
                                 opaque: true,
                                 transitionDuration: Duration(milliseconds: 600),

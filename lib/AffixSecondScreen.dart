@@ -1,13 +1,16 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:demo_app/HomePage.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:share/share.dart';
+
+import 'AffixPage.dart';
 import 'HomePageClone.dart';
 import 'RootDictionaryPage.dart';
 import 'StemPage.dart';
 import 'TilesNotes.dart';
-import 'AffixPage.dart';
 
 // ignore: must_be_immutable
 class AffixSecondScreen extends StatefulWidget {
@@ -20,16 +23,15 @@ class AffixSecondScreen extends StatefulWidget {
   int counterFromPreviousPage;
   Color titleColor;
 
-  AffixSecondScreen(
-      {Key key,
-      this.title,
-      this.affix,
-      this.fnotes,
-      this.text,
-      this.backGroundColor,
-      this.tileBackGroundColor,
-        this.counterFromPreviousPage,
-        this.titleColor})
+  AffixSecondScreen({Key key,
+    this.title,
+    this.affix,
+    this.fnotes,
+    this.text,
+    this.backGroundColor,
+    this.tileBackGroundColor,
+    this.counterFromPreviousPage,
+    this.titleColor})
       : super(key: key);
 
   //_AffixSecondScreenState
@@ -120,8 +122,8 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new HomePageClone(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titleColor: titleColor,),
             maintainState: true,
@@ -146,8 +148,8 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new RootDictionaryPage(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titleColor: titleColor,),
             maintainState: true,
@@ -171,8 +173,8 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new StemPage(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titleColor: titleColor,),
             maintainState: true,
@@ -196,8 +198,8 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new AffixPage(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titlecolor: titleColor,),
             maintainState: true,
@@ -221,8 +223,6 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
   }
 
 
-
-
   @override
   Widget build(BuildContext context) {
     print(affix);
@@ -236,11 +236,11 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
             onTap: () {
               Navigator.of(context).pushReplacement(new PageRouteBuilder(
                   pageBuilder: (context, animation, secondaryAnimation) =>
-                      new AffixPage(
-                          backGroundColor: backGroundColor,
-                        tileBackGroundColor: tileBackGroundColor,
-                        counterFromPreviousPage: counterFromPreviousPage,
-                        titlecolor: titleColor,),
+                  new AffixPage(
+                    backGroundColor: backGroundColor,
+                    tileBackGroundColor: tileBackGroundColor,
+                    counterFromPreviousPage: counterFromPreviousPage,
+                    titlecolor: titleColor,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),
@@ -351,45 +351,53 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
               Expanded(
                 child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return new Container(
-                      height: 90,
-                      decoration: new BoxDecoration(
-                        color: (index % 2 == 0)
-                            ? tileBackGroundColor
-                            : tileBackGroundColor,
-                        borderRadius: new BorderRadius.all(Radius.circular(20)),
-                        border: Border.all(
-                          width: 1.0,
-                          color: Colors.white,
+                    return GestureDetector(
+                      onDoubleTap: () {
+                        Share.share('Reichard Affix: ' + _fnotes[index].affix +
+                            '\nNicodemus: ' + _fnotes[index].title +
+                            '\nEnglish: ' + _fnotes[index].text);
+                      },
+                      child: new Container(
+                        height: 90,
+                        decoration: new BoxDecoration(
+                          color: (index % 2 == 0)
+                              ? tileBackGroundColor
+                              : tileBackGroundColor,
+                          borderRadius: new BorderRadius.all(
+                              Radius.circular(20)),
+                          border: Border.all(
+                            width: 1.0,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      margin: const EdgeInsets.only(
-                          top: 15.0, bottom: 25.0, left: 10, right: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Text(
-                              _fnotes[index].title,
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: titleColor,
-                                  fontWeight: FontWeight.w600),
+                        margin: const EdgeInsets.only(
+                            top: 15.0, bottom: 25.0, left: 10, right: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Text(
+                                _fnotes[index].title,
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: titleColor,
+                                    fontWeight: FontWeight.w600),
+                              ),
                             ),
-                          ),
-                          Padding(
-                            child: Text(
-                              _fnotes[index].text,
-                              style: TextStyle(
-                                  color: titleColor,
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: 12),
+                            Padding(
+                              child: Text(
+                                _fnotes[index].text,
+                                style: TextStyle(
+                                    color: titleColor,
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: 12),
+                              ),
+                              padding: EdgeInsets.only(left: 10),
                             ),
-                            padding: EdgeInsets.only(left: 10),
-                          ),
-                        ],
-                        mainAxisAlignment: MainAxisAlignment.center,
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.center,
+                        ),
                       ),
                     );
                   },

@@ -1,20 +1,22 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:demo_app/HomePage.dart';
 import 'package:demo_app/StemSecondScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:share/share.dart';
+
 import 'AffixPage.dart';
 import 'HomePageClone.dart';
 import 'RootDictionaryPage.dart';
-import 'TilesNotes.dart';
 import 'TempDelayClass.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:async';
-import 'dart:convert';
-import 'package:demo_app/HomePage.dart';
+import 'TilesNotes.dart';
 
 // ignore: must_be_immutable
 class StemPage extends StatefulWidget {
-  StemPage(
-      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage,
-        this.titleColor})
+  StemPage({Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage,
+    this.titleColor})
       : super(key: key);
 
   static const String routeName = "/StemPage";
@@ -45,22 +47,6 @@ class _StemPageState extends State<StemPage> {
       this.counterFromPreviousPage,
       this.titleColor);
 
-//  Future<List<StemNote>> fetchNotes() async {
-//    var url = 'https://raw.githubusercontent.com/Brandz96/Capstone/master/StemList.json';
-//    var response = await http.get(url);
-//
-//    var notes = List<StemNote>();
-//
-//
-//    if (response.statusCode == 200) {
-//      var notesJson = json.decode(response.body);
-//      for (var noteJson in notesJson) {
-//
-//        notes.add(StemNote.fromJson(noteJson));
-//      }
-//    }
-//    return notes;
-//  }
 
   Future<List<StemNote>> loadJSON() async {
     var notes2 = List<StemNote>();
@@ -115,6 +101,7 @@ class _StemPageState extends State<StemPage> {
         }
     ));
   }
+
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -126,8 +113,8 @@ class _StemPageState extends State<StemPage> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new HomePageClone(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titleColor: titleColor,),
             maintainState: true,
@@ -152,8 +139,8 @@ class _StemPageState extends State<StemPage> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new RootDictionaryPage(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titleColor: titleColor,),
             maintainState: true,
@@ -177,8 +164,8 @@ class _StemPageState extends State<StemPage> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new StemPage(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titleColor: titleColor,),
             maintainState: true,
@@ -202,8 +189,8 @@ class _StemPageState extends State<StemPage> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new AffixPage(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titlecolor: titleColor,),
             maintainState: true,
@@ -239,10 +226,8 @@ class _StemPageState extends State<StemPage> {
   }
 
 
-
   @override
   Widget build(BuildContext context) {
-
     print(counterFromPreviousPage);
 
     return WillPopScope(
@@ -373,8 +358,8 @@ class _StemPageState extends State<StemPage> {
                       setState(() {
                         _fnotes = _notes
                             .where((u) => (u.stem
-                                .toLowerCase()
-                                .contains(string.toLowerCase())))
+                            .toLowerCase()
+                            .contains(string.toLowerCase())))
                             .toList();
                       });
                       //
@@ -385,7 +370,8 @@ class _StemPageState extends State<StemPage> {
                 child: Text(
                   "Reichard's Stem List",
                   style: TextStyle(
-                      color: titleColor
+                    color: titleColor,
+                    fontSize: 22,
                   ),
                 ),
               ),
@@ -393,6 +379,9 @@ class _StemPageState extends State<StemPage> {
                 child: ListView.builder(
                   itemBuilder: (context, index) {
                     return new GestureDetector(
+                      onDoubleTap: () {
+                        Share.share('Reichard Stem:' + _fnotes[index].stem);
+                      },
                       onTap: () {
                         Navigator.of(context).pushReplacement(new PageRouteBuilder(
                             pageBuilder: (context, animation,

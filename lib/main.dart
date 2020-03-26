@@ -1,15 +1,27 @@
-import 'package:flutter/material.dart';
-import 'FeedBackPage.dart';
-import 'RootDictionaryPage.dart';
-import 'AboutPage.dart';
-import 'StemPage.dart';
-import 'AudioPage.dart';
-import 'AffixPage.dart';
-import 'HomePage.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'dart:async';
 
-void main() async => runApp(MyApp());
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+import 'AboutPage.dart';
+import 'AffixPage.dart';
+import 'AudioPage.dart';
+import 'FeedBackPage.dart';
+import 'HomePage.dart';
+import 'RootDictionaryPage.dart';
+import 'StemPage.dart';
+
+void main() {
+  SystemChrome.setEnabledSystemUIOverlays([]);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarBrightness: Brightness.light,
+  ));
+
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -46,7 +58,7 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(220, 236, 247, 1),
+        backgroundColor: Color.fromRGBO(192, 192, 192, 1),
         body: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -101,7 +113,7 @@ class WelcomePage extends StatelessWidget {
                           "Enter",
                           style: TextStyle(
                             fontFamily: 'Open Sans',
-                            color: Colors.blueGrey,
+                            color: Color.fromRGBO(79, 87, 95, 1),
                             fontStyle: FontStyle.italic,
                           ),
                           textAlign: TextAlign.center,
@@ -152,9 +164,8 @@ class LoadingPageState extends State<LoadingPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      backgroundColor: Color.fromRGBO(220, 236, 247, 1),
+      backgroundColor: Color.fromRGBO(192, 192, 192, 1),
       body: Center(
           child: SpinKitWave(
             color: Color.fromRGBO(79, 87, 95, 1),

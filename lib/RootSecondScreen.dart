@@ -1,13 +1,16 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:demo_app/HomePage.dart';
 import 'package:demo_app/RootDictionaryPage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:share/share.dart';
+
 import 'AffixPage.dart';
 import 'HomePageClone.dart';
 import 'StemPage.dart';
 import 'TilesNotes.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:convert';
-import 'dart:async';
 
 // ignore: must_be_immutable
 class RootSecondScreen extends StatefulWidget {
@@ -20,16 +23,15 @@ class RootSecondScreen extends StatefulWidget {
   int counterFromPreviousPage;
   Color titleColor;
 
-  RootSecondScreen(
-      {Key key,
-      this.title,
-      this.root,
-      this.fnotes,
-      this.text,
-      this.backGroundColor,
-      this.tileBackGroundColor,
-        this.counterFromPreviousPage,
-        this.titleColor})
+  RootSecondScreen({Key key,
+    this.title,
+    this.root,
+    this.fnotes,
+    this.text,
+    this.backGroundColor,
+    this.tileBackGroundColor,
+    this.counterFromPreviousPage,
+    this.titleColor})
       : super(key: key);
 
   @override
@@ -103,11 +105,11 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
   Future<bool> _onBackPressed() {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) =>
-            new RootDictionaryPage(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
-              counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+        new RootDictionaryPage(
+          backGroundColor: backGroundColor,
+          tileBackGroundColor: tileBackGroundColor,
+          counterFromPreviousPage: counterFromPreviousPage,
+          titleColor: titleColor,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -116,7 +118,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
           var end = Offset.zero;
           var curve = Curves.ease;
           var tween =
-              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
           return SlideTransition(
             position: animation.drive(tween),
@@ -135,11 +137,11 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
       if (_selectedIndex == 0) {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                new HomePageClone(
-                    backGroundColor: backGroundColor,
-                    tileBackGroundColor: tileBackGroundColor,
-                  counterFromPreviousPage: counterFromPreviousPage,
-                  titleColor: titleColor,),
+            new HomePageClone(
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -149,7 +151,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
               var end = Offset.zero;
               var curve = Curves.ease;
               var tween =
-                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
               return SlideTransition(
                 position: animation.drive(tween),
@@ -161,11 +163,11 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
       if (_selectedIndex == 1) {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                new RootDictionaryPage(
-                    backGroundColor: backGroundColor,
-                    tileBackGroundColor: tileBackGroundColor,
-                  counterFromPreviousPage: counterFromPreviousPage,
-                  titleColor: titleColor,),
+            new RootDictionaryPage(
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -175,7 +177,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
               var end = Offset.zero;
               var curve = Curves.ease;
               var tween =
-                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
               return SlideTransition(
                 position: animation.drive(tween),
@@ -186,11 +188,11 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
       if (_selectedIndex == 2) {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                new StemPage(
-                    backGroundColor: backGroundColor,
-                    tileBackGroundColor: tileBackGroundColor,
-                  counterFromPreviousPage: counterFromPreviousPage,
-                  titleColor: titleColor,),
+            new StemPage(
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
+              counterFromPreviousPage: counterFromPreviousPage,
+              titleColor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -200,7 +202,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
               var end = Offset.zero;
               var curve = Curves.ease;
               var tween =
-                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
               return SlideTransition(
                 position: animation.drive(tween),
@@ -211,11 +213,11 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
       if (_selectedIndex == 3) {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                new AffixPage(
-                    backGroundColor: backGroundColor,
-                    tileBackGroundColor: tileBackGroundColor,
-                  counterFromPreviousPage: counterFromPreviousPage,
-                  titlecolor: titleColor,),
+            new AffixPage(
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
+              counterFromPreviousPage: counterFromPreviousPage,
+              titlecolor: titleColor,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -225,7 +227,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
               var end = Offset.zero;
               var curve = Curves.ease;
               var tween =
-                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
               return SlideTransition(
                 position: animation.drive(tween),
@@ -235,7 +237,6 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
       }
     });
   }
-
 
 
   Color iconColor;
@@ -264,11 +265,11 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
             onTap: () {
               Navigator.of(context).pushReplacement(new PageRouteBuilder(
                   pageBuilder: (context, animation, secondaryAnimation) =>
-                      new RootDictionaryPage(
-                          backGroundColor: backGroundColor,
-                        tileBackGroundColor: tileBackGroundColor,
-                        counterFromPreviousPage: counterFromPreviousPage,
-                        titleColor: titleColor,),
+                  new RootDictionaryPage(
+                    backGroundColor: backGroundColor,
+                    tileBackGroundColor: tileBackGroundColor,
+                    counterFromPreviousPage: counterFromPreviousPage,
+                    titleColor: titleColor,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),
@@ -334,7 +335,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
             ),
             BottomNavigationBarItem(
               icon: new Icon(Icons.archive,
-                  color: setIconColor(counterFromPreviousPage),),
+                color: setIconColor(counterFromPreviousPage),),
               title: Text(
                 'Stem',
                 style: TextStyle(
@@ -385,46 +386,53 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
               Expanded(
                 child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return new Container(
-                      height: 90,
-                      decoration: new BoxDecoration(
-                          color: (index % 2 == 0)
-                              ? tileBackGroundColor
-                              : tileBackGroundColor,
-                          borderRadius:
-                              new BorderRadius.all(Radius.circular(20)),
-                          border: Border.all(
-                            width: 1.0,
-                            color: Colors.white,
-                          )),
-                      margin: const EdgeInsets.only(
-                          top: 15.0, bottom: 25.0, left: 10, right: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Padding(
-                            child: Text(
-                              _fnotes[index].title,
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: titleColor,
-                                  fontWeight: FontWeight.w600),
+                    return GestureDetector(
+                      onDoubleTap: () {
+                        Share.share('Salish Root:' + _fnotes[index].root +
+                            '\nNicodemus:' + _fnotes[index].title +
+                            '\nEnglish:' + _fnotes[index].text);
+                      },
+                      child: new Container(
+                        height: 90,
+                        decoration: new BoxDecoration(
+                            color: (index % 2 == 0)
+                                ? tileBackGroundColor
+                                : tileBackGroundColor,
+                            borderRadius:
+                            new BorderRadius.all(Radius.circular(20)),
+                            border: Border.all(
+                              width: 1.0,
+                              color: Colors.white,
+                            )),
+                        margin: const EdgeInsets.only(
+                            top: 15.0, bottom: 25.0, left: 10, right: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Padding(
+                              child: Text(
+                                _fnotes[index].title,
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: titleColor,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              padding: EdgeInsets.only(left: 10),
                             ),
-                            padding: EdgeInsets.only(left: 10),
-                          ),
-                          Padding(
-                            child: Text(
-                              _fnotes[index].text,
-                              style: TextStyle(
-                                  color: titleColor,
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: 12),
+                            Padding(
+                              child: Text(
+                                _fnotes[index].text,
+                                style: TextStyle(
+                                    color: titleColor,
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: 12),
+                              ),
+                              padding: EdgeInsets.only(left: 10, bottom: 2),
                             ),
-                            padding: EdgeInsets.only(left: 10, bottom: 2),
-                          ),
-                        ],
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                        ),
                       ),
                     );
                   },
