@@ -20,7 +20,7 @@ class RootDictionaryPage extends StatefulWidget {
   Color tileBackGroundColor;
   int counterFromPreviousPage;
   Color titleColor;
-
+  Color circularFrame;
   final String title;
 
   RootDictionaryPage({Key key,
@@ -28,13 +28,13 @@ class RootDictionaryPage extends StatefulWidget {
     this.backGroundColor,
     this.tileBackGroundColor,
     this.counterFromPreviousPage,
-    this.titleColor})
+    this.titleColor, this.circularFrame})
       : super(key: key);
 
   @override
   _RootDictionaryPageState createState() => _RootDictionaryPageState(
       backGroundColor, tileBackGroundColor, counterFromPreviousPage,
-      titleColor);
+      titleColor, circularFrame);
 }
 
 class _RootDictionaryPageState extends State<RootDictionaryPage> {
@@ -50,9 +50,10 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
   Color tileBackGroundColor;
   int counterFromPreviousPage;
   Color titleColor;
+  Color circularFrame;
 
   _RootDictionaryPageState(this.backGroundColor, this.tileBackGroundColor,
-      this.counterFromPreviousPage, this.titleColor);
+      this.counterFromPreviousPage, this.titleColor, this.circularFrame);
 
   Future<String> loadAssets() async {
     return await rootBundle.loadString(
@@ -115,7 +116,8 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
           backGroundColor: backGroundColor,
           tileBackGroundColor: tileBackGroundColor,
           counterFromPreviousPage: counterFromPreviousPage,
-          titleColor: titleColor,),
+            titleColor: titleColor,
+            circularFrame: circularFrame),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -147,7 +149,8 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+              titleColor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -173,7 +176,8 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+              titleColor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -198,7 +202,8 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+              titleColor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -223,7 +228,8 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titlecolor: titleColor,),
+              titlecolor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -248,10 +254,10 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
 
   Color setIconColor(int n){
     if(n % 2 == 0 || n == 0){
-      iconColor = titleColor;
+      iconColor = tileBackGroundColor;
       return iconColor;
     } else {
-      iconColor = tileBackGroundColor;
+      iconColor = titleColor;
       return iconColor;
     }
   }
@@ -277,7 +283,8 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                     backGroundColor: backGroundColor,
                     tileBackGroundColor: tileBackGroundColor,
                     counterFromPreviousPage: counterFromPreviousPage,
-                    titleColor: titleColor,),
+                    titleColor: titleColor,
+                    circularFrame: circularFrame,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),
@@ -468,6 +475,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                                   counterFromPreviousPage:
                                   counterFromPreviousPage,
                                   titleColor: titleColor,
+                                  circularFrame: circularFrame,
                                 ),
                                 maintainState: true,
                                 opaque: true,

@@ -22,6 +22,7 @@ class RootSecondScreen extends StatefulWidget {
   Color tileBackGroundColor;
   int counterFromPreviousPage;
   Color titleColor;
+  Color circularFrame;
 
   RootSecondScreen({Key key,
     this.title,
@@ -31,13 +32,14 @@ class RootSecondScreen extends StatefulWidget {
     this.backGroundColor,
     this.tileBackGroundColor,
     this.counterFromPreviousPage,
-    this.titleColor})
+    this.titleColor,
+    this.circularFrame})
       : super(key: key);
 
   @override
   _RootSecondScreenState createState() => _RootSecondScreenState(
       root, backGroundColor, tileBackGroundColor, counterFromPreviousPage,
-      titleColor);
+      titleColor, circularFrame);
 }
 
 class _RootSecondScreenState extends State<RootSecondScreen> {
@@ -47,31 +49,13 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
   Color tileBackGroundColor;
   int counterFromPreviousPage;
   Color titleColor;
+  Color circularFrame;
 
   final String root;
 
   _RootSecondScreenState(this.root, this.backGroundColor,
       this.tileBackGroundColor, this.counterFromPreviousPage,
-      this.titleColor);
-
-//  Future<List<Note>> fetchNotes() async {
-////    var url = 'https://raw.githubusercontent.com/Brandz96/Capstone/master/Salish.json';
-////    var response = await http.get(url);
-////
-////    var notes = List<Note>();
-////
-////
-////    if (response.statusCode == 200) {
-////      var notesJson = json.decode(response.body);
-////      for (var noteJson in notesJson) {
-////
-////        if(noteJson['root'] == root) {
-////          notes.add(Note.fromJson(noteJson));
-////        }
-////      }
-////    }
-////    return notes;
-////  }
+      this.titleColor, this.circularFrame);
 
   Future<List<Note>> loadJSON() async {
     var notes2 = List<Note>();
@@ -111,7 +95,8 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
           backGroundColor: backGroundColor,
           tileBackGroundColor: tileBackGroundColor,
           counterFromPreviousPage: counterFromPreviousPage,
-          titleColor: titleColor,),
+          titleColor: titleColor,
+          circularFrame: circularFrame,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -143,7 +128,8 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+                titleColor: titleColor,
+                circularFrame: circularFrame),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -169,7 +155,8 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+                titleColor: titleColor,
+                circularFrame: circularFrame),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -194,7 +181,8 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+                titleColor: titleColor,
+                circularFrame: circularFrame),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -219,7 +207,8 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titlecolor: titleColor,),
+                titlecolor: titleColor,
+                circularFrame: circularFrame),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -271,7 +260,8 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
                     backGroundColor: backGroundColor,
                     tileBackGroundColor: tileBackGroundColor,
                     counterFromPreviousPage: counterFromPreviousPage,
-                    titleColor: titleColor,),
+                      titleColor: titleColor,
+                      circularFrame: circularFrame),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),

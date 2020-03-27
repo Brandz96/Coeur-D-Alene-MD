@@ -11,7 +11,7 @@ import 'StemPage.dart';
 // ignore: must_be_immutable
 class FeedBackPage extends StatefulWidget {
   FeedBackPage({Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage,
-    this.titleColor})
+    this.titleColor, this.circularFrame})
       : super(key: key);
 
   static const String routeName = "/FeedBack";
@@ -21,12 +21,13 @@ class FeedBackPage extends StatefulWidget {
   Color backGroundColor;
   Color titleColor;
   Color tileBackGroundColor;
+  Color circularFrame;
 
   @override
   _FeedBackState createState() =>
       _FeedBackState(
           backGroundColor, tileBackGroundColor, counterFromPreviousPage,
-          this.titleColor);
+          this.titleColor, this.circularFrame);
 }
 
 class _FeedBackState extends State<FeedBackPage> {
@@ -36,10 +37,11 @@ class _FeedBackState extends State<FeedBackPage> {
   Color tileBackGroundColor;
   int counterFromPreviousPage;
   Color titleColor;
+  Color circularFrame;
 
   _FeedBackState(this.backGroundColor, this.tileBackGroundColor,
       this.counterFromPreviousPage,
-      this.titleColor);
+      this.titleColor, this.circularFrame);
 
   // ignore: missing_return
   Future<bool> _onBackPressed(){
@@ -48,7 +50,8 @@ class _FeedBackState extends State<FeedBackPage> {
         new HomePageClone(backGroundColor: backGroundColor,
           tileBackGroundColor: tileBackGroundColor,
           counterFromPreviousPage: counterFromPreviousPage,
-          titleColor: titleColor,),
+          titleColor: titleColor,
+          circularFrame: circularFrame,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -73,10 +76,10 @@ class _FeedBackState extends State<FeedBackPage> {
 
   Color setIconColor(int n){
     if(n % 2 == 0 || n == 0){
-      iconColor = titleColor;
+      iconColor = tileBackGroundColor;
       return iconColor;
     } else {
-      iconColor = tileBackGroundColor;
+      iconColor = titleColor;
       return iconColor;
     }
   }
@@ -94,7 +97,8 @@ class _FeedBackState extends State<FeedBackPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+              titleColor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -120,7 +124,8 @@ class _FeedBackState extends State<FeedBackPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+              titleColor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -145,7 +150,8 @@ class _FeedBackState extends State<FeedBackPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+                titleColor: titleColor,
+                circularFrame: circularFrame),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -170,7 +176,8 @@ class _FeedBackState extends State<FeedBackPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titlecolor: titleColor,),
+              titlecolor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -207,7 +214,8 @@ class _FeedBackState extends State<FeedBackPage> {
                   new HomePageClone(backGroundColor: backGroundColor,
                     tileBackGroundColor: tileBackGroundColor,
                     counterFromPreviousPage: counterFromPreviousPage,
-                    titleColor: titleColor,),
+                    titleColor: titleColor,
+                    circularFrame: circularFrame,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),

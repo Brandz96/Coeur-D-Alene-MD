@@ -22,6 +22,7 @@ class AffixSecondScreen extends StatefulWidget {
   Color tileBackGroundColor;
   int counterFromPreviousPage;
   Color titleColor;
+  Color circularFrame;
 
   AffixSecondScreen({Key key,
     this.title,
@@ -31,14 +32,15 @@ class AffixSecondScreen extends StatefulWidget {
     this.backGroundColor,
     this.tileBackGroundColor,
     this.counterFromPreviousPage,
-    this.titleColor})
+    this.titleColor,
+    this.circularFrame})
       : super(key: key);
 
   //_AffixSecondScreenState
   @override
   _AffixSecondScreenState createState() => _AffixSecondScreenState(
       affix, this.backGroundColor, this.tileBackGroundColor,
-      this.counterFromPreviousPage, this.titleColor);
+      this.counterFromPreviousPage, this.titleColor, this.circularFrame);
 }
 
 class _AffixSecondScreenState extends State<AffixSecondScreen> {
@@ -48,12 +50,13 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
   Color tileBackGroundColor;
   Color titleColor;
   int counterFromPreviousPage;
+  Color circularFrame;
 
   final String affix;
 
   _AffixSecondScreenState(this.affix, this.backGroundColor,
       this.tileBackGroundColor, this.counterFromPreviousPage,
-      this.titleColor);
+      this.titleColor, this.circularFrame);
 
   Future<List<Note>> loadJSON() async {
     var notes2 = List<Note>();
@@ -92,7 +95,8 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
         new AffixPage(backGroundColor: backGroundColor,
           tileBackGroundColor: tileBackGroundColor,
           counterFromPreviousPage: counterFromPreviousPage,
-          titlecolor: titleColor,),
+            titlecolor: titleColor,
+            circularFrame: circularFrame),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -125,7 +129,8 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+              titleColor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -151,7 +156,8 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+              titleColor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -176,7 +182,8 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+                titleColor: titleColor,
+                circularFrame: circularFrame),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -201,7 +208,8 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titlecolor: titleColor,),
+              titlecolor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -226,10 +234,10 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
 
   Color setIconColor(int n) {
     if (n % 2 == 0 || n == 0) {
-      iconColor = titleColor;
+      iconColor = tileBackGroundColor;
       return iconColor;
     } else {
-      iconColor = tileBackGroundColor;
+      iconColor = titleColor;
       return iconColor;
     }
   }
@@ -252,7 +260,8 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
                     backGroundColor: backGroundColor,
                     tileBackGroundColor: tileBackGroundColor,
                     counterFromPreviousPage: counterFromPreviousPage,
-                    titlecolor: titleColor,),
+                    titlecolor: titleColor,
+                    circularFrame: circularFrame,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),

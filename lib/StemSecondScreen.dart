@@ -22,6 +22,7 @@ class StemSecondScreen extends StatefulWidget {
   Color tileBackGroundColor;
   Color titleColor;
   int counterFromPreviousPage;
+  Color circularFrame;
 
   StemSecondScreen({Key key,
     this.title,
@@ -31,13 +32,14 @@ class StemSecondScreen extends StatefulWidget {
     this.backGroundColor,
     this.tileBackGroundColor,
     this.counterFromPreviousPage,
-    this.titleColor})
+    this.titleColor,
+    this.circularFrame})
       : super(key: key);
 
   @override
   _StemSecondScreenState createState() => _StemSecondScreenState(
       stem, this.backGroundColor, this.tileBackGroundColor,
-      this.counterFromPreviousPage, this.titleColor);
+      this.counterFromPreviousPage, this.titleColor, this.circularFrame);
 }
 
 class _StemSecondScreenState extends State<StemSecondScreen> {
@@ -47,29 +49,15 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
   Color tileBackGroundColor;
   int counterFromPreviousPage;
   Color titleColor;
+  Color circularFrame;
 
   final String stem;
 
   _StemSecondScreenState(this.stem, this.backGroundColor,
-      this.tileBackGroundColor, this.counterFromPreviousPage, this.titleColor);
+      this.tileBackGroundColor, this.counterFromPreviousPage, this.titleColor,
+      this.circularFrame);
 
-//  Future<List<Note>> fetchNotes() async {
-//    var url = 'https://raw.githubusercontent.com/Brandz96/Capstone/master/Stem.json';
-//    var response = await http.get(url);
-//
-//    var notes = List<Note>();
-//
-//
-//    if (response.statusCode == 200) {
-//      var notesJson = json.decode(response.body);
-//      for (var noteJson in notesJson) {
-//        if (noteJson['stem'] == stem) {
-//          notes.add(Note.fromJson(noteJson));
-//        }
-//      }
-//    }
-//    return notes;
-//  }
+
 
   Future<List<Note>> loadJSON() async {
     var notes2 = List<Note>();
@@ -108,7 +96,8 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
         new StemPage(backGroundColor: backGroundColor,
           tileBackGroundColor: tileBackGroundColor,
           counterFromPreviousPage: counterFromPreviousPage,
-          titleColor: titleColor,),
+          titleColor: titleColor,
+          circularFrame: circularFrame,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -141,7 +130,8 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+              titleColor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -167,7 +157,8 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+              titleColor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -192,7 +183,8 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+              titleColor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -217,7 +209,8 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titlecolor: titleColor,),
+              titlecolor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -268,7 +261,8 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
                   new StemPage(backGroundColor: backGroundColor,
                     tileBackGroundColor: tileBackGroundColor,
                     counterFromPreviousPage: counterFromPreviousPage,
-                    titleColor: titleColor,),
+                    titleColor: titleColor,
+                    circularFrame: circularFrame,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),

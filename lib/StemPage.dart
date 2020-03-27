@@ -16,7 +16,7 @@ import 'TilesNotes.dart';
 // ignore: must_be_immutable
 class StemPage extends StatefulWidget {
   StemPage({Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage,
-    this.titleColor})
+    this.titleColor, this.circularFrame})
       : super(key: key);
 
   static const String routeName = "/StemPage";
@@ -26,12 +26,13 @@ class StemPage extends StatefulWidget {
   Color tileBackGroundColor;
   int counterFromPreviousPage;
   Color titleColor;
+  Color circularFrame;
 
   @override
   _StemPageState createState() =>
       _StemPageState(
           backGroundColor, tileBackGroundColor, counterFromPreviousPage,
-          titleColor);
+          titleColor, circularFrame);
 }
 
 class _StemPageState extends State<StemPage> {
@@ -42,10 +43,11 @@ class _StemPageState extends State<StemPage> {
   Color tileBackGroundColor;
   int counterFromPreviousPage;
   Color titleColor;
+  Color circularFrame;
 
   _StemPageState(this.backGroundColor, this.tileBackGroundColor,
       this.counterFromPreviousPage,
-      this.titleColor);
+      this.titleColor, this.circularFrame);
 
 
   Future<List<StemNote>> loadJSON() async {
@@ -83,7 +85,8 @@ class _StemPageState extends State<StemPage> {
         new HomePageClone(backGroundColor: backGroundColor,
           tileBackGroundColor: tileBackGroundColor,
           counterFromPreviousPage: counterFromPreviousPage,
-          titleColor: titleColor,),
+          titleColor: titleColor,
+          circularFrame: circularFrame,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -116,7 +119,8 @@ class _StemPageState extends State<StemPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+              titleColor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -142,7 +146,8 @@ class _StemPageState extends State<StemPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+              titleColor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -167,7 +172,8 @@ class _StemPageState extends State<StemPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+              titleColor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -192,7 +198,8 @@ class _StemPageState extends State<StemPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titlecolor: titleColor,),
+              titlecolor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -217,10 +224,10 @@ class _StemPageState extends State<StemPage> {
 
   Color setIconColor(int n){
     if(n % 2 == 0 || n == 0){
-      iconColor = titleColor;
+      iconColor = tileBackGroundColor;
       return iconColor;
     } else {
-      iconColor = tileBackGroundColor;
+      iconColor = titleColor;
       return iconColor;
     }
   }
@@ -390,7 +397,8 @@ class _StemPageState extends State<StemPage> {
                                 backGroundColor: backGroundColor,
                                 tileBackGroundColor: tileBackGroundColor,
                                 counterFromPreviousPage: counterFromPreviousPage,
-                                titleColor: titleColor),
+                                titleColor: titleColor,
+                                circularFrame: circularFrame),
                             maintainState: true,
                             opaque: true,
                             transitionDuration: Duration(milliseconds: 600),

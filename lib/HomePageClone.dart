@@ -5,6 +5,7 @@ import 'AboutPage.dart';
 import 'AffixPage.dart';
 import 'AudioPage.dart';
 import 'FeedBackPage.dart';
+import 'HomePage.dart';
 import 'RootDictionaryPage.dart';
 import 'StemPage.dart';
 
@@ -15,19 +16,22 @@ class HomePageClone extends StatefulWidget {
     this.backGroundColor,
     this.tileBackGroundColor,
     this.counterFromPreviousPage,
-    this.titleColor})
+    this.titleColor,
+    this.circularFrame})
       : super(key: key);
   Color backGroundColor;
   Color tileBackGroundColor;
   int counterFromPreviousPage;
   Color titleColor;
+  Color circularFrame;
 
   final String title;
 
   @override
   _HomePageClone createState() =>
       _HomePageClone(backGroundColor,
-          tileBackGroundColor, counterFromPreviousPage, titleColor);
+          tileBackGroundColor, counterFromPreviousPage, titleColor,
+          circularFrame);
 }
 
 class _HomePageClone extends State<HomePageClone> {
@@ -35,15 +39,18 @@ class _HomePageClone extends State<HomePageClone> {
   Color tileBackGroundColor;
   int counter = 0;
   int counterFromPreviousPage;
-  Color homeBackGroundColor = Color.fromRGBO(192, 192, 192, 1); //blue
+  Color homeBackGroundColor = Color.fromRGBO(28, 28, 30, 1); //blue
   Color buttonColors = Colors.white; //grey
   Color iconColor;
-  Color rootDictionaryBackGroundColor = Color.fromRGBO(29, 161, 242, 1); //blue
+  Color rootDictionaryBackGroundColor = Color.fromRGBO(34, 28, 27, 1); //blue
   Color homeTitleColor = Colors.white30;
   Color titleColor;
+  Color circularFrame;
 
   _HomePageClone(this.backGroundColor, this.tileBackGroundColor,
-      this.counterFromPreviousPage, this.titleColor);
+      this.counterFromPreviousPage, this.titleColor, this.circularFrame);
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -82,225 +89,255 @@ class _HomePageClone extends State<HomePageClone> {
                     SizedBox(height: 12.0),
                   ],
                 )),
-            new Center(
-              child: new Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  RaisedButton(
-                      color: tileBackGroundColor,
-                      elevation: 3,
-                      onPressed: () {
-                        HomePageToRootDictionaryPageTransition(context);
-                      },
-                      textColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      padding: const EdgeInsets.all(0),
-                      child: Ink(
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
-                          ),
-                          child: Container(
-                            width: 250,
-                            height: 20,
-                            constraints: const BoxConstraints(
-                                minWidth: 40, minHeight: 40),
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Root Dictionary",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontFamily: 'Open Sans', color: titleColor),
-                            ),
-                          ))),
-                  new Padding(padding: EdgeInsets.only(top: 10)),
-                  RaisedButton(
-                      color: tileBackGroundColor,
-                      elevation: 3,
-                      onPressed: () {
-                        HomePageToStemPageTransition(context);
-                      },
-                      textColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      padding: const EdgeInsets.all(0),
-                      child: Ink(
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
-                          ),
-                          child: Container(
-                            width: 250,
-                            height: 20,
-                            constraints: const BoxConstraints(
-                                minWidth: 40, minHeight: 40),
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Stem List",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontFamily: 'Open Sans', color: titleColor),
-                            ),
-                          ))),
-                  new Padding(padding: EdgeInsets.only(top: 10)),
-                  RaisedButton(
-                      color: tileBackGroundColor,
-                      elevation: 3,
-                      onPressed: () {
-                        HomePageToAffixPage(context);
-                      },
-                      textColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      padding: const EdgeInsets.all(0),
-                      child: Ink(
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
-                          ),
-                          child: Container(
-                            width: 250,
-                            height: 20,
-                            constraints: const BoxConstraints(
-                                minWidth: 40, minHeight: 40),
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Affix List",
-                              style: TextStyle(
-                                fontFamily: 'Open Sans',
-                                color: titleColor,
+            Expanded(
+              child: new Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                    //color: Color.fromRGBO(60,  60,  60, 1),
+                    color: circularFrame,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30)),),
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height,
+                  child: new Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      RaisedButton(
+                          color: tileBackGroundColor,
+                          elevation: 3,
+                          onPressed: () {
+                            HomePageToRootDictionaryPageTransition(context);
+                          },
+                          textColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          padding: const EdgeInsets.all(0),
+                          child: Ink(
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(50)),
                               ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ))),
-                  new Padding(padding: EdgeInsets.only(top: 10)),
-                  RaisedButton(
-                      color: tileBackGroundColor,
-                      elevation: 3,
-                      onPressed: () {
-                        HomePageToAudioPage(context);
-                      },
-                      textColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      padding: const EdgeInsets.all(0),
-                      child: Ink(
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
-                          ),
-                          child: Container(
-                            width: 250,
-                            height: 20,
-                            constraints: const BoxConstraints(
-                                minWidth: 40, minHeight: 40),
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Text Files",
-                              style: TextStyle(
-                                fontFamily: 'Open Sans',
-                                color: titleColor,
+                              child: Container(
+                                width: 250,
+                                height: 20,
+                                constraints: const BoxConstraints(
+                                    minWidth: 40, minHeight: 40),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Root Dictionary",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontFamily: 'Open Sans',
+                                      color: titleColor),
+                                ),
+                              ))),
+                      new Padding(padding: EdgeInsets.only(top: 10)),
+                      RaisedButton(
+                          color: tileBackGroundColor,
+                          elevation: 3,
+                          onPressed: () {
+                            HomePageToStemPageTransition(context);
+                          },
+                          textColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          padding: const EdgeInsets.all(0),
+                          child: Ink(
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(50)),
                               ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ))),
-                  new Padding(padding: EdgeInsets.only(top: 10)),
-                  RaisedButton(
-                      color: tileBackGroundColor,
-                      elevation: 3,
-                      onPressed: () {
-                        HomePageToAboutPage(context);
-                      },
-                      textColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      padding: const EdgeInsets.all(0),
-                      child: Ink(
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
-                          ),
-                          child: Container(
-                            width: 250,
-                            height: 20,
-                            constraints: const BoxConstraints(
-                                minWidth: 40, minHeight: 40),
-                            alignment: Alignment.center,
-                            child: Text(
-                              "About",
-                              style: TextStyle(
-                                fontFamily: 'Open Sans',
-                                color: titleColor,
+                              child: Container(
+                                width: 250,
+                                height: 20,
+                                constraints: const BoxConstraints(
+                                    minWidth: 40, minHeight: 40),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Stem List",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontFamily: 'Open Sans',
+                                      color: titleColor),
+                                ),
+                              ))),
+                      new Padding(padding: EdgeInsets.only(top: 10)),
+                      RaisedButton(
+                          color: tileBackGroundColor,
+                          elevation: 3,
+                          onPressed: () {
+                            HomePageToAffixPage(context);
+                          },
+                          textColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          padding: const EdgeInsets.all(0),
+                          child: Ink(
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(50)),
                               ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ))),
-                  new Padding(padding: EdgeInsets.only(top: 10)),
-                  RaisedButton(
-                      color: tileBackGroundColor,
-                      elevation: 3,
-                      splashColor: Colors.grey,
-                      animationDuration: Duration(seconds: 2),
-                      onPressed: () {
-                        HomePageToFeedBackPage(context);
-                      },
-                      textColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      padding: const EdgeInsets.all(0),
-                      child: Ink(
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
-                          ),
-                          child: Container(
-                            width: 250,
-                            height: 20,
-                            constraints: const BoxConstraints(
-                                minWidth: 40, minHeight: 40),
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Provide Feedback",
-                              style: TextStyle(
-                                fontFamily: 'Open Sans',
-                                color: titleColor,
+                              child: Container(
+                                width: 250,
+                                height: 20,
+                                constraints: const BoxConstraints(
+                                    minWidth: 40, minHeight: 40),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Affix List",
+                                  style: TextStyle(
+                                    fontFamily: 'Open Sans',
+                                    color: titleColor,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ))),
+                      new Padding(padding: EdgeInsets.only(top: 10)),
+                      RaisedButton(
+                          color: tileBackGroundColor,
+                          elevation: 3,
+                          onPressed: () {
+                            HomePageToAudioPage(context);
+                          },
+                          textColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          padding: const EdgeInsets.all(0),
+                          child: Ink(
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(50)),
                               ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ))),
-                  Padding(
-                    padding: EdgeInsets.only(top: 15),
+                              child: Container(
+                                width: 250,
+                                height: 20,
+                                constraints: const BoxConstraints(
+                                    minWidth: 40, minHeight: 40),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Text Files",
+                                  style: TextStyle(
+                                    fontFamily: 'Open Sans',
+                                    color: titleColor,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ))),
+                      new Padding(padding: EdgeInsets.only(top: 10)),
+                      RaisedButton(
+                          color: tileBackGroundColor,
+                          elevation: 3,
+                          onPressed: () {
+                            HomePageToAboutPage(context);
+                          },
+                          textColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          padding: const EdgeInsets.all(0),
+                          child: Ink(
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(50)),
+                              ),
+                              child: Container(
+                                width: 250,
+                                height: 20,
+                                constraints: const BoxConstraints(
+                                    minWidth: 40, minHeight: 40),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "About",
+                                  style: TextStyle(
+                                    fontFamily: 'Open Sans',
+                                    color: titleColor,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ))),
+                      new Padding(padding: EdgeInsets.only(top: 10)),
+                      RaisedButton(
+                          color: tileBackGroundColor,
+                          elevation: 3,
+                          splashColor: Colors.grey,
+                          animationDuration: Duration(seconds: 2),
+                          onPressed: () {
+                            HomePageToFeedBackPage(context);
+                          },
+                          textColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          padding: const EdgeInsets.all(0),
+                          child: Ink(
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(50)),
+                              ),
+                              child: Container(
+                                width: 250,
+                                height: 20,
+                                constraints: const BoxConstraints(
+                                    minWidth: 40, minHeight: 40),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Provide Feedback",
+                                  style: TextStyle(
+                                    fontFamily: 'Open Sans',
+                                    color: titleColor,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ))),
+                      Padding(
+                        padding: EdgeInsets.only(top: 15),
 //                      child: IconButton(
 //                          icon: Icon(Icons.brightness_2),
 //                          color: iconColor,
 //                          iconSize: 20,
-                    child: new RawMaterialButton(
-                      onPressed: () {
-                        _incrementCounter();
-                        setState(() {
-                          if (counterFromPreviousPage % 2 == 0 ||
-                              counterFromPreviousPage == 0) {
-                            homeBackGroundColor =
-                                Color.fromRGBO(192, 192, 192, 1);
+                        child: new RawMaterialButton(
+                          onPressed: () {
+                            _incrementCounter();
+                            setState(() {
+                              if (counterFromPreviousPage % 2 == 0 ||
+                                  counterFromPreviousPage == 0) {
+                                homeBackGroundColor =
+                                    Color.fromRGBO(28, 28, 30, 1);
 
-                            setColor(counterFromPreviousPage);
-                            buttonColors = Colors.white;
-                            homeTitleColor = Color.fromRGBO(79, 87, 95, 1);
-                          } else {
-                            homeBackGroundColor = Color.fromRGBO(34, 28, 27, 1);
+                                setColor(counterFromPreviousPage);
+                                buttonColors = Color.fromRGBO(50, 66, 127, 1);
+                                homeTitleColor = Colors.white70;
+                                circularFrame = Color.fromRGBO(44, 44, 46, 1);
+                              } else {
+                                homeBackGroundColor =
+                                    Color.fromRGBO(192, 192, 192, 1);
 
-                            setColor(counterFromPreviousPage);
-                            buttonColors = Color.fromRGBO(50, 66, 127, 1);
-                            homeTitleColor = Colors.white70;
-                          }
-                        });
+                                setColor(counterFromPreviousPage);
+                                buttonColors = Colors.white;
+                                homeTitleColor = Color.fromRGBO(79, 87, 95, 1);
+                                circularFrame =
+                                    Color.fromRGBO(174, 174, 178, 1);
+                              }
+                            });
 
-                        print(counterFromPreviousPage);
-                      },
-                      child: new Icon(Icons.brightness_2,
-                          color: titleColor, size: 20.0),
-                      shape: new CircleBorder(),
-                      fillColor: backGroundColor,
-                      padding: const EdgeInsets.all(15.0),
-                    ),
+                            print(counterFromPreviousPage);
+                          },
+                          child: new Icon(Icons.brightness_2,
+                              color: titleColor, size: 20.0),
+                          shape: new CircleBorder(),
+                          fillColor: backGroundColor,
+                          padding: const EdgeInsets.all(15.0),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ],
@@ -317,21 +354,23 @@ class _HomePageClone extends State<HomePageClone> {
 
   void setColor(int n) {
     if (n % 2 == 0) {
-      buttonColors = Colors.white; //grey
+      buttonColors = Color.fromRGBO(50, 66, 127, 1);
       iconColor = Colors.black;
-      rootDictionaryBackGroundColor = Color.fromRGBO(192, 192, 192, 1); //blue
-      homeTitleColor = Color.fromRGBO(79, 87, 95, 1);
-      backGroundColor = homeBackGroundColor;
-      tileBackGroundColor = buttonColors;
-      titleColor = homeTitleColor;
-    } else {
-      buttonColors = Color.fromRGBO(50, 66, 127, 1); //purple
-      iconColor = Colors.white;
-      rootDictionaryBackGroundColor = Color.fromRGBO(34, 28, 27, 1); //black
+      rootDictionaryBackGroundColor = Color.fromRGBO(34, 28, 27, 1); //blue
       homeTitleColor = Colors.white70;
       backGroundColor = homeBackGroundColor;
       tileBackGroundColor = buttonColors;
       titleColor = homeTitleColor;
+      circularFrame = Color.fromRGBO(44, 44, 46, 1);
+    } else {
+      buttonColors = Colors.white; //purple
+      iconColor = Colors.grey;
+      rootDictionaryBackGroundColor = Color.fromRGBO(34, 28, 27, 1); //black
+      homeTitleColor = Color.fromRGBO(79, 87, 95, 1);
+      backGroundColor = homeBackGroundColor;
+      tileBackGroundColor = buttonColors;
+      titleColor = homeTitleColor;
+      circularFrame = Color.fromRGBO(174, 174, 178, 1);
     }
   }
 
@@ -348,6 +387,7 @@ class _HomePageClone extends State<HomePageClone> {
           tileBackGroundColor: tileBackGroundColor,
           counterFromPreviousPage: counterFromPreviousPage,
           titleColor: titleColor,
+          circularFrame: circularFrame,
         ),
         maintainState: true,
         opaque: true,
@@ -374,7 +414,8 @@ class _HomePageClone extends State<HomePageClone> {
             backGroundColor: backGroundColor,
             tileBackGroundColor: tileBackGroundColor,
             counterFromPreviousPage: counterFromPreviousPage,
-            titleColor: titleColor),
+          titleColor: titleColor,
+          circularFrame: circularFrame,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -400,7 +441,8 @@ class _HomePageClone extends State<HomePageClone> {
             backGroundColor: backGroundColor,
             tileBackGroundColor: tileBackGroundColor,
             counterFromPreviousPage: counterFromPreviousPage,
-            titlecolor: titleColor),
+          titlecolor: titleColor,
+          circularFrame: circularFrame,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -426,7 +468,8 @@ class _HomePageClone extends State<HomePageClone> {
             backGroundColor: backGroundColor,
             tileBackGroundColor: tileBackGroundColor,
             counterFromPreviousPage: counterFromPreviousPage,
-            titleColor: titleColor),
+          titleColor: titleColor,
+          circularFrame: circularFrame,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -453,6 +496,7 @@ class _HomePageClone extends State<HomePageClone> {
           tileBackGroundColor: tileBackGroundColor,
           counterFromPreviousPage: counterFromPreviousPage,
           titlecolor: titleColor,
+          circularFrame: circularFrame,
         ),
         maintainState: true,
         opaque: true,
@@ -476,10 +520,11 @@ class _HomePageClone extends State<HomePageClone> {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) =>
         new FeedBackPage(
-            backGroundColor: backGroundColor,
-            tileBackGroundColor: tileBackGroundColor,
-            counterFromPreviousPage: counterFromPreviousPage,
-            titleColor: titleColor),
+          backGroundColor: backGroundColor,
+          tileBackGroundColor: tileBackGroundColor,
+          counterFromPreviousPage: counterFromPreviousPage,
+          titleColor: titleColor,
+          circularFrame: circularFrame,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),

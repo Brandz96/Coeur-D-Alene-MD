@@ -14,7 +14,7 @@ import 'StemPage.dart';
 // ignore: must_be_immutable
 class AudioPage extends StatefulWidget {
   AudioPage({Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage,
-    this.titleColor})
+    this.titleColor, this.circularFrame})
       : super(key: key);
 
   static const String routeName = "/Audio";
@@ -24,12 +24,13 @@ class AudioPage extends StatefulWidget {
   Color tileBackGroundColor;
   Color titleColor;
   int counterFromPreviousPage;
+  Color circularFrame;
 
   @override
   _AudioPageState createState() =>
       _AudioPageState(
           backGroundColor, tileBackGroundColor, counterFromPreviousPage,
-          titleColor);
+          titleColor, circularFrame);
 }
 
 class _AudioPageState extends State<AudioPage> {
@@ -39,26 +40,12 @@ class _AudioPageState extends State<AudioPage> {
   Color tileBackGroundColor;
   int counterFromPreviousPage;
   Color titleColor;
-//  Future<List<Link>> fetchNotes() async {
-//    var url = 'https://raw.githubusercontent.com/Brandz96/Capstone/master/Audio.json';
-//    var response = await http.get(url);
-//
-//    var notes = List<Link>();
-//
-//
-//    if (response.statusCode == 200) {
-//      var notesJson = json.decode(response.body);
-//      for (var noteJson in notesJson) {
-//
-//        notes.add(Link.fromJson(noteJson));
-//      }
-//    }
-//    return notes;
-//  }
+  Color circularFrame;
+
 
   _AudioPageState(this.backGroundColor, this.tileBackGroundColor,
       this.counterFromPreviousPage,
-      this.titleColor);
+      this.titleColor, this.circularFrame);
 
   Future<List<Link>> loadJSON() async {
     var notes2 = List<Link>();
@@ -95,7 +82,8 @@ class _AudioPageState extends State<AudioPage> {
         new HomePageClone(backGroundColor: backGroundColor,
           tileBackGroundColor: tileBackGroundColor,
           counterFromPreviousPage: counterFromPreviousPage,
-          titleColor: titleColor,),
+          titleColor: titleColor,
+          circularFrame: circularFrame,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -128,7 +116,8 @@ class _AudioPageState extends State<AudioPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+              titleColor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -154,7 +143,8 @@ class _AudioPageState extends State<AudioPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+              titleColor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -179,7 +169,8 @@ class _AudioPageState extends State<AudioPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titleColor,),
+                titleColor: titleColor,
+                circularFrame: circularFrame),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -204,7 +195,8 @@ class _AudioPageState extends State<AudioPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titlecolor: titleColor,),
+              titlecolor: titleColor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -229,10 +221,10 @@ class _AudioPageState extends State<AudioPage> {
 
   Color setIconColor(int n){
     if(n % 2 == 0 || n == 0){
-      iconColor = Colors.white;
+      iconColor = tileBackGroundColor;
       return iconColor;
     } else {
-      iconColor = tileBackGroundColor;
+      iconColor = titleColor;
       return iconColor;
     }
   }
@@ -253,7 +245,8 @@ class _AudioPageState extends State<AudioPage> {
                   new HomePageClone(backGroundColor: backGroundColor,
                     tileBackGroundColor: tileBackGroundColor,
                     counterFromPreviousPage: counterFromPreviousPage,
-                    titleColor: titleColor,),
+                    titleColor: titleColor,
+                    circularFrame: circularFrame,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),

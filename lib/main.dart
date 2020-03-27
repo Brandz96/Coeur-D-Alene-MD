@@ -58,7 +58,7 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(192, 192, 192, 1),
+        backgroundColor: Color.fromRGBO(28, 28, 30, 1),
         body: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -72,7 +72,7 @@ class WelcomePage extends StatelessWidget {
                 ),
               ),
               RaisedButton(
-                  color: Colors.white,
+                  color: Color.fromRGBO(50, 66, 127, 1),
                   elevation: 3,
                   onPressed: () async {
                     Navigator.of(context).pushReplacement(new PageRouteBuilder(
@@ -113,7 +113,7 @@ class WelcomePage extends StatelessWidget {
                           "Enter",
                           style: TextStyle(
                             fontFamily: 'Open Sans',
-                            color: Color.fromRGBO(79, 87, 95, 1),
+                            color: Colors.white,
                             fontStyle: FontStyle.italic,
                           ),
                           textAlign: TextAlign.center,
@@ -165,10 +165,10 @@ class LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(192, 192, 192, 1),
+      backgroundColor: Color.fromRGBO(28, 28, 30, 1),
       body: Center(
           child: SpinKitWave(
-            color: Color.fromRGBO(79, 87, 95, 1),
+            color: Color.fromRGBO(50, 66, 127, 1),
             size: 40,
             duration: Duration(milliseconds: 800),
           )),

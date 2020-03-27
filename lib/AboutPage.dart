@@ -1,20 +1,20 @@
+import 'package:demo_app/HomePageClone.dart';
 import 'package:flutter/material.dart';
+
 import 'AffixPage.dart';
 import 'HomePage.dart';
-import 'package:demo_app/HomePageClone.dart';
-
 import 'RootDictionaryPage.dart';
 import 'StemPage.dart';
 
 // ignore: must_be_immutable
 class AboutPage extends StatefulWidget {
-  AboutPage(
-      {Key key,
-      this.title,
-      this.backGroundColor,
-      this.tileBackGroundColor,
-        this.counterFromPreviousPage,
-        this.titlecolor})
+  AboutPage({Key key,
+    this.title,
+    this.backGroundColor,
+    this.tileBackGroundColor,
+    this.counterFromPreviousPage,
+    this.titlecolor,
+    this.circularFrame})
       : super(key: key);
 
   static const String routeName = "/AboutPage";
@@ -24,11 +24,12 @@ class AboutPage extends StatefulWidget {
   Color backGroundColor;
   Color tileBackGroundColor;
   int counterFromPreviousPage;
+  Color circularFrame;
 
   @override
   _AboutPageState createState() => new _AboutPageState(
       backGroundColor, tileBackGroundColor, counterFromPreviousPage,
-      titlecolor);
+      titlecolor, circularFrame);
 }
 
 class _AboutPageState extends State<AboutPage> {
@@ -36,9 +37,10 @@ class _AboutPageState extends State<AboutPage> {
   Color tileBackGroundColor;
   int counterFromPreviousPage;
   Color titlecolor;
+  Color circularFrame;
 
   _AboutPageState(this.backGroundColor, this.tileBackGroundColor,
-      this.counterFromPreviousPage, this.titlecolor);
+      this.counterFromPreviousPage, this.titlecolor, this.circularFrame);
 
   @override
   void initState() {
@@ -49,11 +51,12 @@ class _AboutPageState extends State<AboutPage> {
   Future<bool> _onBackPressed() {
     Navigator.of(context).pushReplacement(new PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) =>
-            new HomePageClone(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
-              counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titlecolor,),
+        new HomePageClone(
+          backGroundColor: backGroundColor,
+          tileBackGroundColor: tileBackGroundColor,
+          counterFromPreviousPage: counterFromPreviousPage,
+          titleColor: titlecolor,
+          circularFrame: circularFrame,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -62,7 +65,7 @@ class _AboutPageState extends State<AboutPage> {
           var end = Offset.zero;
           var curve = Curves.ease;
           var tween =
-              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
           return SlideTransition(
             position: animation.drive(tween),
@@ -81,11 +84,12 @@ class _AboutPageState extends State<AboutPage> {
       if (_selectedIndex == 0) {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                new HomePageClone(
-                    backGroundColor: backGroundColor,
-                    tileBackGroundColor: tileBackGroundColor,
-                  counterFromPreviousPage: counterFromPreviousPage,
-                  titleColor: titlecolor,),
+            new HomePageClone(
+                backGroundColor: backGroundColor,
+                tileBackGroundColor: tileBackGroundColor,
+                counterFromPreviousPage: counterFromPreviousPage,
+                titleColor: titlecolor,
+                circularFrame: circularFrame),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -95,7 +99,7 @@ class _AboutPageState extends State<AboutPage> {
               var end = Offset.zero;
               var curve = Curves.ease;
               var tween =
-                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
               return SlideTransition(
                 position: animation.drive(tween),
@@ -107,11 +111,12 @@ class _AboutPageState extends State<AboutPage> {
       if (_selectedIndex == 1) {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                new RootDictionaryPage(
-                    backGroundColor: backGroundColor,
-                    tileBackGroundColor: tileBackGroundColor,
-                  counterFromPreviousPage: counterFromPreviousPage,
-                  titleColor: titlecolor,),
+            new RootDictionaryPage(
+                backGroundColor: backGroundColor,
+                tileBackGroundColor: tileBackGroundColor,
+                counterFromPreviousPage: counterFromPreviousPage,
+                titleColor: titlecolor,
+                circularFrame: circularFrame),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -121,7 +126,7 @@ class _AboutPageState extends State<AboutPage> {
               var end = Offset.zero;
               var curve = Curves.ease;
               var tween =
-                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
               return SlideTransition(
                 position: animation.drive(tween),
@@ -132,11 +137,12 @@ class _AboutPageState extends State<AboutPage> {
       if (_selectedIndex == 2) {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                new StemPage(
-                    backGroundColor: backGroundColor,
-                    tileBackGroundColor: tileBackGroundColor,
-                  counterFromPreviousPage: counterFromPreviousPage,
-                  titleColor: titlecolor,),
+            new StemPage(
+                backGroundColor: backGroundColor,
+                tileBackGroundColor: tileBackGroundColor,
+                counterFromPreviousPage: counterFromPreviousPage,
+                titleColor: titlecolor,
+                circularFrame: circularFrame),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -146,7 +152,7 @@ class _AboutPageState extends State<AboutPage> {
               var end = Offset.zero;
               var curve = Curves.ease;
               var tween =
-                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
               return SlideTransition(
                 position: animation.drive(tween),
@@ -157,11 +163,12 @@ class _AboutPageState extends State<AboutPage> {
       if (_selectedIndex == 3) {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                new AffixPage(
-                    backGroundColor: backGroundColor,
-                    tileBackGroundColor: tileBackGroundColor,
-                  counterFromPreviousPage: counterFromPreviousPage,
-                  titlecolor: titlecolor,),
+            new AffixPage(
+                backGroundColor: backGroundColor,
+                tileBackGroundColor: tileBackGroundColor,
+                counterFromPreviousPage: counterFromPreviousPage,
+                titlecolor: titlecolor,
+                circularFrame: circularFrame),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -171,7 +178,7 @@ class _AboutPageState extends State<AboutPage> {
               var end = Offset.zero;
               var curve = Curves.ease;
               var tween =
-                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
               return SlideTransition(
                 position: animation.drive(tween),
@@ -186,16 +193,14 @@ class _AboutPageState extends State<AboutPage> {
 
   Color setIconColor(int n){
     if(n % 2 == 0 || n == 0){
-      iconColor = Colors.white;
+      iconColor = tileBackGroundColor;
+
       return iconColor;
     } else {
-      iconColor = tileBackGroundColor;
+      iconColor = titlecolor;
       return iconColor;
     }
   }
-
-
-
 
 
   @override
@@ -218,12 +223,13 @@ class _AboutPageState extends State<AboutPage> {
             onTap: () {
               Navigator.of(context).pushReplacement(new PageRouteBuilder(
                   pageBuilder: (context, animation, secondaryAnimation) =>
-                      new HomePageClone(
-                        backGroundColor: backGroundColor,
-                        tileBackGroundColor: tileBackGroundColor,
-                        counterFromPreviousPage: counterFromPreviousPage,
-                        titleColor: titlecolor,
-                      ),
+                  new HomePageClone(
+                      backGroundColor: backGroundColor,
+                      tileBackGroundColor: tileBackGroundColor,
+                      counterFromPreviousPage: counterFromPreviousPage,
+                      titleColor: titlecolor,
+                      circularFrame: circularFrame
+                  ),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),
@@ -310,22 +316,22 @@ class _AboutPageState extends State<AboutPage> {
               new Padding(padding: EdgeInsets.only(top: 30)),
               new RichText(
                   text: TextSpan(children: <TextSpan>[
-                TextSpan(
-                    text: "\tAbout",
-                    style: TextStyle(
-                      color: Colors.white60,
-                      fontSize: 32,
-                    )),
-                TextSpan(
-                    text: " this",
-                    style: TextStyle(color: Colors.white70, fontSize: 32)),
-                TextSpan(
-                    text: ' App',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 32)),
-              ])),
+                    TextSpan(
+                        text: "\tAbout",
+                        style: TextStyle(
+                          color: Colors.white60,
+                          fontSize: 32,
+                        )),
+                    TextSpan(
+                        text: " this",
+                        style: TextStyle(color: Colors.white70, fontSize: 32)),
+                    TextSpan(
+                        text: ' App',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize: 32)),
+                  ])),
               new Padding(padding: EdgeInsets.only(top: 30)),
               new Expanded(
                   child: new SingleChildScrollView(

@@ -15,7 +15,7 @@ import 'TilesNotes.dart';
 // ignore: must_be_immutable
 class AffixPage extends StatefulWidget {
   AffixPage({Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage,
-    this.titlecolor})
+    this.titlecolor, this.circularFrame})
       : super(key: key);
 
   static const String routeName = "/Affix";
@@ -23,6 +23,7 @@ class AffixPage extends StatefulWidget {
   Color tileBackGroundColor;
   int counterFromPreviousPage;
   Color titlecolor;
+  Color circularFrame;
 
   final String title;
 
@@ -30,7 +31,7 @@ class AffixPage extends StatefulWidget {
   _AffixPageState createState() =>
       new _AffixPageState(
           backGroundColor, tileBackGroundColor, counterFromPreviousPage,
-          titlecolor);
+          titlecolor, circularFrame);
 }
 
 class _AffixPageState extends State<AffixPage> {
@@ -42,26 +43,12 @@ class _AffixPageState extends State<AffixPage> {
   Color tileBackGroundColor;
   int counterFromPreviousPage;
   Color titlecolor;
+  Color circularFrame;
 
   _AffixPageState(this.backGroundColor, this.tileBackGroundColor,
-      this.counterFromPreviousPage, this.titlecolor);
+      this.counterFromPreviousPage, this.titlecolor, this.circularFrame);
 
-//  Future<List<AffixNote>> fetchNotes() async {
-//    var url = 'https://raw.githubusercontent.com/Brandz96/Capstone/master/affix.json';
-//    var response = await http.get(url);
-//
-//    var notes = List<AffixNote>();
-//
-//
-//    if (response.statusCode == 200) {
-//      var notesJson = json.decode(response.body);
-//      for (var noteJson in notesJson) {
-//
-//        notes.add(AffixNote.fromJson(noteJson));
-//      }
-//    }
-//    return notes;
-//  }
+
   Future<List<AffixNote>> loadJSON() async {
     var notes2 = List<AffixNote>();
     var link = 'assets/affix.json';
@@ -97,7 +84,8 @@ class _AffixPageState extends State<AffixPage> {
         new HomePageClone(backGroundColor: backGroundColor,
           tileBackGroundColor: tileBackGroundColor,
           counterFromPreviousPage: counterFromPreviousPage,
-          titleColor: titlecolor,),
+          titleColor: titlecolor,
+          circularFrame: circularFrame,),
         maintainState: true,
         opaque: true,
         transitionDuration: Duration(milliseconds: 600),
@@ -130,7 +118,8 @@ class _AffixPageState extends State<AffixPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titlecolor,),
+              titleColor: titlecolor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -156,7 +145,8 @@ class _AffixPageState extends State<AffixPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titlecolor,),
+              titleColor: titlecolor,
+              circularFrame: circularFrame,),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -181,7 +171,8 @@ class _AffixPageState extends State<AffixPage> {
               backGroundColor: backGroundColor,
               tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
-              titleColor: titlecolor,),
+                titleColor: titlecolor,
+                circularFrame: circularFrame),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -206,7 +197,8 @@ class _AffixPageState extends State<AffixPage> {
                 backGroundColor: backGroundColor,
                 tileBackGroundColor: tileBackGroundColor,
                 counterFromPreviousPage: counterFromPreviousPage,
-                titlecolor: titlecolor),
+                titlecolor: titlecolor,
+                circularFrame: circularFrame),
             maintainState: true,
             opaque: true,
             transitionDuration: Duration(milliseconds: 600),
@@ -231,10 +223,11 @@ class _AffixPageState extends State<AffixPage> {
 
   Color setIconColor(int n){
     if(n % 2 == 0 || n == 0){
-      iconColor = titlecolor;
+      iconColor = tileBackGroundColor;
+
       return iconColor;
     } else {
-      iconColor = tileBackGroundColor;
+      iconColor = titlecolor;
       return iconColor;
     }
   }
@@ -255,7 +248,8 @@ class _AffixPageState extends State<AffixPage> {
                   new HomePageClone(backGroundColor: backGroundColor,
                     tileBackGroundColor: tileBackGroundColor,
                     counterFromPreviousPage: counterFromPreviousPage,
-                    titleColor: titlecolor,),
+                    titleColor: titlecolor,
+                    circularFrame: circularFrame,),
                   maintainState: true,
                   opaque: true,
                   transitionDuration: Duration(milliseconds: 600),
@@ -375,7 +369,8 @@ class _AffixPageState extends State<AffixPage> {
                               backGroundColor: backGroundColor,
                               tileBackGroundColor: tileBackGroundColor,
                               counterFromPreviousPage: counterFromPreviousPage,
-                              titleColor: titlecolor,),
+                                titleColor: titlecolor,
+                                circularFrame: circularFrame),
                             maintainState: true,
                             opaque: true,
                             transitionDuration: Duration(milliseconds: 600),
