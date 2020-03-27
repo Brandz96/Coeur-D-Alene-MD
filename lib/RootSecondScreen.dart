@@ -84,7 +84,9 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
     var jsonResponse = json.decode(jsonState);
 
     for (var n in jsonResponse) {
-      notes2.add(Note.fromJson(n));
+      if (n['root'] == root) {
+        notes2.add(Note.fromJson(n));
+      }
     }
     print(2);
     return notes2;
@@ -243,7 +245,7 @@ class _RootSecondScreenState extends State<RootSecondScreen> {
 
   Color setIconColor(int n){
     if(n % 2 == 0 || n == 0){
-      iconColor = Colors.white;
+      iconColor = titleColor;
       return iconColor;
     } else {
       iconColor = tileBackGroundColor;

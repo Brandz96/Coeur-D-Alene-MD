@@ -1,20 +1,21 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:demo_app/AffixSecondScreen.dart';
 import 'package:demo_app/HomePageClone.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
+
+import 'HomePage.dart';
 import 'RootDictionaryPage.dart';
 import 'StemPage.dart';
 import 'TilesNotes.dart';
-import 'HomePage.dart';
 
 
 // ignore: must_be_immutable
 class AffixPage extends StatefulWidget {
-  AffixPage(
-      {Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage,
-        this.titlecolor})
+  AffixPage({Key key, this.title, this.backGroundColor, this.tileBackGroundColor, this.counterFromPreviousPage,
+    this.titlecolor})
       : super(key: key);
 
   static const String routeName = "/Affix";
@@ -113,8 +114,8 @@ class _AffixPageState extends State<AffixPage> {
           );
         }
     ));
-
   }
+
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -126,8 +127,8 @@ class _AffixPageState extends State<AffixPage> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new HomePageClone(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titleColor: titlecolor,),
             maintainState: true,
@@ -152,8 +153,8 @@ class _AffixPageState extends State<AffixPage> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new RootDictionaryPage(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titleColor: titlecolor,),
             maintainState: true,
@@ -177,8 +178,8 @@ class _AffixPageState extends State<AffixPage> {
         Navigator.of(context).pushReplacement(new PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
             new StemPage(
-                backGroundColor: backGroundColor,
-                tileBackGroundColor: tileBackGroundColor,
+              backGroundColor: backGroundColor,
+              tileBackGroundColor: tileBackGroundColor,
               counterFromPreviousPage: counterFromPreviousPage,
               titleColor: titlecolor,),
             maintainState: true,
@@ -225,18 +226,18 @@ class _AffixPageState extends State<AffixPage> {
       }
     });
   }
+
   Color iconColor;
 
   Color setIconColor(int n){
     if(n % 2 == 0 || n == 0){
-      iconColor = Colors.white;
+      iconColor = titlecolor;
       return iconColor;
     } else {
       iconColor = tileBackGroundColor;
       return iconColor;
     }
   }
-
 
 
   @override
@@ -271,8 +272,6 @@ class _AffixPageState extends State<AffixPage> {
                     );
                   }
               ));
-
-
             },
             child: Icon(
               Icons.arrow_back,
@@ -412,16 +411,19 @@ class _AffixPageState extends State<AffixPage> {
                           children: <Widget>[
                             Row(
                               children: <Widget>[
-                                Padding(
-                                  child: Text(
-                                    _fnotes[index].affix,
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: titlecolor,
-                                      fontWeight: FontWeight.w600,
+                                Expanded(
+                                  child: Padding(
+                                    child: Text(
+                                      _fnotes[index].affix,
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: titlecolor,
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
+                                    padding: EdgeInsets.only(left: 10),
                                   ),
-                                  padding: EdgeInsets.only(left: 10),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(left: 10, top: 3),

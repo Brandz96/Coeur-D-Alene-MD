@@ -222,6 +222,18 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
     });
   }
 
+  Color iconColor;
+
+  Color setIconColor(int n) {
+    if (n % 2 == 0 || n == 0) {
+      iconColor = titleColor;
+      return iconColor;
+    } else {
+      iconColor = tileBackGroundColor;
+      return iconColor;
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -283,7 +295,7 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
             BottomNavigationBarItem(
                 icon: new Icon(
                   Icons.home,
-                  color: tileBackGroundColor,
+                  color: setIconColor(counterFromPreviousPage),
                 ),
                 title: Text(
                   "Home",
@@ -295,7 +307,7 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
             BottomNavigationBarItem(
               icon: new Icon(
                 Icons.translate,
-                color: tileBackGroundColor,
+                color: setIconColor(counterFromPreviousPage),
               ),
               title: Text(
                 'Root',
@@ -305,7 +317,8 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
               ),
             ),
             BottomNavigationBarItem(
-              icon: new Icon(Icons.archive, color: tileBackGroundColor),
+              icon: new Icon(
+                Icons.archive, color: setIconColor(counterFromPreviousPage),),
               title: Text(
                 'Stem',
                 style: TextStyle(
@@ -316,7 +329,7 @@ class _AffixSecondScreenState extends State<AffixSecondScreen> {
             BottomNavigationBarItem(
               icon: new Icon(
                 Icons.assignment,
-                color: tileBackGroundColor,
+                color: setIconColor(counterFromPreviousPage),
               ),
               title: Text(
                 'Affix',

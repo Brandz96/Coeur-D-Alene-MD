@@ -248,7 +248,7 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
 
   Color setIconColor(int n){
     if(n % 2 == 0 || n == 0){
-      iconColor = Colors.white;
+      iconColor = titleColor;
       return iconColor;
     } else {
       iconColor = tileBackGroundColor;
@@ -507,15 +507,17 @@ class _RootDictionaryPageState extends State<RootDictionaryPage> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
-                                Padding(
-                                  padding: EdgeInsets.only(left: 10),
-                                  child: Text(
-                                    _fnotes[index].title,
-                                    style: TextStyle(
-                                        fontSize: 21,
-                                        color: titleColor,
-                                        fontWeight: FontWeight.w600,
-                                        letterSpacing: 1),
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      _fnotes[index].title,
+                                      style: TextStyle(
+                                          fontSize: 21,
+                                          color: titleColor,
+                                          fontWeight: FontWeight.w600,
+                                          letterSpacing: 1),
+                                    ),
                                   ),
                                 ),
                                 Padding(

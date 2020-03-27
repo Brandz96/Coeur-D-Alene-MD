@@ -217,7 +217,7 @@ class _StemPageState extends State<StemPage> {
 
   Color setIconColor(int n){
     if(n % 2 == 0 || n == 0){
-      iconColor = Colors.white;
+      iconColor = titleColor;
       return iconColor;
     } else {
       iconColor = tileBackGroundColor;
@@ -314,7 +314,7 @@ class _StemPageState extends State<StemPage> {
               title: Text(
                 'Stem',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: titleColor,
                 ),
               ),
             ),
@@ -426,17 +426,19 @@ class _StemPageState extends State<StemPage> {
                           children: <Widget>[
                             Row(
                               children: <Widget>[
-                                Padding(
-                                  child: Text(
-                                    _fnotes[index].stem,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: titleColor,
-                                      fontWeight: FontWeight.w600,
+                                Expanded(
+                                  child: Padding(
+                                    child: Text(
+                                      _fnotes[index].stem,
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: titleColor,
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
+                                    padding: EdgeInsets.only(left: 10),
                                   ),
-                                  padding: EdgeInsets.only(left: 10),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(left: 10, top: 3),
