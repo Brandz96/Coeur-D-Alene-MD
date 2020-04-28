@@ -236,10 +236,10 @@ class _StemSecondScreenState extends State<StemSecondScreen> {
 
   Color setIconColor(int n){
     if(n % 2 == 0 || n == 0){
-      iconColor = titleColor;
+      iconColor = tileBackGroundColor;
       return iconColor;
     } else {
-      iconColor = tileBackGroundColor;
+      iconColor = titleColor;
       return iconColor;
     }
   }

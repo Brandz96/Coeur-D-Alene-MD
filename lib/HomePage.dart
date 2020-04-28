@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'AboutPage.dart';
 import 'AffixPage.dart';
-import 'AudioPage.dart';
 import 'FeedBackPage.dart';
 import 'RootDictionaryPage.dart';
 import 'StemPage.dart';
+import 'TextPage.dart';
 
 class Home extends StatefulWidget {
   Home({

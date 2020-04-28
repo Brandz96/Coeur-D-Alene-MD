@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'AboutPage.dart';
 import 'AffixPage.dart';
-import 'AudioPage.dart';
 import 'FeedBackPage.dart';
 import 'HomePage.dart';
 import 'RootDictionaryPage.dart';
 import 'StemPage.dart';
+import 'TextPage.dart';
 
 // ignore: must_be_immutable
 class HomePageClone extends StatefulWidget {

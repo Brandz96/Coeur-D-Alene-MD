@@ -6,11 +6,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'AboutPage.dart';
 import 'AffixPage.dart';
-import 'AudioPage.dart';
 import 'FeedBackPage.dart';
 import 'HomePage.dart';
 import 'RootDictionaryPage.dart';
 import 'StemPage.dart';
+import 'TextPage.dart';
 
 void main() {
   SystemChrome.setEnabledSystemUIOverlays([]);
